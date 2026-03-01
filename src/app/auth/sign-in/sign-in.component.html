@@ -1,0 +1,73 @@
+<header class="site-header">
+  <a routerLink="/home">
+    <img
+      src="/Logo_Regular-1024x221.png"
+      class="site-logo"
+      alt="Park Share Vibe logo"
+    />
+  </a>
+
+  <nav class="main-nav">
+
+    <img src="/icon.png" class="user-image" alt="currentUser.name" />
+
+    <button class="nav-button subtle-action" (click)="onSignUp()">
+      Sign up
+    </button>
+    <button class="nav-button recommended-button" (click)="goToRecommended()">
+      ⭐ Recommended
+    </button>
+
+    <button class="nav-button primary-action" (click)="goToAllParks()">
+      All Parks
+    </button>
+  </nav>
+</header>
+
+<div class="auth-container">
+  <!-- <header class="auth-header">
+    <h1 class="logo">PARK SHARE <span class="logo-accent">VIBE</span></h1>
+  </header> -->
+
+  <div class="sign-in-card">
+    <h2>Log In</h2>
+
+    <form (ngSubmit)="onSubmit()" class="sign-in-form">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          id="email"
+          required
+          placeholder="example@mail.com"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          id="password"
+          required
+          placeholder="••••••••"
+        />
+      </div>
+
+      <button type="submit" class="submit-button primary-action">כניסה</button>
+    </form>
+
+    <div class="additional-links">
+      <button routerLink="/sign-up" class="subtle-link">
+        Don't have an account?
+      </button>
+    </div>
+
+    <div *ngIf="errorMsg" class="error-message">
+      {{ errorMsg }}
+    </div>
+  </div>
+</div>

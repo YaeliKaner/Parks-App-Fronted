@@ -1,0 +1,70 @@
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: transparent;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+/* לוגו תמונה */
+.site-logo {
+  height: 48px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.site-logo:hover {
+  transform: scale(1.05);
+}
+
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-button {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2e7d32;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+/* קו תחתון מהמרכז */
+.nav-button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0%;
+  height: 2px;
+
+  background-color: #66bb6a;
+
+  transition: width 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+}
+
+
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #66bb6a;
+  object-fit: cover;
+}

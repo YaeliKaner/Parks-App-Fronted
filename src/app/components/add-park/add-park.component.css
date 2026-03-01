@@ -1,0 +1,540 @@
+/* ================= HEADER (unchanged from parks page, without buttons) ================= */
+
+.header-container {
+    width: 100%;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    padding: 18px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+
+.highlight {
+    color: #d6ffcb;
+}
+
+/* ================= FORM CONTAINER ================= */
+
+.add-park-form {
+    width: 50%;
+    margin: 40px auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.6s ease;
+    color: #054c2b;
+}
+
+/* ================= LABELS ================= */
+
+.form-label {
+    display: block;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 6px;
+    margin-top: 18px;
+    color: #0b6334;
+    text-align: left;
+}
+
+/* ================= INPUTS ================= */
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    border-radius: 10px;
+    border: 1px solid #a9e6c1;
+    background: #f4fff7;
+    margin-bottom: 16px;
+    transition: 0.25s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #2e8b57;
+    box-shadow: 0 0 8px #b6ffce;
+}
+
+/* ================= FILE INPUT (styled button) ================= */
+
+.form-file {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #e8fcef;
+    border: 2px dashed #8edfb3;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.25s;
+    font-weight: 600;
+}
+
+.form-file:hover {
+    background: #d7ffeb;
+}
+
+/* ================= ERROR MESSAGES ================= */
+
+.error-msg {
+    color: #d40000;
+    font-size: 15px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* ================= SUBMIT BUTTON ================= */
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    background: #34a853;
+    color: white;
+    transition: 0.3s;
+}
+
+.submit-button:hover:not(:disabled) {
+    background: #1f7a38;
+}
+
+.submit-button:disabled {
+    background: #9ddfb8;
+    cursor: not-allowed;
+}
+
+
+
+
+.city-field {
+  position: relative;
+  width: 280px;
+}
+
+.combo-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.city-input {
+  flex: 1;
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+.arrow-btn {
+  width: 35px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.arrow-btn:hover {
+  background: #ddd;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dropdown li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background: #eee;
+}
+
+
+
+.city-dropdown {
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #a9e6c1;
+    border-radius: 10px;
+    background: #f4fff7;
+    margin-top: -12px;
+    margin-bottom: 16px;
+}
+
+.city-option {
+    padding: 14px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.city-option:hover {
+    background: #b6ffce;
+}
+
+
+.city-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.city-dropdown {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #a9e6c1;
+    border-radius: 10px;
+    background: #f4fff7;
+    z-index: 10;
+    top: 100%;
+}
+
+.city-option {
+    padding: 14px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.city-option:hover {
+    background: #b6ffce;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(47, 79, 47, 0.4); /* גוון ירוק כהה שקוף */
+  /* backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+  padding: 20px;
+} */
+
+/* כרטיסיית ההודעה */
+/* .conflict-card {
+  background: white;
+  padding: 40px;
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.conflict-icon {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.conflict-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #2f4f2f;
+  margin-bottom: 15px;
+}
+
+.conflict-text {
+  font-size: 17px;
+  color: #5a7a5a;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+
+.conflict-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-primary {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #256628;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
+}
+
+.btn-secondary {
+  background: #f0f7f0;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+  padding: 12px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #e4eee4;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(47, 79, 47, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+  padding: 20px;
+}
+
+
+.conflict-card {
+  background: white;
+  padding: 40px;
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.conflict-icon {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.conflict-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #2f4f2f;
+  margin-bottom: 15px;
+}
+
+.conflict-text {
+  font-size: 17px;
+  color: #5a7a5a;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+
+.conflict-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-primary {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #256628;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
+}
+
+.btn-secondary {
+  background: #f0f7f0;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+  padding: 12px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #e4eee4;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}  */
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(47, 79, 47, 0.4); 
+  backdrop-filter: blur(10px); /* טשטוש חזק ויוקרתי */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* כרטיסיית ההודעה */
+.conflict-card {
+  background: white;
+  /* צמצמנו את הפדינג העליון מ-20 ל-10 */
+  padding: 10px 32px 32px 32px; 
+  
+  border-radius: 30px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  animation: modalAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* עיצוב הלוגו של העץ */
+.conflict-logo-img {
+  width: 200px; /* הקטנתי מעט מ-200 כדי שישב טוב יותר במרווח המצומצם */
+  height: auto;
+  
+  /* שימוש בערכים אפסיים או שליליים כדי "להדביק" למעלה ולטקסט */
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(76, 175, 80, 0.15));
+}
+
+.conflict-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2f4f2f;
+  margin-top: 0;      /* ביטול מרווח עליון של הכותרת */
+  margin-bottom: 10px; /* רווח קטן לכיוון הטקסט שמתחת */
+}
+
+.conflict-text {
+  font-size: 16px;
+  color: #5a7a5a;
+  line-height: 1.5;
+  margin-bottom: 25px; /* צמצום המרווח לפני הכפתורים */
+}
+
+.btn-primary {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #256628;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(46, 125, 50, 0.25);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #2e7d32;
+  border: 2px solid #e0ebe0;
+  padding: 14px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #f8fcf8;
+  border-color: #2e7d32;
+}
+
+/* אנימציית כניסה */
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

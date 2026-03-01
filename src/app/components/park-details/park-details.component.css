@@ -1,0 +1,664 @@
+/* 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
+
+:host {
+  font-family: 'Assistant', sans-serif;
+  direction: ltr;
+}
+
+.park-viewer-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(76, 175, 80, 0.08), transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(46, 125, 50, 0.05), transparent 40%),
+    #fcfdfc;
+}
+
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.site-logo {
+  height: 42px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.site-logo:hover { transform: scale(1.05); }
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.nav-button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: #f0f4f0;
+  color: #2e7d32;
+}
+
+.primary-action {
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.08);
+}
+
+.recommended-button {
+  background: #fff8e1;
+  color: #f57f17;
+}
+
+.subtle-action {
+  font-weight: 400;
+  color: #777;
+}
+
+.user-image {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2e7d32;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-right: 10px;
+}
+
+
+.page-layout-three-columns {
+  display: grid;
+  grid-template-columns: 320px 1fr 340px;
+  gap: 30px;
+  padding: 30px 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* צד צ'אט */
+/* .chat-sidebar {
+  position: sticky;
+  top: 90px;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  height: calc(100vh - 130px);
+  border: 1px solid #f0f0f0;
+}
+
+
+.main-content {
+  background: white;
+  padding: 32px;
+  border-radius: 28px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.03);
+}
+
+.hero-section { text-align: center; margin-bottom: 40px; }
+
+.park-title-main {
+  font-size: 42px;
+  font-weight: 800;
+  color: #1a331a;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.park-location {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.main-image-wrapper {
+  border-radius: 24px;
+  overflow: hidden;
+  line-height: 0;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  margin-bottom: 30px;
+}
+
+.park-main-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+
+.navigate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #2e7d32;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
+}
+
+.navigate-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(46, 125, 50, 0.4);
+}
+
+.googleMaps {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.weather-card {
+  background: linear-gradient(135deg, #f1f8e9 0%, #ffffff 100%);
+  border: 1px solid #dcedc8;
+  border-radius: 20px;
+  padding: 24px;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-main {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.temp { font-size: 48px; font-weight: 800; color: #2e7d32; }
+.desc { font-size: 18px; font-weight: 600; color: #558b2f; text-transform: capitalize; }
+
+.features-sidebar {
+  position: sticky;
+  top: 90px;
+}
+
+.features-card {
+  background: white;
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.features-title { font-size: 20px; font-weight: 800; color: #1a331a; }
+.features-subtitle { font-size: 14px; color: #777; margin-bottom: 20px; }
+
+.feature-item {
+  background: #f9fbf9;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #edf2ed;
+}
+
+.feature-name { font-weight: 700; color: #2e7d32; display: block; margin-bottom: 8px; }
+
+.feature-select, .feature-input {
+  width: 100%;
+  border: 1.5px solid #e0e6e0;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.feature-select:focus, .feature-input:focus {
+  border-color: #2e7d32;
+}
+
+.save-all-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #2e7d32;
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.save-all-btn:disabled { background: #ccc; cursor: default; }
+
+
+.site-footer {
+  padding: 30px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  border-top: 1px solid #eee;
+  background: white;
+}
+
+
+@media (max-width: 1200px) {
+  .page-layout-three-columns {
+    grid-template-columns: 1fr;
+  }
+  .chat-sidebar, .features-sidebar {
+    position: static;
+    height: auto;
+  }
+} */
+ 
+/* פונט Assistant למראה נקי ומקצועי */
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
+
+:host {
+  font-family: 'Assistant', sans-serif;
+}
+
+/* קונטיינר - רקע מקורי */
+.park-viewer-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    linear-gradient(#f9fcf9, #eef6ee);
+}
+
+/* =========================================
+   HEADER - עיצוב חדש ומודרני (Sticky & Glass)
+   ========================================= */
+/* .site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.site-logo {
+  height: 42px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.site-logo:hover { transform: scale(1.05); }
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* כפתורי הניווט - סטייל "כפתורי פיל" מודרני */
+/* .nav-button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-button:hover {
+  background: rgba(46, 125, 50, 0.05);
+  color: #2e7d32;
+}
+
+/* הדגשת כפתורים ספציפיים */
+/* .primary-action {
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.08);
+}
+.recommended-button {
+  background: #fff8e1;
+  color: #f57f17;
+}
+.subtle-action {
+  font-weight: 400;
+  color: #777;
+}
+
+.user-image {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #2e7d32;
+  object-fit: cover;
+}   */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: transparent;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+/* לוגו תמונה */
+.site-logo {
+  height: 48px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.site-logo:hover {
+  transform: scale(1.05);
+}
+
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
+
+.nav-button {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2e7d32;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+/* קו תחתון מהמרכז */
+.nav-button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0%;
+  height: 2px;
+
+  background-color: #66bb6a;
+
+  transition: width 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+}
+
+
+
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #66bb6a;
+  object-fit: cover;
+}
+
+
+.top-section {
+  padding: 30px 0 10px;
+  text-align: center;
+}
+
+
+/* =========================================
+   BODY - העיצוב המקורי (3 עמודות, Flexbox)
+   ========================================= */
+.page-layout-three-columns {
+  display: flex;
+  gap: 32px;
+  padding: 20px 40px;
+  max-width: 1900px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.chat-sidebar {
+  width: 340px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px; /* מתחת להדר */
+  height: calc(100vh - 140px);
+  align-self: flex-start;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 860px;
+  min-width: 0;
+}
+
+.features-sidebar {
+  width: 380px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  align-self: flex-start;
+}
+
+/* Hero & Main Image */
+.hero-section { text-align: center; margin-bottom: 50px; }
+.park-title-main { font-size: 44px; font-weight: 800; color: #2f4f2f; margin-bottom: 10px; }
+.park-location { font-size: 22px; color: #4e6b4e; margin-bottom: 30px; }
+
+.main-image-wrapper {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.20);
+  margin-bottom: 28px;
+}
+.park-main-image { width: 100%; height: auto; max-height: 620px; object-fit: cover; }
+
+/* כפתורי פעולה מקוריים */
+.navigate-btn {
+  padding: 14px 34px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.navigate-btn:hover {
+  background: #256628;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+}
+
+.googleMaps {
+  margin-top: 5px;
+  width: 40px;      
+  height: 40px;
+  object-fit: contain;
+  border-radius: 14px;   
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* כרטיסיות מקוריות (מזג אוויר ומאפיינים) */
+.weather-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto 50px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+.features-card {
+  background: white;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+  border: 1px solid #e0ebe0;
+}
+
+.feature-select, .feature-input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #bcd9bc;
+  background: #f8fcf8;
+}
+
+.save-all-btn {
+  width: 100%;
+  padding: 15px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+/* =========================================
+   FOOTER - עיצוב חדש ונקי
+   ========================================= */
+.site-footer {
+  padding: 30px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  border-top: 1px solid #eee;
+  background: white;
+}
+
+/* =========================================
+   מודאל קונפליקט (העץ) - מעוצב ומהודק
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(47, 79, 47, 0.4); 
+  backdrop-filter: blur(10px);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 9999;
+}
+
+.conflict-card {
+  background: white;
+  padding: 10px 32px 32px;
+  border-radius: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  max-width: 450px; width: 100%;
+  text-align: center;
+  animation: modalAppear 0.5s ease;
+}
+
+.conflict-logo-img {
+  width: 180px; height: auto;
+  margin-top: -5px; margin-bottom: -10px;
+  object-fit: contain;
+}
+
+.btn-primary {
+  background: #2e7d32; color: white; border: none;
+  padding: 16px; border-radius: 18px; font-weight: 700; cursor: pointer;
+  width: 100%; margin-top: 10px;
+}
+
+@keyframes modalAppear {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.add-report-btn {
+  /* מידות וריווח */
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  /* עיצוב רקע וצבע */
+  background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px; /* צורת "פיל" מודרנית */
+  
+  /* טיפוגרפיה */
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  
+  /* צל ועומק */
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.25);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* מונע בחירת טקסט */
+  user-select: none;
+}
+
+.add-report-btn:hover {
+  /* הרמה של הכפתור במעבר עכבר */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.35);
+  background: linear-gradient(135deg, #256628 0%, #2e7d32 100%);
+}
+
+.add-report-btn:active {
+  /* אפקט לחיצה */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
+}
+
+/* בונוס: הוספת פלוס קטן לפני הטקסט דרך CSS */
+.add-report-btn::before {
+  content: "+";
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+}
+

@@ -1,0 +1,161 @@
+<!-- <h2>Sign Up</h2>
+<h2>Sign Up</h2>
+
+<form (ngSubmit)="onSubmit()">
+
+  <div>
+    <label>שם:</label>
+    <input type="text" [(ngModel)]="name" name="name" required>
+  </div>
+
+  <div>
+    <label>אימייל:</label>
+    <input type="email" [(ngModel)]="email" name="email" required>
+  </div>
+
+  <div>
+    <label>סיסמה:</label>
+    <input type="password" [(ngModel)]="password" name="password" required>
+  </div>
+
+  <div>
+    <label>אישור סיסמה:</label>
+    <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+  </div>
+
+  <div>
+    <label>Your profile picture:</label>
+    <input type="file" name="Nfile" (change)="onFileSelected($event)" required>
+  </div>
+
+  <button type="submit">הרשמה</button>
+</form>
+
+<div *ngIf="errorMsg" style="color:red; margin-top:10px;">
+  {{ errorMsg }}
+</div>
+
+<div *ngIf="successMsg" style="color:green; margin-top:10px;">
+  {{ successMsg }}
+</div>
+
+<p style="margin-top:10px;">
+  כבר רשומה? 
+  <a routerLink="/sign-in">כניסה</a>
+</p> -->
+
+
+
+
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">name:</label>
+    <input 
+      type="text" 
+      id="name"
+      [(ngModel)]="newUser.name" 
+      name="name" 
+      required
+    />
+  </div>
+
+  <div>
+    <label for="email">email:</label>
+    <input 
+      type="email" 
+      id="email"
+      [(ngModel)]="newUser.email" 
+      name="email" 
+      required
+    />
+  </div>
+
+  <div>
+    <label for="password">password:</label>
+    <input 
+      type="password" 
+      id="password"
+      [(ngModel)]="newUser.password" 
+      name="password" 
+      required
+    />
+  </div>
+
+  <div>
+    <label for="confirmPassword">verify password:</label>
+    <input 
+      type="password" 
+      id="confirmPassword"
+      [(ngModel)]="newUser.confirmPassword" 
+      name="confirmPassword" 
+      required
+    />
+  </div>
+
+  <div>
+    <label for="phone">phone number::</label>
+    <input 
+      type="tel" 
+      id="phone"
+      [(ngModel)]="newUser.phone" 
+      name="phone" 
+      required
+    />
+  </div>
+
+  <div>
+    <label for="birthDate">date of birth:</label>
+    <input 
+      type="date" 
+      id="birthDate"
+      [(ngModel)]="newUser.birthDate" 
+      name="birthDate" 
+      required
+    />
+  </div>
+
+  <div>
+    <label for="city">city:</label>
+    <select 
+      id="city"
+      [(ngModel)]="newUser.city.id" 
+      name="cityId"
+      required
+    >
+      <option value="">select city:</option>
+      <option *ngFor="let city of citiesList" [value]="city.id">
+        {{ city.name }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="personalStatus">personal status:</label>
+    <select 
+      id="personalStatus"
+      [(ngModel)]="newUser.personalStatus" 
+      name="personalStatus"
+      required
+    >
+      <option value="">select status:</option>
+      <option [value]="p.single">single</option>
+      <option [value]="p.married">married</option>
+      <!-- <option [value]="PersonalStatus.Divorced">גרוש/ה</option>
+      <option [value]="PersonalStatus.Widowed">אלמן/ה</option> -->
+    </select>
+  </div>
+
+  <div>
+    <label for="picture">profile picture:</label>
+    <input 
+      type="file" 
+      id="picture"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+    />
+  </div>
+
+  <div>
+    <button type="submit">sign up</button>
+  </div>
+</form>

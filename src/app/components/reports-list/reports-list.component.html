@@ -1,0 +1,62 @@
+<div class="reports-container">
+  @if (reportsList && reportsList.length > 0) {
+
+  <div class="reports-list">
+    @for (report of reportsList; track report.id || $index) {
+
+    <article class="report-card">
+      <div class="report-header">
+        <div class="user-info">
+          @if (report.userDTO?.imageBase64) {
+          <img
+            [src]="'data:image/jpeg;base64,' + report.userDTO.imageBase64"
+            class="user-avatar"
+            alt="{{ report.userDTO.name }}"
+          />
+          } @else {
+          <div class="user-avatar placeholder">
+            {{
+              report.userDTO?.name
+                ? report.userDTO.name.charAt(0).toUpperCase()
+                : "א"
+            }}
+          </div>
+          }
+
+          <div class="user-details">
+            <h4 class="user-name">{{ report.userDTO?.name || "אורח" }}</h4>
+            <span class="report-date">
+              {{ report.reportingDate }}
+            </span>
+          </div>
+        </div>
+        <div class="rating-stars">
+          @for (star of [1,2,3,4,5]; track star) {
+          <span class="star" [class.filled]="star <= report.satisfaction">
+            ></span
+          >
+          }
+        </div>
+      </div>
+
+      <div class="report-content">
+        @if (report.freeText) {
+        <p class="report-text">{{ report.freeText }}</p>
+        } @else {
+        <p class="report-text no-text">User has not added a description</p>
+        }
+      </div>
+    </article>
+
+    }
+  </div>
+
+  } @else {
+
+  <div class="empty-state">
+    <p>No reviews for the park yet</p>
+    <p class="sub">Be the first to share!</p>
+  </div>
+
+  }
+</div>

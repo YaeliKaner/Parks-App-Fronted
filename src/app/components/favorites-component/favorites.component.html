@@ -1,0 +1,120 @@
+<div class="park-viewer-container">
+
+  <header class="site-header">
+    <a routerLink="/home">
+      <img
+        src="/Logo_Regular-1024x221.png"
+        class="site-logo"
+        alt="Park Share Vibe logo"
+      />
+    </a>
+
+    <nav class="main-nav">
+      @if (isLoggedIn) {
+        @if (currentUser && currentUser.imageBase64) {
+          <img
+            src="data:image/jpeg;base64,{{ currentUser.imageBase64 }}"
+            class="user-image"
+            alt="currentUser.name"
+          />
+        } @else {
+          <img src="/icon.png" class="user-image" alt="currentUser.name" />
+        }
+
+        <button class="nav-button subtle-action" (click)="onSignOut()">
+          Sign out
+        </button>
+
+        <button class="nav-button recommended-button" (click)="goToRecommended()">
+          ⭐ Recommended
+        </button>
+
+        <button class="nav-button primary-action" (click)="goToFavorites()">
+          ❤️ My favorites
+        </button>
+
+        <button class="nav-button primary-action" (click)="onSpecialButtonClick()">
+          Add New Park
+        </button>
+
+      } @else {
+        <img src="/icon.png" class="user-image" alt="currentUser.name" />
+
+        <button class="nav-button recommended-button" (click)="goToRecommended()">
+          ⭐ Recommended
+        </button>
+        <button class="nav-button subtle-action" (click)="onSignIn()">
+          Sign in
+        </button>
+        <button class="nav-button subtle-action" (click)="onSignUp()">
+          Sign up
+        </button>
+      }
+    </nav>
+  </header>
+
+  <section class="top-section">
+    <h2 class="page-title">❤️ My Favorites</h2>
+
+  </section>
+
+  <main class="page-layout">
+    <aside class="chat-sidebar">
+      <app-parks-chat></app-parks-chat>
+    </aside>
+
+    <section class="content-area">
+
+      @if (favorites && favorites.length > 0) {
+
+        <section class="parks-grid">
+          @for (park of favorites; track park.id) {
+
+            <article class="park-card">
+
+              <div class="park-image-wrapper">
+                <img [src]="'data:image/jpeg;base64,' + park.imageBase64" class="park-image" alt="{{ park.name }}" />
+              </div>
+
+              <div class="park-info">
+                <h3 class="park-title">{{ park.name }}</h3>
+
+                <p class="park-city">
+                  {{ park.city?.name }}
+                </p>
+
+                <div class="uploader">
+                  <img *ngIf="park.userDTO?.imageBase64"
+                       class="uploader-img"
+                       [src]="'data:image/jpeg;base64,' + park.userDTO.imageBase64">
+                  <div class="uploader-details">
+                    <span class="label">Uploaded by </span><br>
+                    <span class="uploader-name">{{ park.userDTO?.name }}</span>
+                  </div>
+                </div>
+
+                <button class="details-button" (click)="showDetails(park)">
+                  View All Reports
+                </button>
+
+
+              </div>
+            </article>
+
+          }
+        </section>
+
+      } @else {
+        <div class="no-parks-message empty-state">
+          <p>You don't have any favorite parks yet.</p>
+          <p>Go explore and add some ❤️</p>
+        </div>
+      }
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Park Share Vibe © 2024. All rights reserved.</p>
+  </footer>
+</div>

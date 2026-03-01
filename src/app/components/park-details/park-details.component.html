@@ -1,0 +1,187 @@
+<div class="park-viewer-container">
+  <header class="site-header">
+<a routerLink="/home">
+  <img
+    src="/Logo_Regular-1024x221.png"
+    class="site-logo"
+    alt="Park Share Vibe logo"
+  />
+</a>
+
+    <nav class="main-nav">
+      @if (isLoggedIn) { @if (currentUser && currentUser.imageBase64) {
+      <img
+        src="data:image/jpeg;base64,{{ currentUser.imageBase64 }}"
+        class="user-image"
+        alt="currentUser.name"
+      />
+      } @else {
+      <img src="/icon.png" class="user-image" alt="currentUser.name" />
+      }
+
+      <button class="nav-button subtle-action" (click)="onSignOut()">
+        Sign out
+      </button>
+
+      <button class="nav-button recommended-button" (click)="goToRecommended()">
+        ⭐ Recommended
+      </button>
+
+      <button class="nav-button primary-action" (click)="goToFavorites()">
+        ❤️ My favorites
+      </button>
+
+      <button
+        class="nav-button primary-action"
+        (click)="onSpecialButtonClickAddPark()"
+      >
+        Add New Park
+      </button>
+
+      <button class="nav-button primary-action" (click)="goToAllParks()">
+        All Parks
+      </button>
+      } @else {
+
+      <img src="/icon.png" class="user-image" alt="currentUser.name" />
+
+      <button class="nav-button recommended-button" (click)="goToRecommended()">
+        ⭐ Recommended
+      </button>
+      <button class="nav-button subtle-action" (click)="onSignIn()">
+        Sign in
+      </button>
+      <button class="nav-button subtle-action" (click)="onSignUp()">
+        Sign up
+      </button>
+
+      }
+    </nav>
+  </header>
+
+  <main class="page-layout-three-columns">
+    <aside class="chat-sidebar">
+      <app-parks-chat></app-parks-chat>
+    </aside>
+
+    <section class="main-content">
+      @if (parkToShow) {
+
+      <div class="hero-section">
+        <h1 class="park-title-main">{{ parkToShow.name }}</h1>
+        <p class="park-location">
+          {{ parkToShow.city?.name }} • {{ parkToShow.address }}
+        </p>
+
+        <div class="main-image-wrapper">
+          <img
+            [src]="'data:image/jpeg;base64,' + parkToShow.imageBase64"
+            class="park-main-image"
+            alt="{{ parkToShow.name }}"
+          />
+        </div>
+
+        <button class="navigate-btn" (click)="openGoogleMaps()">
+          Head to the park on Google Maps
+          <img
+            class="googleMaps"
+            src="/google-maps.png"
+            alt="Google Maps Icon"
+          />
+        </button>
+      </div>
+
+      <div class="weather-card">
+        <h3 class="card-title">The weather right now:</h3>
+        @if (isLoadingWeather) {
+        <p class="loading"></p>
+        } @else if (weatherError) {
+        <p class="error">{{ weatherError }}</p>
+        } @else if (weather) {
+        <div class="weather-main">
+          <div class="temp">{{ weather.temperature }}°</div>
+          <div class="desc">{{ weather.description }}</div>
+        </div>
+        <div class="weather-extra">
+          <p>Feels like: {{ weather.feelsLike }}°</p>
+          <p>Humid: {{ weather.humidity }}%</p>
+        </div>
+        }
+      </div>
+
+      <div class="section-header">
+        <h2 class="section-title">Reports and reviews:</h2>
+        <button
+          class="add-report-btn"
+          (click)="onSpecialButtonClickAddReport()"
+        >
+          Add Your Report
+        </button>
+      </div>
+
+      <app-reports-list
+        [parkId]="parkToShow.id"
+        class="reports-list"
+      ></app-reports-list>
+
+      @if (showAddReport) {
+      <div class="add-report-overlay">
+        <app-add-report
+          [parkId]="parkToShow.id"
+          (reportAdded)="showAddReport = false"
+        >
+        </app-add-report>
+      </div>
+      } }
+    </section>
+
+    @if (parkToShow && featureForms[1]) {
+    <aside class="features-sidebar">
+      <div class="features-card">
+        <h3 class="features-title">Update park features</h3>
+        <p class="features-subtitle">
+          Help the community – update what's in the park
+        </p>
+
+        <div class="features-list">
+          @for (feature of features; track feature.id) {
+          <div class="feature-item">
+            <div class="feature-header">
+              <span class="feature-name">{{ feature.name }}</span>
+            </div>
+
+            <form [formGroup]="featureForms[feature.id]" class="feature-form">
+              <select formControlName="ratingsBreakdown" class="feature-select">
+                <option value="none">None at all</option>
+                <option value="little">A little</option>
+                <option value="enough">Enough</option>
+                <option value="aLot">A lot</option>
+              </select>
+
+              <input
+                type="text"
+                formControlName="remark"
+                class="feature-input"
+                placeholder="Short note (optional)"
+              />
+            </form>
+          </div>
+          }
+        </div>
+
+        <button
+          class="save-all-btn"
+          (click)="saveAllChanges()"
+          [disabled]="!hasAnyChanges()"
+        >
+          @if (hasAnyChanges()) { Save changes } @else { Update }
+        </button>
+      </div>
+    </aside>
+    }
+  </main>
+
+  <footer class="site-footer">
+    <p>Park Share Vibe © 2025. All rights reserved.</p>
+  </footer>
+</div>

@@ -1,0 +1,430 @@
+/* ===========================
+   GLOBAL RESET
+=========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    linear-gradient(#f9fcf9, #eef6ee);
+  color: #2f4f2f;
+}
+
+.park-viewer-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+
+
+/* ===========================
+   HEADER
+=========================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: transparent;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.site-logo {
+  height: 48px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.site-logo:hover {
+  transform: scale(1.05);
+}
+
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  color: #2e7d32;
+  cursor: pointer;
+  padding: 6px 3px;
+  position: relative;
+}
+
+.nav-button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #66bb6a;
+  transition: width 0.25s ease, left 0.25s ease;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #66bb6a;
+  object-fit: cover;
+}
+
+
+
+/* ===========================
+   TITLE + SEARCH
+=========================== */
+.top-section {
+  padding: 30px 0 10px;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #355b35;
+  margin-bottom: 14px;
+}
+
+.small-title {
+  font-size: 24px;
+}
+
+.search-container {
+  max-width: 650px;
+  margin: 0 auto 20px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 20px;
+  border: 1px solid #bcd9bc;
+  outline: none;
+  font-size: 15px;
+  transition: 0.25s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.search-container input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76,175,80,0.2);
+}
+
+
+
+/* ===========================
+   PAGE LAYOUT — CHAT + GRID
+=========================== */
+.page-layout {
+  display: flex;
+  gap: 28px;
+  padding: 10px 40px 40px;
+}
+
+/* === צ'אט שלא זז בגלילה === */
+.chat-sidebar {
+  width: 320px;
+  position: static !important;   /* הכי חשוב */
+  top: auto;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* === קופסת הצ'אט — נמוכה + לא זזה === */
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 420px; /* ⬅ רוצה יותר? תשני ל־460px */
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #dfe7df;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  color: #2f4f2f;
+}
+
+
+
+/* ===========================
+   CHAT INTERNAL PARTS
+=========================== */
+
+.chat-header {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e2e8e2;
+  background: #f8fdf8;
+}
+
+.chat-title {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.chat-subtitle {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msg {
+  max-width: 85%;
+  padding: 8px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.msg.user {
+  align-self: flex-end;
+  background: #daf5da;
+  color: #1d3d1d;
+}
+
+.msg.ai {
+  align-self: flex-start;
+  background: #f3f6f3;
+  border: 1px solid #e0e6e0;
+}
+
+.input-area {
+  padding: 10px;
+  border-top: 1px solid #e6eee6;
+  display: flex;
+  gap: 8px;
+  background: white;
+}
+
+.input-area textarea {
+  flex: 1;
+  min-height: 44px;
+  max-height: 80px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #d0ded0;
+  outline: none;
+  resize: none;
+}
+
+.input-area button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #2e7d32;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* ===========================
+   PARK GRID
+=========================== */
+.content-area {
+  flex: 1;
+}
+
+.parks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 26px;
+}
+
+
+
+/* ===========================
+   PARK CARD
+=========================== */
+.park-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  overflow: hidden;
+  transition: 0.25s ease;
+}
+
+.park-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+}
+
+.park-image-wrapper {
+  height: 200px;
+  overflow: hidden;
+}
+
+.park-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.park-info {
+  padding: 16px 20px;
+}
+
+.park-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #2f4f2f;
+  margin-bottom: 6px;
+}
+
+.park-city {
+  color: #4f6b4f;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+
+
+/* ===========================
+   UPLOADER DETAILS
+=========================== */
+.uploader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.uploader-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #b8e0b7;
+  object-fit: cover;
+}
+
+.uploader-name {
+  font-weight: 600;
+  color: #2f5d2f;
+}
+
+
+
+/* ===========================
+   CARD BUTTONS
+=========================== */
+
+/* כפתור ראשון — View Reports */
+.details-button {
+  background: #2e7d32;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  width: 100%;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.details-button:hover {
+  background: #256528;
+  transform: translateY(-2px);
+}
+
+/* כפתור שני — קטן יותר */
+.details-button.secondary {
+  background: white;
+  color: #c64242;
+  border: 2px solid #e8bcbc;
+  width: 60%;                /* ⬅⬅⬅ קטן יותר */
+  margin: 0 auto;            /* ⬅⬅⬅ ממורכז */
+  display: block;            /* חובה למרכז */
+}
+
+.details-button.secondary:hover {
+  background: #ffe8e8;
+}
+
+
+
+/* ===========================
+   FOOTER
+=========================== */
+.site-footer {
+  text-align: center;
+  padding: 18px;
+  background: #eef5ee;
+  font-size: 12px;
+  border-top: 1px solid #d6e3d6;
+  margin-top: auto;
+}
+
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 1100px) {
+  .page-layout {
+    flex-direction: column-reverse;
+  }
+
+  .chat-sidebar {
+    width: 100%;
+  }
+}
+
+
+.chat-sidebar {
+  position: static !important;
+  top: auto !important;
+  height: 420px; /* או הגובה שאת רוצה */
+}
+
+.page-layout {
+  align-items: flex-start !important;
+}
+
+
+.chat-sidebar {
+  position: fixed !important;
+  left: 20px;        /* מרחק צדדי */
+  top: 110px;        /* מתחת להדר */
+  width: 320px;      /* רוחב הצ'אט */
+  height: 420px;     /* גובה קבוע */
+  z-index: 9999;     /* שיהיה מעל הכל */
+}
+
+.page-layout {
+  padding-left: 360px !important; /* מקום ריק בשביל הצ'אט */
+}
+

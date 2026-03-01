@@ -1,0 +1,108 @@
+<!-- <div class="chat-container">
+  <h2>צ'אט פארקים</h2>
+
+  <textarea [(ngModel)]="userPrompt" placeholder="מה תרצי לשאול?"></textarea>
+
+  <button (click)="send()" [disabled]="isLoading">
+    שליחה
+  </button>
+
+  <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
+
+  <div *ngIf="isLoading">טוען...</div>
+
+  <div *ngIf="aiAnswer" class="answer-box">
+    {{ aiAnswer }}
+  </div>
+</div> -->
+
+
+
+<div class="chat-wrapper">
+
+  <div class="chat-header">
+    <div class="chat-title">Parks Assistant</div>
+    <div class="chat-subtitle">Which park are you looking for?</div>
+  </div>
+
+
+
+
+  <div class="chat-box">
+    <!-- User bubble (last question) -->
+    <div class="msg user" *ngIf="userPrompt && !isLoading">
+      {{ userPrompt }}
+    </div>
+
+    <!-- Loading animation -->
+    <div class="loading" *ngIf="isLoading">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- AI bubble -->
+    <div class="msg ai" *ngIf="aiAnswer">
+      {{ aiAnswer }}
+    </div>
+  </div>
+
+  <div class="input-area">
+    <textarea
+      [(ngModel)]="userPrompt"
+      placeholder="Which park are you looking for?"
+    ></textarea>
+
+    <button (click)="send()" [disabled]="isLoading" aria-label="Send message">
+      ▶
+    </button>
+  </div>
+
+  <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <div class="chat-wrapper">
+
+  <div class="chat-box">
+
+    <div class="title">צ'אט פארקים</div>
+
+
+    <div class="msg user" *ngIf="userPrompt && !isLoading">
+      {{ userPrompt }}
+    </div>
+
+
+    <div class="loading" *ngIf="isLoading">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+ 
+    <div class="msg ai" *ngIf="aiAnswer">
+      {{ aiAnswer }}
+    </div>
+
+  </div>
+
+  <div class="input-area">
+    <textarea [(ngModel)]="userPrompt" placeholder="מה תרצי לשאול?"></textarea>
+
+    <button (click)="send()" [disabled]="isLoading">
+      ▶
+    </button>
+  </div>
+
+  <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
+
+</div> -->

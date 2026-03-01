@@ -1,0 +1,94 @@
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: transparent;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+/* לוגו תמונה */
+.site-logo {
+  height: 48px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.site-logo:hover {
+  transform: scale(1.05);
+}
+
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
+
+.nav-button {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2e7d32;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+.nav-button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0%;
+  height: 2px;
+
+  background-color: #66bb6a;
+
+  transition: width 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+}
+
+.homepage-welcome-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 30px 40px;
+  max-width: 650px;
+  margin: 60px auto;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  height: 250px;
+}
+
+.homepage-welcome-card h1 {
+  color: #2f7a32; /* ירוק עדין כמו הלוגו */
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.homepage-welcome-card p {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  color: #777;
+  background: #eef5ee;
+  font-size: 13px;
+  border-top: 1px solid #d6e3d6;
+}

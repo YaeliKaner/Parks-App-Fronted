@@ -1,0 +1,269 @@
+/* --- 1. Global Setup (Colors and Font) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); 
+
+:root {
+    /* צבעים חיים: ירוק ליים וטורקיז */
+    --primary-color: #64dd17; 
+    --accent-color: #00bcd4; 
+    --background-light: #f4f6f8; 
+    --card-background: #ffffff; 
+    --text-dark: #263238;
+    --text-light: #607d8b;
+    --error-red: #d32f2f; 
+    --transition-smooth: 0.3s ease-out; 
+}
+
+/* הגדרת אנימציית הבהוב קלה להודעת השגיאה */
+@keyframes error-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0px rgba(211, 47, 47, 0.4); }
+    70% { transform: scale(1.01); box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0px rgba(211, 47, 47, 0); }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; 
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    direction: ltr; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+/* --- 2. Container and Header --- */
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-header {
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.logo-accent {
+    color: var(--accent-color); 
+}
+
+/* --- 3. Sign In Card (הכרטיס המרכזי עם צל משמעותי מאוד) --- */
+
+
+/* ===========================
+   GLOBAL RESET
+=========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    linear-gradient(#f9fcf9, #eef6ee);
+  color: #2f4f2f;
+}
+
+.park-viewer-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: transparent;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+/* לוגו תמונה */
+.site-logo {
+  height: 48px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.site-logo:hover {
+  transform: scale(1.05);
+}
+
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
+
+.nav-button {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2e7d32;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+
+.nav-button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0%;
+  height: 2px;
+
+  background-color: #66bb6a;
+
+  transition: width 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+}
+
+
+
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #66bb6a;
+  object-fit: cover;
+}
+
+.sign-in-card {
+    background-color: var(--card-background);
+    padding: 40px;
+    border-radius: 15px; 
+    max-width: 420px; 
+    width: 100%;
+    text-align: center;
+    border-top: 6px solid var(--primary-color); 
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4), 
+        0 0 0 5px rgba(100, 221, 23, 0.1); 
+
+
+    transform: perspective(1000px) rotateX(1deg) translateY(-3px);
+}
+
+.sign-in-card:hover {
+
+    transform: perspective(1000px) rotateX(0deg) translateY(-10px); 
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.6), 
+        0 0 0 8px rgba(100, 221, 23, 0.2); 
+}
+
+.sign-in-card h2 {
+    font-size: 2.2em; 
+    color: var(--text-dark); 
+    margin-bottom: 30px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.sign-in-card h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px; 
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: right; 
+    direction: ltr;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    direction: ltr;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1em;
+    direction: ltr;
+}
+
+.sign-in-form input {
+    padding: 14px 18px; 
+    border: 1px solid #e0e0e0;
+    border-radius: 10px; 
+    font-size: 1em;
+    transition: all var(--transition-smooth);
+    width: 100%;
+    color: var(--text-dark);
+    background-color: #fcfcfc;
+    text-align: right;
+    direction: ltr;
+}
+
+.sign-in-form input:focus {
+    border-color: var(--accent-color); 
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.4); 
+    background-color: var(--card-background);
+}
+
+/* --- 5. Submit Button (דינמי) --- */
+
+.submit-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.2em; 
+    cursor: pointer;}

@@ -1,0 +1,182 @@
+<!-- 
+<div class="content-area">
+  <h2 class="page-title">⭐ פארקים מומלצים</h2>
+
+  @if (parks && parks.length > 0) {
+    <section class="parks-grid enhanced-grid">
+      @for (park of parks; track $index) {
+        <article class="park-card lush-card">
+          <div class="card-image-wrapper">
+            <img
+              [src]="'data:picture/jpeg;base64,' + park.imageBase64"
+              alt="Park Image"
+              class="park-image"
+            />
+            <div class="park-city-tag city-badge">
+              {{ park.city.name }}
+            </div>
+          </div>
+
+          <div class="card-content">
+            <h3 class="park-name vibrant-title">{{ park.name }}</h3>
+            <p class="detail-item">
+              <span class="detail-label">📍 כתובת:</span>
+              <span class="detail-value">{{ park.address }}</span>
+            </p>
+          </div>
+        </article>
+      }
+    </section>
+  } @else {
+    <div class="no-parks-message empty-state">
+    There's currently not enough data to show recommendations.
+    </div>
+  }
+</div> -->
+
+
+<div class="park-viewer-container">
+
+  <header class="site-header">
+    <a routerLink="/home">
+      <img
+        src="/Logo_Regular-1024x221.png"
+        class="site-logo"
+        alt="Park Share Vibe logo"
+      />
+    </a>
+
+    <nav class="main-nav">
+      @if (isLoggedIn) {
+
+        @if (currentUser && currentUser.imageBase64) {
+          <img
+            src="data:image/jpeg;base64,{{ currentUser.imageBase64 }}"
+            class="user-image"
+            alt="currentUser.name"
+          />
+        } @else {
+          <img src="/icon.png" class="user-image" alt="currentUser.name" />
+        }
+
+        <button class="nav-button subtle-action" (click)="onSignOut()">
+          Sign out
+        </button>
+
+        <button class="nav-button recommended-button" (click)="goToRecommended()">
+          ⭐ Recommended
+        </button>
+
+        <button class="nav-button primary-action" (click)="goToFavorites()">
+          ❤️ My favorites
+        </button>
+
+        <button class="nav-button primary-action" (click)="onSpecialButtonClick()">
+          Add New Park
+        </button>
+
+      } @else {
+
+        <img src="/icon.png" class="user-image" alt="currentUser.name" />
+
+        <button class="nav-button recommended-button" (click)="goToRecommended()">
+          ⭐ Recommended
+        </button>
+        <button class="nav-button subtle-action" (click)="onSignIn()">
+          Sign in
+        </button>
+        <button class="nav-button subtle-action" (click)="onSignUp()">
+          Sign up
+        </button>
+
+      }
+    </nav>
+  </header>
+
+  <section class="top-section">
+    <h2 class="page-title">⭐ Recommended Parks</h2>
+  </section>
+
+  <main class="page-layout">
+    <aside class="chat-sidebar">
+      <app-parks-chat></app-parks-chat>
+    </aside>
+
+    <section class="content-area">
+
+      @if (parks && parks.length > 0) {
+
+        <section class="parks-grid">
+
+          @for (park of parks; track $index) {
+
+            <article class="park-card">
+
+              <!-- תמונה -->
+              <div class="park-image-wrapper">
+                <img
+                  [src]="'data:image/jpeg;base64,' + park.imageBase64"
+                  class="park-image"
+                  alt="Park"
+                />
+              </div>
+
+              <!-- תוכן -->
+              <div class="park-info">
+
+                <!-- שם הפארק -->
+                <h3 class="park-title">{{ park.name }}</h3>
+
+                <!-- עיר -->
+                <p class="park-city">
+                  {{ park.city?.name }}
+                </p>
+
+                <!-- מעלה -->
+                <div class="uploader">
+                  <img
+                    *ngIf="park.userDTO?.imageBase64"
+                    class="uploader-img"
+                    [src]="'data:image/jpeg;base64,' + park.userDTO.imageBase64"
+                  />
+                  <div class="uploader-details">
+                    <span class="label">Uploaded by </span><br>
+                    <span class="uploader-name">{{ park.userDTO?.name }}</span>
+                  </div>
+                </div>
+
+                <!-- כפתור -->
+                <button class="details-button" (click)="showDetails(park)">
+                  View All Reports
+                </button>
+
+                <div class="favorites-wrapper">
+                  <button class="details-button secondary" (click)="addToFavorites(park)">
+                    ❤️ Add to my favorites
+                  </button>
+                </div>
+
+              </div>
+
+            </article>
+
+          }
+
+        </section>
+
+      } @else {
+
+        <div class="no-parks-message empty-state">
+          There's currently not enough data to show recommendations.
+        </div>
+
+      }
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Park Share Vibe © 2024. All rights reserved.</p>
+  </footer>
+</div>

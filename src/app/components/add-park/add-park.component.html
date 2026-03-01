@@ -1,0 +1,136 @@
+<header class="header-container">
+  <div class="header-content">
+    <h1 class="logo">PARK SHARE <span class="highlight">VIBE</span></h1>
+  </div>
+</header>
+
+<div class="add-park-form">
+  @if (citiesList) {
+    <form #AddForm="ngForm">
+      <label class="form-label">Garden Name:</label>
+      <input
+        class="form-input"
+        type="text"
+        [(ngModel)]="newPark.name"
+        name="Nname"
+        required
+        #NameId="ngModel"
+      />
+      @if (NameId.invalid && AddForm.submitted) {
+        @if (NameId.errors?.["required"]) {
+          <span class="error-msg">This field is required</span>
+        }
+      }
+
+      <label class="form-label">Short Description:</label>
+      <input
+        class="form-input"
+        type="text"
+        [(ngModel)]="newPark.desc"
+        name="Ndesc"
+        required
+        #DescId="ngModel"
+      />
+      @if (DescId.invalid && AddForm.submitted) {
+        @if (DescId.errors?.["required"]) {
+          <span class="error-msg">This field is required</span>
+        }
+      }
+
+      <label class="form-label">Address:</label>
+      <input
+        class="form-input"
+        type="text"
+        [(ngModel)]="newPark.address"
+        name="Naddress"
+        required
+        #AddressId="ngModel"
+      />
+      @if (AddressId.invalid && AddForm.submitted) {
+        @if (AddressId.errors?.["required"]) {
+          <span class="error-msg">This field is required</span>
+        }
+      }
+
+      <label class="form-label">City:</label>
+      <div class="city-wrapper">
+        <input
+          class="form-input"
+          type="text"
+          [(ngModel)]="searchText"
+          name="cityName"
+          list="cityOptions"
+          (blur)="updateCityId()"
+          required
+          #CityId="ngModel"
+        />
+
+        <datalist id="cityOptions">
+          @for (city of citiesList; track city.id) {
+            <option [value]="city.name">{{ city.name }}</option>
+          }
+        </datalist>
+
+        <input type="hidden" name="cityId" [ngModel]="newPark.city.id">
+
+        @if (CityId && CityId.invalid && AddForm.submitted) {
+          <span class="error-msg">This field is required</span>
+        }
+      </div>
+
+      <label class="form-label">Upload Image:</label>
+      <input
+        class="form-file"
+        type="file"
+        name="Nfile"
+        (change)="onFileSelected($event)"
+        required
+      />
+
+      <button
+        class="submit-button primary-action"
+        (click)="addPark()"
+        [disabled]="AddForm.invalid"
+      >
+        Add Garden
+      </button>
+    </form>
+  }
+</div>
+
+<!-- @if (isConflict) {
+  <div class="conflict-message">
+    <p>
+    קיים במאגר פארק בשם זה ובאותה עיר. באפשרותך להוסיף דיווח לפארק הקיים או להוסיף פארק חדש.
+    </p>
+    <button (click) = "goToParkDetails()">לעמוד הפארק</button>
+    <button (click) = "addNewPark()">הוספת פארק חדש</button>
+  </div>
+} -->
+
+
+@if (isConflict) {
+  <div class="modal-overlay">
+    <div class="conflict-card">
+        <img src="/Logo_Regular-1024x221.png" alt="Park Logo" class="conflict-logo-img">
+      <!-- <div class="conflict-icon">📍</div> -->
+      <h2 class="conflict-title">הפארק כבר קיים במערכת</h2>
+      <p class="conflict-text">
+        .נראה שיש כבר פארק בשם זה באותה העיר
+      </p>
+      <!-- <br/> -->
+      <p class="conflict-text">
+        ?האם תרצה לעדכן את הפארק הקיים או להוסיף פארק חדש בכל זאת
+      </p>
+      
+      <div class="conflict-actions">
+        <button class="btn-primary" (click)="goToParkDetails()">
+          לעמוד הפארק הקיים
+        </button>
+        <button class="btn-secondary" (click)="addNewPark()">
+          הוספת פארק חדש
+        </button>
+      </div>
+    </div>
+  </div>
+}

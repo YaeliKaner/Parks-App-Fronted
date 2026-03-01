@@ -1,0 +1,49 @@
+  <header class="site-header">
+<img src="/Logo_Regular-1024x221.png" class="site-logo" alt="Park Share Vibe logo" />
+
+    <nav class="main-nav">
+      @if (isLoggedIn) {
+
+        @if (currentUser && currentUser.imageBase64) {
+          <img
+            src="data:image/jpeg;base64,{{ currentUser.imageBase64 }}"
+            class="user-image"
+            alt="currentUser.name"
+          />
+        } @else {
+          <img src="/icon.png" class="user-image" alt="currentUser.name" />
+        }
+
+        <button class="nav-button subtle-action" (click)="onSignOut()">
+          Sign out
+        </button>
+
+        <button class="nav-button recommended-button" (click)="goToRecommended()">
+          ⭐ Recommended
+        </button>
+
+        <button class="nav-button primary-action" (click)="goToFavorites()">
+          ❤️ My favorites
+        </button>
+
+        <button class="nav-button primary-action" (click)="onSpecialButtonClick()">
+          Add New Park
+        </button>
+
+      } @else {
+
+        <img src="/icon.png" class="user-image" alt="currentUser.name" />
+
+        <button class="nav-button recommended-button" (click)="goToRecommended()">
+          ⭐ מומלצים
+        </button>
+        <button class="nav-button subtle-action" (click)="onSignIn()">
+          Sign in
+        </button>
+        <button class="nav-button subtle-action" (click)="onSignUp()">
+          Sign up
+        </button>
+
+      }
+    </nav>
+  </header>

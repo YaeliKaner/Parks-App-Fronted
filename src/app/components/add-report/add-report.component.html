@@ -1,0 +1,66 @@
+<div class="add-report-container">
+  <div class="card">
+    <h2>כתוב חוות דעת על הפארק</h2>
+
+    <!-- כוכבי דירוג -->
+    <div class="rating-section">
+      <label class="label-required">דירוג הפארק <span class="required">*</span></label>
+      
+      <div class="stars">
+        @for (star of [1,2,3,4,5]; track star) {
+          <span 
+            class="star" 
+            [class.filled]="form.satisfaction >= star"
+            (click)="setRating(star)">
+            ★
+          </span>
+        }
+      </div>
+
+      <p class="rating-text">
+        @if (form.satisfaction >= 0) {
+          <strong>{{ form.satisfaction }} stars</strong>
+          @switch (form.satisfaction) {
+            @case (1) { – ממש לא אהבתי }
+            @case (2) { – לא משהו }
+            @case (3) { – בסדר }
+            @case (4) { – טוב מאוד }
+            @case (5) { – מעולה! }
+          }
+        } @else {
+          <span class="hint">לחץ על כוכב כדי לדרג</span>
+        }
+      </p>
+    </div>
+
+    <!-- free text -->
+    <div class="form-group">
+      <label class="label-required">חוות הדעת שלך <span class="required">*</span></label>
+      <textarea 
+        [(ngModel)]="form.freeText" 
+        placeholder="ספר לנו מה אהבת, מה אפשר לשפר, טיפים למבקרים הבאים..."
+        rows="6"
+        class="textarea">
+      </textarea>
+      <small class="char-count">{{ form.freeText.length }} / 1000</small>
+    </div>
+
+    <!-- העלאת תמונה -->
+    <div class="form-group">
+      <label>הוסף תמונה מהביקור (לא חובה)</label>
+      <input type="file" id="pictureInput" accept="image/*" (change)="onFileSelected($event)">
+    </div>
+
+    <!-- buttons -->
+
+<div class="actions">
+  <button type="button" class="btn-cancel" (click)="cancel.emit()">
+    ביטול
+  </button>
+  <button type="button" class="btn-submit" (click)="onSubmit()" [disabled]="isSubmitting || form.satisfaction === 0 && !form.freeText.trim()">
+    {{ isSubmitting ? 'שולח...' : 'פרסם חוות דעת' }}
+  </button>
+</div>
+
+  </div>
+</div>
