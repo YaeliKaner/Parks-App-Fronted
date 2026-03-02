@@ -16,17 +16,17 @@ import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'parks-list', pathMatch: 'full' },
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'add-park', component: AddParkComponent },
-  { path: 'parks-list', component: ParksListComponent },
-  { path: 'park-details/:id', component: ParkDetailsComponent },
-  { path: 'reports-list', component: ReportsListComponent },
-  { path: 'add-report', component: AddReportComponent },
-  { path: 'recommended', component: RecommendedParksComponent },
-  { path: 'favorites', component: FavoritesComponent },
-  { path: 'parks-chat', component: ParksChatComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'sign-in', component: SignInComponent, title: 'See Park | התחברות' },
+  { path: 'sign-up', component: SignUpComponent, title: 'See Park | הרשמה' },
+  { path: 'add-park', component: AddParkComponent, title: 'See Park | הוספת פארק' },
+  { path: 'parks-list', component: ParksListComponent, title: 'See Park | רשימת פארקים' },
+  { path: 'park-details/:id', component: ParkDetailsComponent, title: 'See Park | פרטי פארק' },
+  { path: 'reports-list', component: ReportsListComponent, title: 'See Park | רשימת דיווחים' },
+  { path: 'add-report', component: AddReportComponent, title: 'See Park | הוספת דיווח' },
+  { path: 'recommended', component: RecommendedParksComponent, title: 'See Park | פארקים מומלצים' },
+  { path: 'favorites', component: FavoritesComponent, title: 'See Park | פארקים מועדפים' },
+  { path: 'parks-chat', component: ParksChatComponent, title: 'See Park | מצא לי פארק' },
+  { path: 'home', component: HomeComponent, title: 'See Park | דף הבית' },
   { path: '**', redirectTo: 'home' }
 ];
 
