@@ -38,6 +38,7 @@
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
     animation: fadeIn 0.6s ease;
     color: #054c2b;
+    
 }
 
 /* ================= LABELS ================= */
@@ -49,7 +50,8 @@
     margin-bottom: 6px;
     margin-top: 18px;
     color: #0b6334;
-    text-align: left;
+    text-align: right;
+    direction: rtl;
 }
 
 /* ================= INPUTS ================= */
@@ -64,6 +66,7 @@
     background: #f4fff7;
     margin-bottom: 16px;
     transition: 0.25s ease;
+    direction: rtl;
 }
 
 .form-input:focus,
@@ -71,6 +74,8 @@
     outline: none;
     border-color: #2e8b57;
     box-shadow: 0 0 8px #b6ffce;
+    direction: rtl;
+    align-items: center;
 }
 
 /* ================= FILE INPUT (styled button) ================= */
@@ -86,6 +91,9 @@
     cursor: pointer;
     transition: 0.25s;
     font-weight: 600;
+    align-self: right;
+    align-items: center;
+
 }
 
 .form-file:hover {

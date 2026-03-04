@@ -99,7 +99,9 @@ body {
 
 .top-section {
   padding: 30px 0 10px;
+  padding-bottom: 0;
   text-align: center;
+  margin-bottom: 0;
 }
 
 .page-title {
@@ -136,25 +138,45 @@ body {
   gap: 28px;
   padding: 10px 40px;
 }
-
+/* 
 .chat-sidebar {
   width: 320px;
   position: sticky;
   top: 100px;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 150px);
+} */
+
+.chat-sidebar {
+  /* width: 320px;
+  position: sticky;
+  top: 120px;
+ 
+  height: auto !important; 
+  align-self: flex-start; 
+  z-index: 10; */
+
+  position: sticky;
+  top: 110px;           /* מרחק מהחלק העליון כשהוא נדבק */
+  align-self: flex-start;   /* חשוב מאוד! */
+  width: 320px;
+  max-height: 75vh;     /* ← המפתח — לא יגדל מעבר ל-75% מגובה המסך */
+  height: auto;         /* יתאים את עצמו לתוכן, אבל לא יחרוג */
+  min-height: 300px;
 }
 
-.chat-sidebar .chat-container {
+
+/* .chat-sidebar .chat-container {
   background: white;
   border-radius: 18px;
   height: 100%;
   box-shadow: 0 10px 26px rgba(0,0,0,0.13);
   overflow: hidden;
-}
+} */
 
 .content-area {
   flex: 1;
   min-width: 0;
+  margin-top: 0;
 }
 
 .parks-grid {
@@ -300,7 +322,8 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
-  direction: rtl; /* מבטיח שהכל יעבוד מימין לשמאל */
+  direction: rtl; 
+  margin: 0 0 20px;
 }
 
 .sort-wrapper {
@@ -361,6 +384,63 @@ body {
 .sort-dropdown:focus {
   border-color: #4a5d45;
   box-shadow: 0 0 0 2px rgba(74, 93, 69, 0.1);
+}
+
+
+
+.search-and-sort-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* רווח בין החיפוש למיון */
+  max-width: 850px; /* הגדלתי מעט כדי שיהיה מקום לשניהם */
+  margin: 0 auto 20px;
+  direction: rtl;
+}
+
+/* ביטול המרמורק הקודם של החיפוש כדי שלא יתנגש ב-Flex */
+.search-container {
+  flex: 1; /* יגרום לחיפוש למלא את שאר השטח הפנוי */
+  margin: 0 !important; 
+  max-width: none !important;
+}
+
+/* התאמת המיון לשורה */
+.sort-wrapper-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap; /* מונע מהטקסט לרדת שורה */
+}
+
+/* תיקון קטן ללייבל שהיה קופץ למעלה */
+.sort-label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5d45;
+}
+
+/* שומר על העיצוב היפה של הדרופדאון שיצרת */
+.select-custom-container {
+  min-width: 150px;
+}
+
+/* במידה ויש הגדרות קודמות ל-sort-section שעלולות להפריע */
+.sort-section {
+  display: none; /* אפשר למחוק את האלמנט הישן מה-HTML או פשוט להעביר את תוכנו לתוך השורה */
+}
+
+/* רספונסיביות: במסכים קטנים הם יחזרו להיות אחד מעל השני */
+@media (max-width: 768px) {
+  .search-and-sort-row {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  
+  .search-container {
+    width: 100%;
+  }
 }
 
 

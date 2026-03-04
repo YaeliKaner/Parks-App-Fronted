@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ParksAiService } from '../../services/parks-ai.service';
@@ -63,5 +63,14 @@ export class ParksChatComponent {
         this.isLoading = false;
       }
     });
+    this.userPrompt = '';
+  }
+
+  @HostListener('window:keydown.enter', ['$event'])
+  handleEnterKey(event: KeyboardEvent) {
+    // אופציונלי: אם אתה רוצה למנוע התנהגות ברירת מחדל במקרים מסוימים
+    event.preventDefault();
+
+    this.send();
   }
 }

@@ -15,7 +15,7 @@ import { ParksChatComponent } from './components/parks-chat/parks-chat.component
 import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'parks-list', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent, title: 'See Park | התחברות' },
   { path: 'sign-up', component: SignUpComponent, title: 'See Park | הרשמה' },
   { path: 'add-park', component: AddParkComponent, title: 'See Park | הוספת פארק' },

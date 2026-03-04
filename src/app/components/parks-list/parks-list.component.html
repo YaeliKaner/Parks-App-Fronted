@@ -62,7 +62,8 @@
 
   <section class="top-section">
     <h2 class="page-title">All parks</h2>
-
+<!--ניסיון לשים את החיפושים באותה שורה -->
+      <div class="search-and-sort-row">
     <div class="search-container">
       <input
         type="text"
@@ -71,10 +72,7 @@
         placeholder="חפש פארק לפי שם / עיר / כתובת"
       />
     </div>
-  </section>
-
-<div class="sort-section">
-  <div class="sort-wrapper">
+      <div class="sort-wrapper-inline">
     <label for="sort-select" class="sort-label">מיין לפי:</label>
     <div class="select-custom-container">
       <select id="sort-select" class="sort-dropdown" #sortSelect (change)="onSortChange(sortSelect.value)">
@@ -84,7 +82,12 @@
       </select>
     </div>
   </div>
-</div>
+  </div>
+  </section>
+
+<!-- <span class="sort-section">
+
+</span> -->
 
   <main class="page-layout">
     <aside class="chat-sidebar">

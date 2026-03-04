@@ -1,23 +1,4 @@
-<!-- <div class="chat-container">
-  <h2>צ'אט פארקים</h2>
-
-  <textarea [(ngModel)]="userPrompt" placeholder="מה תרצי לשאול?"></textarea>
-
-  <button (click)="send()" [disabled]="isLoading">
-    שליחה
-  </button>
-
-  <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
-
-  <div *ngIf="isLoading">טוען...</div>
-
-  <div *ngIf="aiAnswer" class="answer-box">
-    {{ aiAnswer }}
-  </div>
-</div> -->
-
-
-
+<!-- 
 <div class="chat-wrapper">
 
   <div class="chat-header">
@@ -29,19 +10,16 @@
 
 
   <div class="chat-box">
-    <!-- User bubble (last question) -->
     <div class="msg user" *ngIf="userPrompt && !isLoading">
       {{ userPrompt }}
     </div>
 
-    <!-- Loading animation -->
     <div class="loading" *ngIf="isLoading">
       <div class="dot"></div>
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
 
-    <!-- AI bubble -->
     <div class="msg ai" *ngIf="aiAnswer">
       {{ aiAnswer }}
     </div>
@@ -60,49 +38,66 @@
 
   <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
 
-</div>
-
-
-
-
-
-
-
-
-
-<!-- <div class="chat-wrapper">
-
-  <div class="chat-box">
-
-    <div class="title">צ'אט פארקים</div>
-
-
-    <div class="msg user" *ngIf="userPrompt && !isLoading">
-      {{ userPrompt }}
-    </div>
-
-
-    <div class="loading" *ngIf="isLoading">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
-
- 
-    <div class="msg ai" *ngIf="aiAnswer">
-      {{ aiAnswer }}
-    </div>
-
-  </div>
-
-  <div class="input-area">
-    <textarea [(ngModel)]="userPrompt" placeholder="מה תרצי לשאול?"></textarea>
-
-    <button (click)="send()" [disabled]="isLoading">
-      ▶
-    </button>
-  </div>
-
-  <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
-
 </div> -->
+
+
+
+<div class="chat-sidebar">
+  <div class="chat-wrapper">
+    
+    <div class="chat-header">
+      <div class="header-content">
+        <div class="bot-avatar">
+          <img class = "icon-chat" src="./icon.png" alt="Parks Assistant" />
+          </div>
+        <div>
+          <div class="chat-title">עוזר הפארקים</div>
+          <div class="chat-subtitle" *ngIf="!isLoading">מחובר | מוכן לעזור</div>
+          <div class="chat-subtitle" *ngIf="isLoading">...בודק לך</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-box">
+      <!-- הודעת פתיחה דיפולטיבית -->
+      <div class="msg ai">היי! איזה סוג של פארק את/ה מחפש/ת?</div>
+
+      <!-- השאלה של המשתמש - נשארת מוצגת גם כשיש תשובה -->
+      <div class="msg user" 
+       *ngIf="userPrompt"
+        > 
+        {{ userPrompt }}
+      </div>
+
+      <!-- אנימציית חשיבה (מוצגת רק בטעינה) -->
+      <div class="msg ai loading-bubble" *ngIf="isLoading">
+        <div class="typing-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- התשובה של ה-AI -->
+      <div class="msg ai" *ngIf="aiAnswer && !isLoading">
+        {{ aiAnswer }}
+      </div>
+    </div>
+
+    <div class="input-area">
+      <textarea
+        [(ngModel)]="userPrompt"
+        placeholder="מה היית רוצה לשאול?"
+        (keyup.enter)="send()"
+      ></textarea>
+
+      <button (click)="send()" [disabled]="isLoading || !userPrompt" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+          <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
+  </div>
+</div>
