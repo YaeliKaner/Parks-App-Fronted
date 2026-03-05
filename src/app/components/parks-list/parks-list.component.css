@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Assistant', sans-serif;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
     radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
@@ -21,6 +21,10 @@ body {
   display: flex;
   flex-direction: column;
   padding-bottom: 40px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    linear-gradient(#f9fcf9, #eef6ee);
 }
 
 .site-header {
@@ -115,6 +119,7 @@ body {
   direction: rtl;
   max-width: 650px;
   margin: 0 auto 20px;
+  font-family: 'Assistant', sans-serif;
 }
 
 .search-container input {
@@ -126,6 +131,7 @@ body {
   font-size: 15px;
   transition: 0.25s;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-family: 'Assistant', sans-serif;
 }
 
 .search-container input:focus {
@@ -138,23 +144,8 @@ body {
   gap: 28px;
   padding: 10px 40px;
 }
-/* 
-.chat-sidebar {
-  width: 320px;
-  position: sticky;
-  top: 100px;
-  height: calc(100vh - 150px);
-} */
 
 .chat-sidebar {
-  /* width: 320px;
-  position: sticky;
-  top: 120px;
- 
-  height: auto !important; 
-  align-self: flex-start; 
-  z-index: 10; */
-
   position: sticky;
   top: 110px;           /* מרחק מהחלק העליון כשהוא נדבק */
   align-self: flex-start;   /* חשוב מאוד! */
@@ -163,15 +154,6 @@ body {
   height: auto;         /* יתאים את עצמו לתוכן, אבל לא יחרוג */
   min-height: 300px;
 }
-
-
-/* .chat-sidebar .chat-container {
-  background: white;
-  border-radius: 18px;
-  height: 100%;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.13);
-  overflow: hidden;
-} */
 
 .content-area {
   flex: 1;
@@ -201,7 +183,36 @@ body {
 }
 
 
+/* .park-image-wrapper {
+  height: 200px;
+  overflow: hidden;
+} */
+
 .park-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px; /* או הגובה שהגדרת */
+  overflow: hidden;
+  border-radius: 12px 12px 0 0; /* עיגול פינות עליונות */
+}
+
+/* מיקום הלב בצד שמאל למעלה */
+.favorite-icon-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+}
+
+.park-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* .park-image-wrapper {
+  position: relative; 
+  width: 100%;
   height: 200px;
   overflow: hidden;
 }
@@ -209,7 +220,21 @@ body {
 .park-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; 
+} */
+
+.park-image-wrapper {
+  position: relative; /* הכרחי כדי שהלב יתיישר לפי הדיב הזה */
+  width: 100%;
+  height: 200px; /* או הגובה שבחרת */
+  overflow: hidden;
+  border-radius: 12px 12px 0 0; /* אם אתה רוצה עיגול פינות לתמונה */
+}
+
+.park-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* מוודא שהתמונה לא נמתחת */
 }
 
 
@@ -350,13 +375,14 @@ body {
   color: #333;
   background-color: #fff;
   border: 1px solid #d1d1d1;
-  border-radius: 25px; /* עיגול מושלם כמו בשורת החיפוש */
+  border-radius: 25px; 
   cursor: pointer;
-  appearance: none; /* מבטל את החץ המגעיל של הדפדפן */
+  appearance: none;
   outline: none;
   transition: all 0.2s ease-in-out;
   text-align: right;
   direction: rtl;
+  font-family: 'Assistant', sans-serif;
 }
 
 /* אפקט ריחוף */
@@ -378,12 +404,14 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;
+
 }
 
 /* התאמה לפוקוס (כשלוחצים) */
 .sort-dropdown:focus {
   border-color: #4a5d45;
   box-shadow: 0 0 0 2px rgba(74, 93, 69, 0.1);
+  
 }
 
 
@@ -396,6 +424,7 @@ body {
   max-width: 850px; /* הגדלתי מעט כדי שיהיה מקום לשניהם */
   margin: 0 auto 20px;
   direction: rtl;
+  font-family: 'Assistant', sans-serif;
 }
 
 /* ביטול המרמורק הקודם של החיפוש כדי שלא יתנגש ב-Flex */
@@ -403,6 +432,7 @@ body {
   flex: 1; /* יגרום לחיפוש למלא את שאר השטח הפנוי */
   margin: 0 !important; 
   max-width: none !important;
+  font-family: 'Assistant', sans-serif;
 }
 
 /* התאמת המיון לשורה */
@@ -411,6 +441,7 @@ body {
   align-items: center;
   gap: 10px;
   white-space: nowrap; /* מונע מהטקסט לרדת שורה */
+  font-family: 'Assistant', sans-serif;
 }
 
 /* תיקון קטן ללייבל שהיה קופץ למעלה */
@@ -429,6 +460,16 @@ body {
 /* במידה ויש הגדרות קודמות ל-sort-section שעלולות להפריע */
 .sort-section {
   display: none; /* אפשר למחוק את האלמנט הישן מה-HTML או פשוט להעביר את תוכנו לתוך השורה */
+  font-family: 'Assistant', sans-serif;
+}
+
+.no-parks-message empty-state {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: #777;
+  font-size: 18px;
 }
 
 /* רספונסיביות: במסכים קטנים הם יחזרו להיות אחד מעל השני */

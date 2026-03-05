@@ -1,93 +1,32 @@
 <div class="park-viewer-container">
-  <header class="site-header">
-    <a routerLink="/home">
-      <img
-        src="/Logo_Regular-1024x221.png"
-        class="site-logo"
-        alt="Park Share Vibe logo"
-      />
-    </a>
-
-    <nav class="main-nav">
-      @if (isLoggedIn) {
-        @if (currentUser && currentUser.imageBase64) {
-          <img
-            src="data:image/jpeg;base64,{{ currentUser.imageBase64 }}"
-            class="user-image"
-            alt="currentUser.name"
-          />
-        } @else {
-          <img src="/icon.png" class="user-image" alt="currentUser.name" />
-        }
-
-        <button class="nav-button subtle-action" (click)="onSignOut()">
-          Sign out
-        </button>
-
-        <button
-          class="nav-button recommended-button"
-          (click)="goToRecommended()"
-        >
-          ⭐ Recommended
-        </button>
-
-        <button class="nav-button primary-action" (click)="goToFavorites()">
-          ❤️ My favorites
-        </button>
-
-        <button
-          class="nav-button primary-action"
-          (click)="onSpecialButtonClick()"
-        >
-          Add New Park
-        </button>
-      } @else {
-        <img src="/icon.png" class="user-image" alt="currentUser.name" />
-
-        <button
-          class="nav-button recommended-button"
-          (click)="goToRecommended()"
-        >
-          ⭐ Recommended
-        </button>
-        <button class="nav-button subtle-action" (click)="onSignIn()">
-          Sign in
-        </button>
-        <button class="nav-button subtle-action" (click)="onSignUp()">
-          Sign up
-        </button>
-      }
-    </nav>
-  </header>
-
   <section class="top-section">
-    <h2 class="page-title">All parks</h2>
-<!--ניסיון לשים את החיפושים באותה שורה -->
-      <div class="search-and-sort-row">
-    <div class="search-container">
-      <input
-        type="text"
-        [(ngModel)]="searchTerm"
-        (input)="onSearchChange(searchTerm)"
-        placeholder="חפש פארק לפי שם / עיר / כתובת"
-      />
-    </div>
+    <h2 class="page-title">כל הפארקים</h2>
+    <div class="search-and-sort-row">
+      <div class="search-container">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (input)="onSearchChange(searchTerm)"
+          placeholder="חפש פארק לפי שם / עיר / כתובת"
+        />
+      </div>
       <div class="sort-wrapper-inline">
-    <label for="sort-select" class="sort-label">מיין לפי:</label>
-    <div class="select-custom-container">
-      <select id="sort-select" class="sort-dropdown" #sortSelect (change)="onSortChange(sortSelect.value)">
-        <option value="">בחר אפשרות</option>
-        <option value="new">מהחדש לישן</option>
-        <option value="recommended">מומלצים</option>
-      </select>
+        <label for="sort-select" class="sort-label">מיין לפי:</label>
+        <div class="select-custom-container">
+          <select
+            id="sort-select"
+            class="sort-dropdown"
+            #sortSelect
+            (change)="onSortChange(sortSelect.value)"
+          >
+            <option value="">בחר אפשרות</option>
+            <option value="new">מהחדש לישן</option>
+            <option value="recommended">מומלצים</option>
+          </select>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
   </section>
-
-<!-- <span class="sort-section">
-
-</span> -->
 
   <main class="page-layout">
     <aside class="chat-sidebar">
@@ -106,6 +45,7 @@
                   class="park-image"
                   alt="Park"
                 />
+                <app-favorite-button [parkId]="park.id" class="favorite-icon-overlay"></app-favorite-button>
               </div>
 
               <!-- תוכן -->
@@ -135,22 +75,41 @@
                   View All Reports
                 </button>
 
-                <div class="favorites-wrapper">
+                <!-- <div class="favorites-wrapper">
                   <button
                     class="details-button secondary"
+                    
                     (click)="addToFavorites(park)"
                   >
-                    ❤️ Add to my favorites
+                    ❤️ הוספה למועדפים שלי
+                  </button>
+                </div> -->
+
+                <!-- --------------------------- -->
+
+                <!-- @if (isSelectedInList(park)) {
+                  
+                  <div>הפריט כבר קיים ברשימה!</div>
+                } @else {
+
+                  <div class="favorites-wrapper">
+                  <button
+                    class="details-button secondary"
+                    
+                    (click)="addToFavorites(park)"
+                  >
+                    ❤️ הוספה למועדפים שלי
                   </button>
                 </div>
+                } -->
               </div>
             </article>
           }
         </section>
       } @else {
         <div class="no-parks-message empty-state">
-          No parks found yet.
-          <p>Be the first to share a beautiful location!</p>
+          .לא נמצאו פארקים
+          <p>!היה הראשון לשתף</p>
         </div>
       }
     </section>

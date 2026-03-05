@@ -45,34 +45,9 @@ export class RecommendedParksComponent implements OnInit {
       });
     }
   
-    onSignOut(): void {
-      this._authService.signOut().subscribe({
-        next: () => this.router.navigate(['/sign-in']),
-        error: () => alert('error'),
-      });
-    }
-  
-    onSignIn(): void {
-      this.router.navigate(['/sign-in']);
-    }
-  
-    onSignUp(): void {
-      this.router.navigate(['/sign-up']);
-    }
-  
     showDetails(park: ParkDTO): void {
       if (!park?.id) return;
       this.router.navigate(['/park-details', park.id]);
-    }
-  
-    // מעבר למסך מומלצים
-    goToRecommended(): void {
-      this.router.navigate(['/recommended']);
-    }
-  
-    // מעבר למסך מועדפים
-    goToFavorites(): void {
-      this.router.navigate(['/favorites']);
     }
   
     // הוספת פארק למועדפים

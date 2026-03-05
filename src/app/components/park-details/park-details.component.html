@@ -1,64 +1,4 @@
 <div class="park-viewer-container">
-  <header class="site-header">
-<a routerLink="/home">
-  <img
-    src="/Logo_Regular-1024x221.png"
-    class="site-logo"
-    alt="Park Share Vibe logo"
-  />
-</a>
-
-    <nav class="main-nav">
-      @if (isLoggedIn) { @if (currentUser && currentUser.imageBase64) {
-      <img
-        src="data:image/jpeg;base64,{{ currentUser.imageBase64 }}"
-        class="user-image"
-        alt="currentUser.name"
-      />
-      } @else {
-      <img src="/icon.png" class="user-image" alt="currentUser.name" />
-      }
-
-      <button class="nav-button subtle-action" (click)="onSignOut()">
-        Sign out
-      </button>
-
-      <button class="nav-button recommended-button" (click)="goToRecommended()">
-        ⭐ Recommended
-      </button>
-
-      <button class="nav-button primary-action" (click)="goToFavorites()">
-        ❤️ My favorites
-      </button>
-
-      <button
-        class="nav-button primary-action"
-        (click)="onSpecialButtonClickAddPark()"
-      >
-        Add New Park
-      </button>
-
-      <button class="nav-button primary-action" (click)="goToAllParks()">
-        All Parks
-      </button>
-      } @else {
-
-      <img src="/icon.png" class="user-image" alt="currentUser.name" />
-
-      <button class="nav-button recommended-button" (click)="goToRecommended()">
-        ⭐ Recommended
-      </button>
-      <button class="nav-button subtle-action" (click)="onSignIn()">
-        Sign in
-      </button>
-      <button class="nav-button subtle-action" (click)="onSignUp()">
-        Sign up
-      </button>
-
-      }
-    </nav>
-  </header>
-
   <main class="page-layout-three-columns">
     <aside class="chat-sidebar">
       <app-parks-chat></app-parks-chat>
@@ -81,8 +21,38 @@
           />
         </div>
 
+  
+<br>
+
+@if (parkImages.length > 0) {
+          <p class="park-location">
+        :תמונות מהפארק ששותפו על ידי מבקרים
+        </p>
+  <div class="reports-slider-container">
+    <div class="running-images" [class.no-animation]="parkImages.length <= 2">
+      <div class="slider-track">
+        @for (img of parkImages; track $index) {
+          <img [src]="'data:image/jpeg;base64,' + img" alt="תמונה מדיווח" class="slider-image" />
+        }
+        <!-- משכפול רק אם יותר מ-2 תמונות -->
+        @if (parkImages.length > 2) {
+          @for (img of parkImages; track $index) {
+            <img [src]="'data:image/jpeg;base64,' + img" alt="תמונה מדיווח" class="slider-image" />
+          }
+        }
+      </div>
+    </div>
+  </div>
+}
+
+@else{
+        <p class="park-location">
+          !עדיין אין תמונות מהפארק, היה הראשון לשתף תמונה
+        </p>
+}
+
         <button class="navigate-btn" (click)="openGoogleMaps()">
-          Head to the park on Google Maps
+         Google Maps נווט לפארק ב 
           <img
             class="googleMaps"
             src="/google-maps.png"
@@ -92,7 +62,7 @@
       </div>
 
       <div class="weather-card">
-        <h3 class="card-title">The weather right now:</h3>
+        <h3 class="card-title">:מזג האויר כעת</h3>
         @if (isLoadingWeather) {
         <p class="loading"></p>
         } @else if (weatherError) {
@@ -110,12 +80,12 @@
       </div>
 
       <div class="section-header">
-        <h2 class="section-title">Reports and reviews:</h2>
+        <h2 class="section-title">:דיווחים</h2>
         <button
           class="add-report-btn"
           (click)="onSpecialButtonClickAddReport()"
         >
-          Add Your Report
+          הוסף את הדיווח שלך
         </button>
       </div>
 
@@ -138,10 +108,10 @@
     @if (parkToShow && featureForms[1]) {
     <aside class="features-sidebar">
       <div class="features-card">
-        <h3 class="features-title">Update park features</h3>
-        <p class="features-subtitle">
+        <h3 class="features-title">עדכן את מאפייני הפארק</h3>
+        <!-- <p class="features-subtitle">
           Help the community – update what's in the park
-        </p>
+        </p> -->
 
         <div class="features-list">
           @for (feature of features; track feature.id) {
@@ -152,10 +122,10 @@
 
             <form [formGroup]="featureForms[feature.id]" class="feature-form">
               <select formControlName="ratingsBreakdown" class="feature-select">
-                <option value="none">None at all</option>
-                <option value="little">A little</option>
-                <option value="enough">Enough</option>
-                <option value="aLot">A lot</option>
+                <option value="none">אין בכלל</option>
+                <option value="little">מעט</option>
+                <option value="enough">מספיק</option>
+                <option value="aLot">הרבה</option>
               </select>
 
               <input
@@ -174,7 +144,7 @@
           (click)="saveAllChanges()"
           [disabled]="!hasAnyChanges()"
         >
-          @if (hasAnyChanges()) { Save changes } @else { Update }
+          @if (hasAnyChanges()) { שמור שינויים } @else { עדכן }
         </button>
       </div>
     </aside>

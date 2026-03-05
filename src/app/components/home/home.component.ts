@@ -10,20 +10,5 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent {
   constructor(private router: Router) {}
 
-  onSignIn(): void {
-    this.router.navigate(['/sign-in']);
-  }
-
-  onSignUp(): void {
-    this.router.navigate(['/sign-up']);
-  }
-
-
-  goToRecommended(): void {
-    this.router.navigate(['/recommended']);
-  }
-
-  goToAllParks(): void {
-    this.router.navigate(['/parks-list']);
-  }
+  
 }

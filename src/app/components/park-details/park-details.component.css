@@ -1,284 +1,6 @@
-/* 
-
-
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
 
-:host {
-  font-family: 'Assistant', sans-serif;
-  direction: ltr;
-}
-
-.park-viewer-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: 
-    radial-gradient(circle at 0% 0%, rgba(76, 175, 80, 0.08), transparent 40%),
-    radial-gradient(circle at 100% 100%, rgba(46, 125, 50, 0.05), transparent 40%),
-    #fcfdfc;
-}
-
-
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 40px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-}
-
-.site-logo {
-  height: 42px;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.site-logo:hover { transform: scale(1.05); }
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-
-.nav-button {
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  background: transparent;
-  color: #444;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.nav-button:hover {
-  background: #f0f4f0;
-  color: #2e7d32;
-}
-
-.primary-action {
-  color: #2e7d32;
-  background: rgba(46, 125, 50, 0.08);
-}
-
-.recommended-button {
-  background: #fff8e1;
-  color: #f57f17;
-}
-
-.subtle-action {
-  font-weight: 400;
-  color: #777;
-}
-
-.user-image {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #2e7d32;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  margin-right: 10px;
-}
-
-
-.page-layout-three-columns {
-  display: grid;
-  grid-template-columns: 320px 1fr 340px;
-  gap: 30px;
-  padding: 30px 40px;
-  max-width: 1600px;
-  margin: 0 auto;
-  align-items: start;
-}
-
-/* צד צ'אט */
-/* .chat-sidebar {
-  position: sticky;
-  top: 90px;
-  background: white;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  height: calc(100vh - 130px);
-  border: 1px solid #f0f0f0;
-}
-
-
-.main-content {
-  background: white;
-  padding: 32px;
-  border-radius: 28px;
-  box-shadow: 0 4px 40px rgba(0,0,0,0.03);
-}
-
-.hero-section { text-align: center; margin-bottom: 40px; }
-
-.park-title-main {
-  font-size: 42px;
-  font-weight: 800;
-  color: #1a331a;
-  letter-spacing: -0.5px;
-  margin-bottom: 8px;
-}
-
-.park-location {
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 24px;
-}
-
-.main-image-wrapper {
-  border-radius: 24px;
-  overflow: hidden;
-  line-height: 0;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  margin-bottom: 30px;
-}
-
-.park-main-image {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-
-.navigate-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #2e7d32;
-  color: white;
-  padding: 14px 28px;
-  border-radius: 100px;
-  font-weight: 700;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
-}
-
-.navigate-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(46, 125, 50, 0.4);
-}
-
-.googleMaps {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
-}
-
-.weather-card {
-  background: linear-gradient(135deg, #f1f8e9 0%, #ffffff 100%);
-  border: 1px solid #dcedc8;
-  border-radius: 20px;
-  padding: 24px;
-  margin: 30px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.weather-main {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin: 10px 0;
-}
-
-.temp { font-size: 48px; font-weight: 800; color: #2e7d32; }
-.desc { font-size: 18px; font-weight: 600; color: #558b2f; text-transform: capitalize; }
-
-.features-sidebar {
-  position: sticky;
-  top: 90px;
-}
-
-.features-card {
-  background: white;
-  padding: 24px;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  border: 1px solid #f0f0f0;
-}
-
-.features-title { font-size: 20px; font-weight: 800; color: #1a331a; }
-.features-subtitle { font-size: 14px; color: #777; margin-bottom: 20px; }
-
-.feature-item {
-  background: #f9fbf9;
-  padding: 16px;
-  border-radius: 16px;
-  margin-bottom: 12px;
-  border: 1px solid #edf2ed;
-}
-
-.feature-name { font-weight: 700; color: #2e7d32; display: block; margin-bottom: 8px; }
-
-.feature-select, .feature-input {
-  width: 100%;
-  border: 1.5px solid #e0e6e0;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  outline: none;
-}
-
-.feature-select:focus, .feature-input:focus {
-  border-color: #2e7d32;
-}
-
-.save-all-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 14px;
-  border-radius: 14px;
-  background: #2e7d32;
-  color: white;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.save-all-btn:disabled { background: #ccc; cursor: default; }
-
-
-.site-footer {
-  padding: 30px;
-  text-align: center;
-  color: #888;
-  font-size: 14px;
-  border-top: 1px solid #eee;
-  background: white;
-}
-
-
-@media (max-width: 1200px) {
-  .page-layout-three-columns {
-    grid-template-columns: 1fr;
-  }
-  .chat-sidebar, .features-sidebar {
-    position: static;
-    height: auto;
-  }
-} */
- 
-/* פונט Assistant למראה נקי ומקצועי */
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
-
-:host {
+body {
   font-family: 'Assistant', sans-serif;
 }
 
@@ -481,7 +203,6 @@
   align-self: flex-start;
 }
 
-/* Hero & Main Image */
 .hero-section { text-align: center; margin-bottom: 50px; }
 .park-title-main { font-size: 44px; font-weight: 800; color: #2f4f2f; margin-bottom: 10px; }
 .park-location { font-size: 22px; color: #4e6b4e; margin-bottom: 30px; }
@@ -505,6 +226,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: 'Assistant', sans-serif;
 }
 .navigate-btn:hover {
   background: #256628;
@@ -521,6 +243,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
   cursor: pointer;
+  
 }
 
 /* כרטיסיות מקוריות (מזג אוויר ומאפיינים) */
@@ -548,6 +271,7 @@
   border-radius: 12px;
   border: 1.5px solid #bcd9bc;
   background: #f8fcf8;
+  font-family: 'Assistant', sans-serif;
 }
 
 .save-all-btn {
@@ -609,10 +333,16 @@
   width: 100%; margin-top: 10px;
 }
 
+.section-header{
+  align-items: right;
+}
+
 @keyframes modalAppear {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+
+
 
 .add-report-btn {
   /* מידות וריווח */
@@ -620,6 +350,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  align-self: center;
   
   /* עיצוב רקע וצבע */
   background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
@@ -628,6 +359,7 @@
   border-radius: 50px; /* צורת "פיל" מודרנית */
   
   /* טיפוגרפיה */
+  font-family: 'Assistant', sans-serif;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -660,5 +392,190 @@
   font-size: 20px;
   font-weight: 400;
   line-height: 1;
+}
+
+
+/* .reports-slider-container {
+  overflow: hidden;
+  width: 100%;
+  margin: 1rem 0;
+} */
+
+/* .slider-track {
+  display: flex;
+  animation: slide 10s linear infinite;
+  width: fit-content;
+  height: 100px;
+} */
+
+/* .slider-image {
+  height: 140px;
+  width: auto;
+  object-fit: cover;
+  margin-right: 12px;
+  border-radius: 8px;
+  flex-shrink: 0;
+} */
+
+
+.main-image-wrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  margin: 0 auto 25px auto;
+  max-width: 900px;           /* מונע מתיחה מוגזמת במסכים רחבים */
+  aspect-ratio: 16 / 9;       /* שומר על פרופורציות נעימות */
+  background: #e8f0e8;        /* רקע זמני עד שהתמונה נטענת */
+}
+
+.park-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* חשוב! מונע מתיחה */
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.main-image-wrapper:hover .park-main-image {
+  transform: scale(1.04);     /* אפקט זום קליל בהעברת עכבר – נראה יוקרתי */
+}
+
+.slider-track img {
+  height: 200px;                 /* גובה נעים יותר – לא קטן מדי ולא גדול מדי */
+  width: 220px;
+  min-width: 220px;              /* מונע תמונות צרות מדי */
+  object-fit: cover;
+  object-position: center;
+  margin-right: 16px;            /* רווח נעים בין תמונות */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.slider-track img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+  z-index: 2;
+}
+
+/* האטה/עצירה בהעברת עכבר – נוח יותר למשתמש */
+.running-images:hover .slider-track {
+  animation-play-state: paused;
+}
+
+
+
+.running-images.no-animation .slider-track {
+  animation: none !important;
+  justify-content: center;          /* ממקם את התמונה/ות במרכז */
+  /* flex-wrap: wrap;                  */
+  gap: 16px;                        /* רווח נחמד בין 1-2 תמונות */
+}
+
+/* אופציונלי: התאמות נוספות כשאין אנימציה */
+.running-images.no-animation .slider-image {
+  margin-right: 0;                  /* מבטל את המרווח הישן של הסליידר */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15); /* צל קצת יותר בולט */
+  transition: transform 0.25s ease;
+}
+
+.running-images.no-animation .slider-image:hover {
+  transform: scale(1.06);
+}
+
+/* אם יש רק תמונה אחת – נותן לה יותר נוכחות */
+.running-images.no-animation .slider-track:has(.slider-image:nth-child(1):last-child) {
+  justify-content: center;
+}
+
+.running-images.no-animation .slider-track:has(.slider-image:nth-child(2):last-child) {
+  justify-content: center;
+  max-width: 90%;                   /* מונע מתיחה מוגזמת */
+}
+
+/* -------------------------------------- */
+.reports-slider-container {
+  overflow: hidden;
+  width: 100%;
+  margin: 20px 0 35px 0;
+  padding: 12px 0;
+  border-radius: 20px;
+}
+
+.running-images {
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  animation: slide 7s linear infinite;
+  width: 600px;
+  gap: 16px;               /* רווח בין התמונות */
+  justify-content: flex-start;  /* ברירת מחדל */
+}
+
+/* כשיש אנימציה (3+ תמונות) */
+.slider-track:not(:has(img:nth-child(3))) {
+  /* כלומר 1 או 2 תמונות */
+  animation: none !important;
+  justify-content: center !important;
+  flex-wrap: nowrap;       /* חשוב! מונע מעבר שורה */
+  gap: 24px;               /* רווח נעים יותר בין 2 תמונות */
+}
+
+/* התמונות עצמן */
+.slider-image {
+  height: 160px;
+  width: auto;
+  min-width: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.slider-image:hover {
+  transform: scale(1.06);
+}
+
+/* מונע מעבר שורה גם במסכים קטנים יותר */
+@media (max-width: 768px) {
+  .slider-track:not(:has(img:nth-child(3))) {
+    flex-wrap: nowrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .slider-image {
+    height: 130px;
+    min-width: 180px;
+  }
+}
+
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+  .slider-track img {
+    height: 120px;
+    min-width: 160px;
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+
+  /* .reports-slider-container {
+    margin: 15px 0 25px 0;
+    border-radius: 12px;
+  } */
+
+  .main-image-wrapper {
+    aspect-ratio: 4 / 3;     /* יותר מלבני במובייל */
+    max-width: 100%;
+  }
 }
 

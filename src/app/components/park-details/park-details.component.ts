@@ -16,6 +16,7 @@ import { AppHeaderComponent } from '../app-header/app-header.component';
 import { FavoritesService } from '../../services/favorites.service';
 import { ParksChatComponent } from '../parks-chat/parks-chat.component';
 import UsersDTO from '../../models/dto/usersDTO.model';
+import { ReportsService } from '../../services/reports.service';
 
 @Component({
   selector: 'app-park-details',
@@ -37,6 +38,7 @@ export class ParkDetailsComponent implements OnInit {
   currentUser: UsersDTO | null = null;
   isLoadingUser = true;
 
+  parkImages: string[] = [];
   features: Feature[] = [];
   designs: ParkDesignDTO[] = [];
   featureForms: { [featureId: number]: FormGroup } = {};
@@ -59,6 +61,7 @@ export class ParkDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private weatherService: WeatherService,
     private favoritesService: FavoritesService,
+    private _reportsService: ReportsService,
   ) {}
 
   ngOnInit(): void {
@@ -79,9 +82,8 @@ export class ParkDetailsComponent implements OnInit {
       },
     });
 
-    /* ================================
-     📍 שלב 1 — מיקום משתמש (אופציונלי)
-  ================================== */
+    
+
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         this.userLocation = {
@@ -106,6 +108,7 @@ export class ParkDetailsComponent implements OnInit {
             next: (parkRes) => {
               this.parkToShow = parkRes;
               console.log('✅ Park loaded:', parkRes);
+              this.loadParkReportsImages();
 
               if (parkRes.latitude && parkRes.longitude) {
                 this.loadWeather(parkId);
@@ -162,6 +165,25 @@ export class ParkDetailsComponent implements OnInit {
     });
   }
 
+  private loadParkReportsImages() {
+    if (!this.parkToShow?.id) {
+    console.warn('loadParkReportsImages נקרא אבל אין parkToShow.id עדיין');
+    return;   // ← יוצא מוקדם, מונע את השגיאה
+  }
+    this._reportsService.getReportsByParkId(this.parkToShow.id).subscribe({
+      next: (reports) => {
+        this.parkImages = reports
+          .filter((r) => r.imageBase64)
+          .map((r) => r.imageBase64);
+        console.log('✅ Park report images loaded:', this.parkImages);
+      },
+      error: (err) => {
+        console.error('Failed loading park report images', err);
+      },
+    });
+ 
+  }
+
   private loadWeather(parkId: number) {
     this.isLoadingWeather = true;
     this.weatherService.getWeatherForPark(parkId).subscribe({
@@ -216,28 +238,17 @@ export class ParkDetailsComponent implements OnInit {
     );
   }
 
-  // 🚗 ניווט לגוגל מפות
+  // ניווט לגוגל מפות
   openGoogleMaps() {
-    // if (!this.parkToShow?.latitude || !this.parkToShow?.longitude) {
-    //   alert('אין קואורדינטות לפארק 😅');
-    //   return;
-    // }
-
-
-    const destination = this.parkToShow.address.concat(`, ${this.parkToShow.city.name}`);
-    // if (this.parkToShow.city) {
-    //   destination.concat(`, ${this.parkToShow.city.name}`);
-    // }
-    // if (this.parkToShow.address) {
-    //   destination.concat(`, ${this.parkToShow.address}`);
-    // }
-
+    const destination = this.parkToShow.address.concat(
+      `, ${this.parkToShow.city.name}`,
+    );
     if (!destination.trim()) {
       alert('אין כתובת לפארק 😕');
       return;
     }
 
-    console.log('🚗 Opening Google Maps with destination:', destination);
+    console.log('Opening Google Maps with destination:', destination);
 
     let url = '';
     const encodedDestination = encodeURIComponent(destination);
@@ -249,58 +260,11 @@ export class ParkDetailsComponent implements OnInit {
     } else {
       url = `https://www.google.com/maps/dir/?api=1&destination=${destination}&travelmode=driving`;
     }
-
     window.open(url, '_blank');
-    //const destination = `${this.parkToShow.latitude},${this.parkToShow.longitude}`;
-
-    // if (this.userLocation) {
-    //   const origin = `${this.userLocation.lat},${this.userLocation.lng}`;
-    //   window.open(
-    //     `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`,
-    //     '_blank'
-    //   );
-    // } else {
-    //   window.open(
-    //     `https://www.google.com/maps/dir/?api=1&destination=${destination}&travelmode=driving`,
-    //     '_blank'
-    //   );
-    // }
   }
 
   goBack() {
     window.history.back();
-  }
-
-  // יציאה
-  onSignOut(): void {
-    this._authService.signOut().subscribe({
-      next: () => this.router.navigate(['/sign-in']),
-      error: () => alert('error'),
-    });
-  }
-
-  // כניסה
-  onSignIn(): void {
-    this.router.navigate(['/sign-in']);
-  }
-
-  // הרשמה
-  onSignUp(): void {
-    this.router.navigate(['/sign-up']);
-  }
-
-  // מומלצים
-  goToRecommended(): void {
-    this.router.navigate(['/recommended']);
-  }
-
-  // המועדפים שלי
-  goToFavorites(): void {
-    this.router.navigate(['/favorites']);
-  }
-
-  goToAllParks(): void {
-    this.router.navigate(['/parks-list']);
   }
 
   onSpecialButtonClickAddReport(): void {

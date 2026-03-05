@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Assistant', sans-serif;
+}
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -35,6 +41,8 @@
   color: #2e7d32;
   cursor: pointer;
   padding: 6px 10px;
+  font-family: 'Assistant', sans-serif, bold;
+  font-weight: bold;
 }
 
 /* קו תחתון מהמרכז */

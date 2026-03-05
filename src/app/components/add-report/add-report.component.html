@@ -19,14 +19,18 @@
 
       <p class="rating-text">
         @if (form.satisfaction >= 0) {
-          <strong>{{ form.satisfaction }} stars</strong>
-          @switch (form.satisfaction) {
-            @case (1) { – ממש לא אהבתי }
-            @case (2) { – לא משהו }
-            @case (3) { – בסדר }
-            @case (4) { – טוב מאוד }
-            @case (5) { – מעולה! }
-          }
+<div dir="rtl" style="text-align: center;">
+  <strong>{{ form.satisfaction }}</strong>
+  <b><span> כוכבים - </span></b>
+  
+  @switch (form.satisfaction) {
+    @case (1) { <span>ממש לא אהבתי</span> }
+    @case (2) { <span>לא משהו</span> }
+    @case (3) { <span>בסדר</span> }
+    @case (4) { <span>טוב מאוד</span> }
+    @case (5) { <span>מעולה!</span> }
+  }
+</div>
         } @else {
           <span class="hint">לחץ על כוכב כדי לדרג</span>
         }

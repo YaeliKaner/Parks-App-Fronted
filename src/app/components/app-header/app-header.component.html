@@ -1,5 +1,11 @@
-  <header class="site-header">
-<img src="/Logo_Regular-1024x221.png" class="site-logo" alt="Park Share Vibe logo" />
+<!-- <header class="site-header">
+    <a routerLink="/home">
+      <img
+        src="/Logo_Regular-1024x221.png"
+        class="site-logo"
+        alt="Park Share Vibe logo"
+      />
+    </a>
 
     <nav class="main-nav">
       @if (isLoggedIn) {
@@ -46,4 +52,78 @@
 
       }
     </nav>
-  </header>
+  </header> -->
+
+<header class="site-header">
+<a routerLink="/home">
+  <img
+    src="/Logo_Regular-1024x221.png"
+    class="site-logo"
+    alt="Park Share Vibe logo"
+  />
+</a>
+
+  <nav class="main-nav">
+    @if (isLoggedIn) {
+      @if (currentUser && currentUser.imageBase64) {
+        <img
+          src="data:image/jpeg;base64,{{ currentUser.imageBase64 }}"
+          class="user-image"
+          alt="currentUser.name"
+        />
+      } @else {
+        <img src="/icon.png" class="user-image" alt="currentUser.name" />
+      }
+
+      <b>
+      <button class="nav-button subtle-action" (click)="onSignOut()">
+        התנתקות
+      </button>
+      </b>
+
+      <b>
+      <button class="nav-button recommended-button" (click)="goToRecommended()">
+        ⭐ מומלצים
+      </button>
+      </b>
+
+      <b>
+      <button class="nav-button primary-action" (click)="goToFavorites()">
+        ❤️  פארקים שאהבתי
+      </button>
+      </b>
+
+      <b>
+      <button
+        class="nav-button primary-action"
+        (click)="onSpecialButtonClick()"
+      >
+        הוספת פארק חדש
+      </button>
+      </b>
+    } @else {
+      <img src="/icon.png" class="user-image" alt="currentUser.name" />
+
+      <b>
+      <button class="nav-button recommended-button" (click)="goToRecommended()">
+        ⭐ מומלצים
+      </button>
+      </b>
+      <b>
+      <button class="nav-button subtle-action" (click)="onSignIn()">
+        התחברות
+      </button>
+      </b>
+      <b>
+      <button class="nav-button subtle-action" (click)="onSignUp()">
+        הרשמה
+      </button>
+        </b>
+    }
+    <b>
+    <button class="nav-button primary-action" (click)="goToAllParks()">
+      כל הפארקים
+    </button>
+    </b>
+  </nav>
+</header>

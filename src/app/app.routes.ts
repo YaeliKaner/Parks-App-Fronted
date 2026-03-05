@@ -13,6 +13,7 @@ import { ReportsListComponent } from './components/reports-list/reports-list.com
 import { AddReportComponent } from './components/add-report/add-report.component';
 import { ParksChatComponent } from './components/parks-chat/parks-chat.component';
 import { HomeComponent } from './components/home/home.component';
+import { AppHeaderComponent } from './components/app-header/app-header.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +28,7 @@ export const routes: Routes = [
   { path: 'favorites', component: FavoritesComponent, title: 'See Park | פארקים מועדפים' },
   { path: 'parks-chat', component: ParksChatComponent, title: 'See Park | מצא לי פארק' },
   { path: 'home', component: HomeComponent, title: 'See Park | דף הבית' },
+  { path: 'header', component: AppHeaderComponent, title: 'See Park | כותרת' },
   { path: '**', redirectTo: 'home' }
 ];
 

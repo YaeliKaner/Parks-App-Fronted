@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
 import UsersDTO from '../../models/dto/usersDTO.model';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+// @Component({
+//   selector: 'app-app-header',
+//   imports: [],
+//   templateUrl: './app-header.component.html',
+//   styleUrl: './app-header.component.css'
+// })
 @Component({
-  selector: 'app-app-header',
-  imports: [],
+  selector: 'app-header',
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.css'
 })
@@ -50,6 +57,10 @@ export class AppHeaderComponent {
         }
       },
     });
+  }
+
+    goToAllParks(): void {
+    this.router.navigate(['/parks-list']);
   }
 
   onSignOut(): void {

@@ -13,11 +13,13 @@ import { MATERIAL } from '../../material';
 import { FormsModule } from '@angular/forms';
 import { FavoritesService } from '../../services/favorites.service';
 import { ParksChatComponent } from "../parks-chat/parks-chat.component";
+import { FavoriteButtonComponent } from '../favorite-button/favorite-button.component';
+// import { AppHeaderComponent } from '../app-header/app-header.component';
 
 @Component({
   selector: 'app-parks-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ParksChatComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ParksChatComponent, FavoriteButtonComponent],
   templateUrl: './parks-list.component.html',
   styleUrl: './parks-list.component.css',
 })
@@ -28,18 +30,32 @@ export class ParksListComponent implements OnInit {
   currentUser: UsersDTO | null = null;
   isLoadingUser = true;
   allParks: ParkDTO[] = [];
-
+  favorites: ParkDTO[] = [];
+  loading: boolean = false;
   isChatOpen: boolean = false;
+  selectedItem: ParkDTO | null = null
   // isLoggedIn$!: Observable<boolean>;
 
   constructor(
     private router: Router,
     private parksService: ParksService,
     private _authService: AuthService,
-    private favoritesService: FavoritesService
+    private _favoritesService: FavoritesService
   ) {}
 
   ngOnInit(): void {
+
+// בדוק מה מגיע מהשרת
+  this._favoritesService.getMyFavorites().subscribe(parks => {
+    console.log('Favorites from server:', parks);
+  });
+  
+  // בדוק מה יש ב-signal
+  console.log('Favorites signal:', this._favoritesService.favorites());
+  // console.log('Park ID:', this.parkId);
+  // console.log('Is Favorite?', this._favoritesService.favorites().has(this.parkId));
+
+
     this._authService.isAuthenticated().subscribe((isAuth) => {
       this.isLoggedIn = isAuth;
     });
@@ -55,6 +71,7 @@ export class ParksListComponent implements OnInit {
       },
     });
     this.loadAllParks();
+    this.loadFavorites();
   }
 
   private loadAllParks(): void {
@@ -100,51 +117,10 @@ export class ParksListComponent implements OnInit {
     });
   }
 
-  onSignOut(): void {
-    this._authService.signOut().subscribe({
-      next: () => this.router.navigate(['/sign-in']),
-      error: () => alert('שגיאה בהתנתקות'),
-    });
-  }
-
-  onSignIn(): void {
-    this.router.navigate(['/sign-in']);
-  }
-
-  onSignUp(): void {
-    this.router.navigate(['/sign-up']);
-  }
-
   showDetails(park: ParkDTO): void {
     if (!park?.id) return;
     this.router.navigate(['/park-details', park.id]);
   }
-
-  // מעבר למסך מומלצים
-  goToRecommended(): void {
-    this.router.navigate(['/recommended']);
-  }
-
-  // מעבר למסך מועדפים
-  goToFavorites(): void {
-    this.router.navigate(['/favorites']);
-  }
-
-//   onSortChange(value: string){
-//     if(value == "new") {
-//       this.ngOnInit();
-//     }
-//     else if(value == "recommended") {
-//       this.parksService.getParksOrderByRecommended().subscribe({
-//         next: (res) => {
-//           this.parksList = res ?? [];
-//         },
-//         error: (err) => {
-//           console.error('שגיאה בטעינת פארקים מומלצים', err);
-//         }
-//       });
-//   }
-// }
 
 onSortChange(value: string) {
 console.log("פונקציה נקראה! הערך הוא:", value);
@@ -168,7 +144,7 @@ console.log("פונקציה נקראה! הערך הוא:", value);
   addToFavorites(park: ParkDTO): void {
     if (!park?.id) return;
 
-    this.favoritesService.addToFavorites(park.id).subscribe({
+    this._favoritesService.addToFavorites(park.id).subscribe({
       next: () => {
         alert('הפארק נוסף למועדפים 💚');
       },
@@ -178,5 +154,28 @@ console.log("פונקציה נקראה! הערך הוא:", value);
         this.router.navigate(['/sign-in']);
       }
     });
+  }
+
+    loadFavorites(): void {
+    this.loading = true;
+
+    this._favoritesService.getMyFavorites().subscribe({
+      next: (res) => {
+        console.log('Favorites loaded:', res);
+        this.favorites = res ?? [];
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error loading favorites', err);
+        this.loading = false;
+        alert('שגיאה בטעינת המועדפים');
+      }
+    });
+  }
+
+  isSelectedInList(item: ParkDTO | null): boolean {
+    if (!item || !this.favorites?.length) return false;
+    return this.favorites.some(existing => existing.id === item.id);
+    // או אם reference זהה:   return this.favorites.includes(item);
   }
 }

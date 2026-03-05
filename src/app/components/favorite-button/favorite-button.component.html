@@ -1,0 +1,23 @@
+<!-- <button (click)="toggle()" style="background: none; border: none; cursor: pointer;">
+  <img 
+    [src]="favoritesService.isFavorite(parkId) ? '/heart.png' : '/heart_frame.png'" 
+    width="24" 
+    height="24" 
+    alt="Favorite Heart">
+</button> -->
+
+<!-- <button (click)="toggle()" class="heart-button" [class.is-active]="_favoritesService.isFavorite(parkId)">
+  @if(_favoritesService.isFavorite(parkId)) {
+    <img src="/heart.png" alt="Favorite Heart">
+  } @else {
+    <img src="/heart_frame.png" alt="Not Favorite Heart">
+  }
+</button> -->
+
+<button (click)="toggle()" class="heart-button" [class.is-active]="isFavorite()">
+  @if(isFavorite()) {
+    <img src="/heart.png" alt="Favorite Heart">
+  } @else {
+    <img src="/heart_frame.png" alt="Not Favorite Heart">
+  }
+</button>

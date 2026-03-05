@@ -21,6 +21,10 @@ body {
   display: flex;
   flex-direction: column;
   padding-bottom: 40px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    linear-gradient(#f9fcf9, #eef6ee);
 }
 
 .site-header {
