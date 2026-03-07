@@ -22,7 +22,7 @@
 // }
 
 
-import { Component, Input, OnInit, computed } from '@angular/core';
+import { Component, Input, OnInit, computed, input } from '@angular/core';
 import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
@@ -31,17 +31,28 @@ import { FavoritesService } from '../../services/favorites.service';
   templateUrl: './favorite-button.component.html'
 })
 export class FavoriteButtonComponent implements OnInit {
-  @Input() parkId!: number;
+   parkId = input.required<number>();
 
   // ה-signal הזה יתעדכן אוטומטית כשה-favorites ישתנה
-isFavorite = computed(() => this._favoritesService.favorites().has(this.parkId));
+// isFavorite() {
+//   return computed(() => 
+//     this._favoritesService.favorites().has(this.parkId)
+  
+//   );
+  
+// }
+
+isFavorite = computed(() => 
+  this._favoritesService.favorites().has(this.parkId())
+);
   constructor(public _favoritesService: FavoritesService) {}
 
   ngOnInit() {
-    console.log('Park ID:', this.parkId);
+   this._favoritesService.loadFavorites(); // טוען את המועדפים כשמרכיב נטען
+    console.log('Park ID:', this.parkId());
   }
 
   toggle() {
-    this._favoritesService.toggleFavorite(this.parkId);
+    this._favoritesService.toggleFavorite(this.parkId());
   }
 }

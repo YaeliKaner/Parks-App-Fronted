@@ -472,6 +472,10 @@ body {
   font-size: 18px;
 }
 
+
+
+
+
 /* רספונסיביות: במסכים קטנים הם יחזרו להיות אחד מעל השני */
 @media (max-width: 768px) {
   .search-and-sort-row {

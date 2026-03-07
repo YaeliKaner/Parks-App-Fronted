@@ -1,43 +1,69 @@
+/* core positioning for component host */
 :host {
   position: absolute;
   top: 10px;
-  left: 10px;
-  z-index: 10;
+  right: 10px;
   display: block;
+  z-index: 10;
 }
 
+/* wrapper ensures button sits over park card/image */
+.favorite-wrapper {
+  position: relative;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* main button styling */
 .heart-button {
-  /* ביטול כל המראה של כפתור רגיל */
   background: none;
   border: none;
   padding: 0;
   margin: 0;
   cursor: pointer;
   outline: none;
-  
-  /* יצירת צל עדין מאחורי הלב כדי שיבלוט על התמונה */
-  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3));
-  transition: transform 0.2s ease;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* fixed size matching svg viewBox */
+  width: 8px;
+  height: 8px;
+
+  transition: transform 0.2s ease;
 }
 
 .heart-button:hover {
-  transform: scale(1.15); /* הגדלה קלה בריחוף */
+  transform: scale(1.15);
 }
 
 .heart-button:active {
   transform: scale(0.9);
 }
 
-.heart-button img {
-  width: 28px;  /* הגדלתי קצת שיהיה ברור */
-  height: 28px;
+.heart-button:focus {
+  outline: none;
+}
+
+/* heart icon itself */
+.heart-icon {
+  width: 8px !important;
+  height: 8px !important;
+  max-width: 8px !important;
+  max-height: 8px !important;
   display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
   object-fit: contain;
-  
-  /* לשיפור החדות אם התמונה קטנה */
-  image-rendering: -webkit-optimize-contrast;
+}
+
+/* SVG fills only apply when using svg elements */
+.heart-icon.outline {
+  fill: #222;
+}
+
+.heart-icon.filled {
+  fill: #ff385c;
 }

@@ -14,10 +14,103 @@
   }
 </button> -->
 
+
+
+
+<!-- כפתור בצד -->
+<!-- <div class="heart-container">
+
+  @if(isFavorite()) {
+    <img src="/heart.png" alt="Favorite Heart" class="heart-image">
+  } @else {
+    <img src="/heart_frame.png" alt="Not Favorite Heart" class="heart-image">
+  }
+
+  <button (click)="toggle()" class="heart-button">
+    <i class="fas fa-heart icon"></i>
+  </button>
+
+</div> -->
+
+
+<div class="favorite-wrapper">
+  @if(isFavorite()) {
+    <img
+      src="/full1.png"
+      alt="Favorite Heart"
+      class="heart-icon"
+      (click)="toggle()"
+    />
+  } @else {
+    <img
+      src="/empty1.png"
+      alt="Not Favorite Heart"
+      class="heart-icon"
+      (click)="toggle()"
+    />
+  }
+</div>
+
+
+
+
+<!-- המקורי שלי -->
+<!-- <div class = "heart-container">
 <button (click)="toggle()" class="heart-button" [class.is-active]="isFavorite()">
   @if(isFavorite()) {
-    <img src="/heart.png" alt="Favorite Heart">
+    
+      <img src="/heart.png" alt="Favorite Heart">
+       <i class="fas fa-heart icon"></i>
+     
   } @else {
     <img src="/heart_frame.png" alt="Not Favorite Heart">
+     <i class="fas fa-heart icon"></i>
+
   }
-</button>
+</button> 
+</div> -->
+
+
+
+
+<!-- <div class="favorite-wrapper">
+  <button
+    type="button"
+    (click)="toggle()"
+    class="heart-button"
+    [class.is-active]="isFavorite()"
+  >
+    @if (isFavorite()) {
+      <div class="heart-icon-filled">♥️</div>
+    } @else {
+      <div class="heart-icon-filled">🤍</div>
+    }
+  </button>
+</div> -->
+
+
+
+
+        <!-- <style>
+          .icon-overlay {
+            position: relative;
+            display: inline-block;
+          }
+          .icon-overlay img {
+            display: block;
+          }
+          .icon-overlay .icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: white;
+          }
+        </style>
+    
+        <div class="icon-overlay">
+          <img src="/heart.png" alt="תמונה">
+          <i class="fas fa-heart icon"></i>
+        </div>
+         -->
+

@@ -18,7 +18,9 @@ export class FavoritesService {
   constructor(private http: HttpClient) {}
 
 
-  private loadFavorites() {
+
+
+  loadFavorites() {
   this.getMyFavorites().subscribe({
     next: (parks) => {
       console.log('First park object:', parks[0]); // נראה את המבנה המלא
