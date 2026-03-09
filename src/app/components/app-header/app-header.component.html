@@ -1,4 +1,4 @@
-<!-- <header class="site-header">
+<header class="site-header">
     <a routerLink="/home">
       <img
         src="/Logo_Regular-1024x221.png"
@@ -24,37 +24,46 @@
           Sign out
         </button>
 
-        <button class="nav-button recommended-button" (click)="goToRecommended()">
-          ⭐ Recommended
+        <button class="nav-button primary-action" (click)="goToFavorites()">
+          ❤️
         </button>
 
-        <button class="nav-button primary-action" (click)="goToFavorites()">
-          ❤️ My favorites
+        <button class="nav-button recommended-button" (click)="goToRecommended()">
+          ⭐ מומלצים
         </button>
 
         <button class="nav-button primary-action" (click)="onSpecialButtonClick()">
-          Add New Park
+          הוספת פארק חדש
+        </button>
+
+         <button class="nav-button primary-action" (click)="goToAllParks()">
+         כל הפארקים
         </button>
 
       } @else {
 
         <img src="/icon.png" class="user-image" alt="currentUser.name" />
+        <button class="nav-button subtle-action" (click)="onSignUp()">
+          הרשמה
+        </button>
+
+        <button class="nav-button subtle-action" (click)="onSignIn()">
+          התחברות
+        </button>
 
         <button class="nav-button recommended-button" (click)="goToRecommended()">
           ⭐ מומלצים
         </button>
-        <button class="nav-button subtle-action" (click)="onSignIn()">
-          Sign in
-        </button>
-        <button class="nav-button subtle-action" (click)="onSignUp()">
-          Sign up
+
+        <button class="nav-button primary-action" (click)="goToAllParks()">
+         כל הפארקים
         </button>
 
       }
     </nav>
-  </header> -->
+  </header>
 
-<header class="site-header">
+<!-- <header class="site-header">
 <a routerLink="/home">
   <img
     src="/Logo_Regular-1024x221.png"
@@ -126,4 +135,4 @@
     </button>
     </b>
   </nav>
-</header>
+</header> -->

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError, BehaviorSubject } from 'rxjs';
 import User from '../models/user.model';
 import { Router } from '@angular/router';
 import UsersDTO from '../models/dto/usersDTO.model';
@@ -12,8 +12,24 @@ export class AuthService {
   private baseUrl = 'http://localhost:8080/api/Users';
   private currentUserKey = 'currentUser';
   private isLogged = false;
+  
+  // BehaviorSubject to track authentication state and current user
+  private authStateSubject = new BehaviorSubject<boolean>(false);
+  private currentUserSubject = new BehaviorSubject<UsersDTO | null>(null);
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  // Initialize auth state on service creation
+  initializeAuthState() {
+    this.isAuthenticated().subscribe((isAuth) => {
+      this.authStateSubject.next(isAuth);
+      if (isAuth) {
+        this.getLoggedUser().subscribe((user) => {
+          this.currentUserSubject.next(user);
+        });
+      }
+    });
+  }
 
   // SIGN UP
   // signUp(user: Partial<User>): Observable<User> {
@@ -79,7 +95,12 @@ signUp(formData: FormData): Observable<void> {
     map(() => void 0),
     tap(() => {
       console.log('נרשמת והתחברת בהצלחה!');
-      this.isLogged = true; // ← הוסף את זה!
+      this.isLogged = true;
+      this.authStateSubject.next(true); // Notify header of login
+      // Fetch and emit user data
+      this.getLoggedUser().subscribe((user) => {
+        this.currentUserSubject.next(user);
+      });
     }),
     catchError(err => {
       console.error('הרשמה נכשלה', err);
@@ -137,6 +158,14 @@ signUp(formData: FormData): Observable<void> {
       })
       .pipe(
         map(() => void 0),
+        tap(() => {
+          this.isLogged = true;
+          this.authStateSubject.next(true); // Notify header of login
+          // Fetch and emit user data
+          this.getLoggedUser().subscribe((user) => {
+            this.currentUserSubject.next(user);
+          });
+        }),
         catchError((err) => {
           console.error('Sign in failed', err);
           return throwError(() => err);
@@ -163,7 +192,13 @@ signOut(): Observable<any> {
   return this.http.post(`${this.baseUrl}/signOut`, {}, {
     withCredentials: true,
     responseType: 'text'
-  });
+  }).pipe(
+    tap(() => {
+      this.isLogged = false;
+      this.authStateSubject.next(false); // Notify header of logout
+      this.currentUserSubject.next(null); // Clear user data
+    })
+  );
 }
 
   getCurrentUser(): User | null {
@@ -262,6 +297,15 @@ signOut(): Observable<any> {
     { withCredentials: true }
   );
 }
+
+  // Public accessors for BehaviorSubjects
+  getAuthState(): Observable<boolean> {
+    return this.authStateSubject.asObservable();
+  }
+
+  getCurrentUserState(): Observable<UsersDTO | null> {
+    return this.currentUserSubject.asObservable();
+  }
 
 }
 

@@ -18,18 +18,12 @@ export class FavoritesService {
   constructor(private http: HttpClient) {}
 
 
-  private loadFavorites() {
-  this.getMyFavorites().subscribe({
-    next: (parks) => {
-      console.log('First park object:', parks[0]); // נראה את המבנה המלא
-      const ids = new Set(parks.map(p => p.id));
-      console.log('IDs set:', ids);
-      this.favoritesSet.set(ids);
-      console.log('Signal after set:', this.favoritesSet());
-    },
-    error: (err) => console.error('Failed to load favorites', err)
-  });
-}
+  // helper that updates the internal signal from an array of park DTOs
+  public populateFavorites(parks: ParkDTO[]) {
+    const ids = new Set(parks.map(p => p.id));
+    this.favoritesSet.set(ids);
+  }
+
 
   // 💚 כל המועדפים של המשתמש המחובר
   getMyFavorites(): Observable<ParkDTO[]> {

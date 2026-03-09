@@ -19,6 +19,11 @@
                   class="park-image"
                   alt="{{ park.name }}"
                 />
+                @if (isLoggedIn) {
+                <app-favorite-button [parkId]="park.id" class="favorite-icon-overlay">
+
+                </app-favorite-button>
+              }
               </div>
 
               <div class="park-info">

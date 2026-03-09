@@ -14,10 +14,9 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './app-header.component.html',
-  styleUrl: './app-header.component.css'
+  styleUrl: './app-header.component.css',
 })
 export class AppHeaderComponent {
-
   isLoggedIn = false;
   currentUser: UsersDTO | null = null;
   isLoadingUser = true;
@@ -26,28 +25,37 @@ export class AppHeaderComponent {
   constructor(
     private router: Router,
     private _authService: AuthService,
-  ) { }
-
+  ) {}
 
   ngOnInit(): void {
-    this._authService.isAuthenticated().subscribe((isAuth) => {
+    // Subscribe to BehaviorSubject for real-time auth state updates
+    this._authService.getAuthState().subscribe((isAuth) => {
       this.isLoggedIn = isAuth;
     });
 
-    this._authService.getLoggedUser().subscribe({
-      next: (user) => {
-        this.currentUser = user;
-        this.isLoadingUser = false;
-      },
-      error: () => {
-        this.currentUser = null;
-        this.isLoadingUser = false;
-      },
+    this._authService.getCurrentUserState().subscribe((user) => {
+      this.currentUser = user;
+      this.isLoadingUser = false;
     });
+
+
+    // this._authService.isAuthenticated().subscribe((isAuth) => {
+    //   this.isLoggedIn = isAuth;
+    // });
+
+    // this._authService.getLoggedUser().subscribe({
+    //   next: (user) => {
+    //     this.currentUser = user;
+    //     this.isLoadingUser = false;
+    //   },
+    //   error: () => {
+    //     this.currentUser = null;
+    //     this.isLoadingUser = false;
+    //   },
+    // });
   }
 
-
-    onSpecialButtonClick(): void {
+  onSpecialButtonClick(): void {
     this._authService.isAuthenticated().subscribe({
       next: (isLoggedIn) => {
         if (isLoggedIn) {
@@ -59,13 +67,15 @@ export class AppHeaderComponent {
     });
   }
 
-    goToAllParks(): void {
+  goToAllParks(): void {
     this.router.navigate(['/parks-list']);
   }
 
   onSignOut(): void {
+    this.isLoggedIn = false;
+    this.currentUser = null;
     this._authService.signOut().subscribe({
-      next: () => this.router.navigate(['/sign-in']),
+      next: () => this.router.navigate(['/home']),
       error: () => alert('שגיאה בהתנתקות'),
     });
   }
@@ -78,11 +88,10 @@ export class AppHeaderComponent {
     this.router.navigate(['/sign-up']);
   }
 
-    goToRecommended(): void {
+  goToRecommended(): void {
     this.router.navigate(['/recommended']);
   }
   goToFavorites(): void {
     this.router.navigate(['/favorites']);
   }
-
 }

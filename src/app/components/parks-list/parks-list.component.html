@@ -45,7 +45,11 @@
                   class="park-image"
                   alt="Park"
                 />
-                <app-favorite-button [parkId]="park.id" class="favorite-icon-overlay"></app-favorite-button>
+                @if (isLoggedIn) {
+                <app-favorite-button [parkId]="park.id" class="favorite-icon-overlay">
+
+                </app-favorite-button>
+              }
               </div>
 
               <!-- תוכן -->

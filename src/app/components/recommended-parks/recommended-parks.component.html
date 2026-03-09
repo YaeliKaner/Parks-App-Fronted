@@ -25,6 +25,10 @@
                   class="park-image"
                   alt="Park"
                 />
+                @if (isLoggedIn) {
+                <app-favorite-button [parkId]="park.id" class="favorite-icon-overlay">
+                </app-favorite-button>
+              }
               </div>
 
               <!-- תוכן -->
@@ -56,11 +60,11 @@
                   View All Reports
                 </button>
 
-                <div class="favorites-wrapper">
+                <!-- <div class="favorites-wrapper">
                   <button class="details-button secondary" (click)="addToFavorites(park)">
                     ❤️ Add to my favorites
                   </button>
-                </div>
+                </div> -->
 
               </div>
 

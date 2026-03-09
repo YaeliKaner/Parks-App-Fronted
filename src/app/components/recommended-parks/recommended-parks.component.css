@@ -161,8 +161,16 @@ body {
 }
 
 .park-image-wrapper {
+  position: relative;
   height: 200px;
   overflow: hidden;
+}
+
+.favorite-icon-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
 }
 
 .park-image {

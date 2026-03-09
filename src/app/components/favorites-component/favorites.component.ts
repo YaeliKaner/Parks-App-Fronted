@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit, Injector, runInInjectionContext  } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import ParkDTO from '../../models/dto/parkDTO.model';
 import { FavoritesService } from '../../services/favorites.service';
@@ -8,11 +8,12 @@ import { AuthService } from '../../services/auth.service';
 import { ParksChatComponent } from '../parks-chat/parks-chat.component';
 import { ParksService } from '../../services/parks.service';
 import { ActivatedRoute } from '@angular/router';
+import { FavoriteButtonComponent } from '../favorite-button/favorite-button.component';
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [CommonModule, RouterModule, ParksChatComponent],
+  imports: [CommonModule, RouterModule, ParksChatComponent, FavoriteButtonComponent],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css',
 })
@@ -27,9 +28,11 @@ export class FavoritesComponent implements OnInit {
   isChatOpen: boolean = false;
 
   parkToChangeFavorite: ParkDTO | null = null;
+  // injector: Injector | undefined;
 
   constructor(
-    private favoritesService: FavoritesService,
+    private injector: Injector,
+    private _favoritesService: FavoritesService,
     private _authService: AuthService,
     private _parksService: ParksService,
     private router: Router,
@@ -37,18 +40,56 @@ export class FavoritesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+runInInjectionContext(this.injector, () => {
+    effect(() => {
+      const currentFavoriteIds = this._favoritesService.favorites();
+      this.favorites = this.favorites.filter(p => currentFavoriteIds.has(p.id));
+    });
+  });
+
+
+      this._authService.getAuthState().subscribe((isAuth) => {
+      this.isLoggedIn = isAuth;
+      // when we become logged in, load favorites; if logged out clear them
+      if (isAuth) {
+        this.loadFavorites();
+      } else {
+        this.favorites = [];
+      }
+    });
+
+    this._authService.getCurrentUserState().subscribe({
+      next: (user) => {
+        this.currentUser = user;
+        this.isLoadingUser = false;
+      },
+      error: () => {
+        this.currentUser = null;
+        this.isLoadingUser = false;
+      },
+    });
+
+  // בדוק מה מגיע מהשרת
+if(this.isLoggedIn) {
+  this._favoritesService.getMyFavorites().subscribe(parks => {
+      console.log('Favorites from server:', parks);
+      this._favoritesService.populateFavorites(parks);
+    });
+ }
+
     this.loadFavorites();
 
-    this.route.params.subscribe((params) => {
-      const parkId = Number(params['id']);
-      console.log('🟢 parkId:', parkId);
-      this._parksService.getParkById(parkId).subscribe({
-        next: (parkRes) => {
-          this.parkToChangeFavorite = parkRes;
-          console.log('✅ Park loaded:', parkRes);
-        },
-      });
-    });
+    // this.route.params.subscribe((params) => {
+    //   const parkId = Number(params['id']);
+    //   console.log('🟢 parkId:', parkId);
+    //   this._parksService.getParkById(parkId).subscribe({
+    //     next: (parkRes) => {
+    //       this.parkToChangeFavorite = parkRes;
+    //       console.log('✅ Park loaded:', parkRes);
+    //     },
+    //   });
+    // });
   }
 
 
@@ -66,7 +107,7 @@ toggleFavorite(park: ParkDTO) {
   loadFavorites(): void {
     this.loading = true;
 
-    this.favoritesService.getMyFavorites().subscribe({
+    this._favoritesService.getMyFavorites().subscribe({
       next: (res) => {
         console.log('Favorites loaded:', res);
         this.favorites = res ?? [];
@@ -94,10 +135,11 @@ toggleFavorite(park: ParkDTO) {
   remove(park: ParkDTO): void {
     if (!park?.id) return;
 
-    this.favoritesService.removeFromFavorites(park.id).subscribe({
+    this._favoritesService.removeFromFavorites(park.id).subscribe({
       next: () => {
         alert('הפארק הוסר מהמועדפים ❌');
         // מעדכנים את הרשימה המקומית
+        this._favoritesService.toggleFavorite(park.id);
         this.favorites = this.favorites.filter((p) => p.id !== park.id);
       },
       error: (err) => {
@@ -105,6 +147,7 @@ toggleFavorite(park: ParkDTO) {
         alert('שגיאה בהסרה מהמועדפים');
       },
     });
+   
   }
 
 
@@ -158,7 +201,7 @@ toggleFavorite(park: ParkDTO) {
   addToFavorites(park: ParkDTO): void {
     if (!park?.id) return;
 
-    this.favoritesService.addToFavorites(park.id).subscribe({
+    this._favoritesService.addToFavorites(park.id).subscribe({
       next: () => {
         alert('הפארק נוסף למועדפים 💚');
       },

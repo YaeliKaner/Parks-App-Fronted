@@ -17,6 +17,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -30,4 +31,11 @@ import { AppHeaderComponent } from './components/app-header/app-header.component
 })
 export class AppComponent {
   title = 'parksApp';
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    // Initialize auth state on app startup
+    this.authService.initializeAuthState();
+  }
 }

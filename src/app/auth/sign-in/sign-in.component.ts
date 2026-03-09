@@ -59,7 +59,9 @@ onSubmit() {
 
   this.authService.signIn(user).subscribe({
     next: () => {
+      // 
       this.router.navigate(['/parks-list']);
+       // רענון הדף כדי לעדכן את מצב ההתחברות
     },
     // error: () => {
     //   // this.errorMsg = 'שם / אימייל / סיסמה לא נכונים';

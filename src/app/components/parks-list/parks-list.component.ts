@@ -46,21 +46,26 @@ export class ParksListComponent implements OnInit {
   ngOnInit(): void {
 
 // בדוק מה מגיע מהשרת
+if(this.isLoggedIn) {
   this._favoritesService.getMyFavorites().subscribe(parks => {
-    console.log('Favorites from server:', parks);
-  });
-  
+      console.log('Favorites from server:', parks);
+      this._favoritesService.populateFavorites(parks);
+    });
+ }
   // בדוק מה יש ב-signal
   console.log('Favorites signal:', this._favoritesService.favorites());
-  // console.log('Park ID:', this.parkId);
-  // console.log('Is Favorite?', this._favoritesService.favorites().has(this.parkId));
-
-
-    this._authService.isAuthenticated().subscribe((isAuth) => {
+    // react to authentication state changes instead of one-shot HTTP call
+    this._authService.getAuthState().subscribe((isAuth) => {
       this.isLoggedIn = isAuth;
+      // when we become logged in, load favorites; if logged out clear them
+      if (isAuth) {
+        this.loadFavorites();
+      } else {
+        this.favorites = [];
+      }
     });
 
-    this._authService.getLoggedUser().subscribe({
+    this._authService.getCurrentUserState().subscribe({
       next: (user) => {
         this.currentUser = user;
         this.isLoadingUser = false;
@@ -70,8 +75,8 @@ export class ParksListComponent implements OnInit {
         this.isLoadingUser = false;
       },
     });
+
     this.loadAllParks();
-    this.loadFavorites();
   }
 
   private loadAllParks(): void {
@@ -163,6 +168,8 @@ console.log("פונקציה נקראה! הערך הוא:", value);
       next: (res) => {
         console.log('Favorites loaded:', res);
         this.favorites = res ?? [];
+        // sync service signal as well
+        this._favoritesService.populateFavorites(this.favorites);
         this.loading = false;
       },
       error: (err) => {
