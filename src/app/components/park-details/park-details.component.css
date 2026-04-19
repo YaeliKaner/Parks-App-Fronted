@@ -541,6 +541,202 @@ body {
   transform: scale(1.06);
 }
 
+
+
+/* --------------------------------- */
+.features-sidebar {
+  width: 380px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  align-self: flex-start;
+  direction: rtl; /* עבודה מימין לשמאל */
+}
+
+.features-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(46, 125, 50, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* כותרת הסיידבר */
+.features-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #2f4f2f;
+  margin-bottom: 25px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.features-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background: #66bb6a;
+  border-radius: 10px;
+}
+
+/* רשימת המאפיינים */
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 60vh; /* הוספת גלילה פנימית אם יש המון מאפיינים */
+  overflow-y: auto;
+  padding-left: 8px; /* מרווח לגלילה */
+  margin-bottom: 10px;
+}
+
+/* פריט מאפיין בודד */
+.feature-item {
+  background: #f9fdf9;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid #edf5ed;
+  transition: all 0.2s ease;
+}
+
+.feature-item:hover {
+  background: #f1f8f1;
+  border-color: #bcd9bc;
+  transform: translateX(-4px); /* אנימציה עדינה ימינה (בגלל ה-RTL) */
+}
+
+.feature-header {
+  margin-bottom: 12px;
+}
+
+.feature-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #355b35;
+  display: block;
+}
+
+/* הטופס בתוך המאפיין */
+.feature-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* עיצוב ה-Select (הכמות) */
+.feature-select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #d1e4d1;
+  background-color: #ffffff;
+  font-family: 'Assistant', sans-serif;
+  font-size: 14px;
+  color: #2f4f2f;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease;
+  appearance: none; /* ביטול מראה הדיפולט */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232e7d32'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  background-size: 16px;
+}
+
+.feature-select:focus {
+  border-color: #66bb6a;
+  box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.1);
+}
+
+/* עיצוב שדה הערה (Remark) */
+.feature-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #d1e4d1;
+  background-color: #ffffff;
+  font-family: 'Assistant', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.feature-input::placeholder {
+  color: #a4b6a4;
+  font-size: 13px;
+}
+
+.feature-input:focus {
+  border-color: #66bb6a;
+  background-color: #ffffff;
+}
+
+/* כפתור שמירה מרכזי */
+.save-all-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'Assistant', sans-serif;
+  cursor: pointer;
+  margin-top: 25px;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+  transition: all 0.3s ease;
+}
+
+.save-all-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(46, 125, 50, 0.3);
+  filter: brightness(1.1);
+}
+
+.save-all-btn:disabled {
+  background: #e0ebe0;
+  color: #a4b6a4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* התאמה אישית לגלילה (Scrollbar) */
+.features-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.features-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.features-list::-webkit-scrollbar-thumb {
+  background: #bcd9bc;
+  border-radius: 10px;
+}
+
+.features-list::-webkit-scrollbar-thumb:hover {
+  background: #2e7d32;
+}
+
+/* רספונסיביות */
+@media (max-width: 1200px) {
+  .features-sidebar {
+    width: 100%;
+    position: static;
+    margin-top: 30px;
+  }
+}
+
 /* מונע מעבר שורה גם במסכים קטנים יותר */
 @media (max-width: 768px) {
   .slider-track:not(:has(img:nth-child(3))) {
@@ -579,3 +775,260 @@ body {
   }
 }
 
+/* ---------------------------- */
+
+
+
+
+
+
+.page-layout-three-columns {
+  display: flex;
+  gap: 25px;
+  padding: 20px 30px;
+  max-width: 100%; /* מבטיח שלא יחרוג מהמסך */
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden; /* מונע מהכל לברוח הצידה */
+}
+
+/* העמודה האמצעית - חייבת להיות מוגנת */
+.main-content {
+  flex: 1;
+  min-width: 0; /* קריטי: מונע מתוכן פנימי (כמו סליידר) למתוח את העמודה */
+  max-width: 850px; /* שומר על רוחב קריא ונעים */
+  margin: 0 auto;
+}
+
+/* =========================================
+   תיקון הסליידר - שלא ידחוף את הסיידברים
+   ========================================= */
+
+.reports-slider-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; /* חותך כל מה שיוצא מגבולות העמודה האמצעית */
+  position: relative;
+  margin: 25px 0;
+  padding: 10px 0;
+}
+
+.running-images {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  width: max-content; /* מאפשר לתמונות לעמוד בשורה בלי קשר לרוחב העמודה */
+  gap: 16px;
+  animation: slide 15s linear infinite; /* מהירות נעימה יותר */
+}
+
+/* במקרה שיש רק 1-2 תמונות - מונע מהן "לרעוד" או להימתח */
+.running-images.no-animation .slider-track {
+  animation: none !important;
+  justify-content: center;
+  width: 100%;
+}
+
+.slider-image {
+  height: 180px; /* גובה אחיד */
+  width: 240px;  /* רווח אחיד */
+  object-fit: cover;
+  border-radius: 15px;
+  flex-shrink: 0; /* מונע מהתמונות להתכווץ */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   תיקון הסיידברים - שיישארו מקובעים
+   ========================================= */
+
+.chat-sidebar, .features-sidebar {
+  flex-shrink: 0; /* מונע מהעמודות הצידיות להימחץ */
+  width: 320px;   /* רווח סטנדרטי לסיידבר */
+  min-width: 300px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+/* =========================================
+   תיקון התמונה הראשית (Hero Image)
+   ========================================= */
+
+.main-image-wrapper {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+  margin-bottom: 30px;
+}
+
+.park-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================================
+   אנימציית הסליידר - תיקון כיוון (RTL)
+   ========================================= */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); } /* בגלל שהאתר בעברית, האנימציה צריכה לזוז נכון */
+}
+
+/* התאמה למסכים קטנים - שהכל לא יתחבר אחד לשני */
+@media (max-width: 1300px) {
+  .page-layout-three-columns {
+    flex-wrap: wrap; /* במקום להימחץ, הסיידברים ירדו למטה */
+    justify-content: center;
+  }
+  
+  .chat-sidebar, .features-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .main-content {
+    order: -1; /* התוכן הראשי תמיד ראשון */
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+.page-layout-three-columns {
+  display: flex;
+  gap: 32px;
+  padding: 20px 40px;
+  max-width: 100%; 
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden; /* זה הקו האדום - שום דבר לא עובר אותו */
+}
+
+/* 2. העמודה האמצעית - התיקון הקריטי ביותר */
+.main-content {
+  flex: 1;
+  min-width: 0; /* חובה! מונע מהסליידר למתוח את העמודה מעבר לרוחב שלה */
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. הגנה על הסיידברים - שלא יימחצו */
+.chat-sidebar, .features-sidebar {
+  width: 340px;
+  flex-shrink: 0; /* מונע מהם להתכווץ כשהתוכן האמצעי גדל */
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  align-self: flex-start;
+}
+
+/* ======================================================
+   סליידר התמונות - שמירה על האנימציה המקורית
+   ====================================================== */
+
+.reports-slider-container {
+  overflow: hidden; /* חותך את התמונות בדיוק בגבול העמודה האמצעית */
+  width: 100%;
+  margin: 20px 0 35px 0;
+  padding: 12px 0;
+  position: relative;
+}
+
+.running-images {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* האנימציה המקורית שלך - ללא שינוי */
+.slider-track {
+  display: flex;
+  animation: slide 13s linear infinite;
+  width: max-content; /* מאפשר לתמונות להסתדר בשורה ארוכה */
+  gap: 16px;
+}
+
+.slider-image {
+  height: 160px;
+  width: auto;
+  min-width: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+
+/* ה-Keyframes המקוריים שלך - ללא שינוי */
+@keyframes slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* עצירה בריחוף - נוח למשתמש */
+.running-images:hover .slider-track {
+  animation-play-state: paused;
+}
+
+/* טיפול במצב של 1-2 תמונות */
+.running-images.no-animation .slider-track {
+  animation: none !important;
+  justify-content: center;
+  width: 100%;
+  transform: none; /* מבטל את ה-translateX כדי שלא יקפוץ הצידה */
+}
+
+/* ======================================================
+   תיקון התמונה הראשית (הילדים בתמונה שלך)
+   ====================================================== */
+.main-image-wrapper {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  margin-bottom: 25px;
+  background: #f0f4f0;
+}
+
+.park-main-image {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+/* רספונסיביות - כשהמסך קטן מדי לשלוש עמודות */
+@media (max-width: 1350px) {
+  .page-layout-three-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chat-sidebar, .features-sidebar {
+    width: 100%;
+    max-width: 600px;
+    position: static;
+  }
+  
+  .main-content {
+    width: 100%;
+    order: -1; /* התוכן המרכזי יהיה ראשון במובייל */
+  }
+}

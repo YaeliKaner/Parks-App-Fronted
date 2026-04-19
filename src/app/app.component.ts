@@ -17,6 +17,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
+import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -24,10 +25,11 @@ import { AuthService } from './services/auth.service';
   standalone: true,
   imports: [
     RouterOutlet,           // מומלץ לשים ראשון או אחרון – לא משנה
-    AppHeaderComponent      // חייב להיות כאן!
+    AppHeaderComponent,    // חייב להיות כאן!
+    AppFooterComponent      // מומלץ לשים ראשון או אחרון – לא משנה
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'   // שים לב: styleUrl (ברבים זה styleUrls)
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'parksApp';

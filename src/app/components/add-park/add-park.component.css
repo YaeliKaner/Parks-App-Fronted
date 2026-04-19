@@ -555,3 +555,258 @@
     transform: scale(1) translateY(0);
   }
 }
+
+
+/* ------------------------------------------ */
+.add-park-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    linear-gradient(#f9fcf9, #eef6ee);
+  font-family: 'Assistant', sans-serif;
+}
+
+/* כרטיס הטופס */
+.add-park-form {
+  background: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  padding: 45px;
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+  direction: rtl;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* כותרת מדומה (אופציונלי, מוסיף המון) */
+.add-park-form::before {
+  content: "הוספת פארק חדש";
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  color: #355b35;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* תוויות השדות */
+.form-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #4a5d45;
+  margin-bottom: 8px;
+  margin-right: 5px;
+}
+
+/* שדות קלט (Inputs) */
+.form-input {
+  width: 100%;
+  padding: 14px 20px;
+  margin-bottom: 22px;
+  border-radius: 15px;
+  border: 1.5px solid #e0eadd;
+  background-color: #fdfdfd;
+  font-size: 16px;
+  font-family: 'Assistant', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #66bb6a;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(102, 187, 106, 0.15);
+  transform: translateY(-1px);
+}
+
+/* שדה העלאת קובץ - עיצוב מודרני */
+.form-file {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 30px;
+  border: 2px dashed #bcd9bc;
+  border-radius: 15px;
+  background: #f9fdf9;
+  cursor: pointer;
+  font-family: 'Assistant', sans-serif;
+  color: #5a7a5a;
+  transition: all 0.3s ease;
+}
+
+.form-file:hover {
+  background: #f1f8f1;
+  border-color: #66bb6a;
+}
+
+/* הודעות שגיאה */
+.error-msg {
+  display: block;
+  color: #d32f2f;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: -18px;
+  margin-bottom: 15px;
+  margin-right: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* כפתור הוספה (Add Garden) */
+.submit-button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.25);
+  font-family: 'Assistant', sans-serif;
+  margin-top: 10px;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(46, 125, 50, 0.35);
+  filter: brightness(1.1);
+}
+
+.submit-button:active {
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  background: #c8d6c8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ===========================
+   מודאל התנגשות (Conflict)
+   =========================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 40, 20, 0.4); /* כהה ושקוף */
+  backdrop-filter: blur(8px); /* אפקט זכוכית מט */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeInOverlay 0.4s ease;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.conflict-card {
+  background: white;
+  padding: 40px;
+  border-radius: 35px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  direction: rtl;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.conflict-logo-img {
+  height: 55px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.conflict-title {
+  font-size: 24px;
+  color: #1b3a1b;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.conflict-text {
+  font-size: 16px;
+  color: #5a6b5a;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.conflict-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+/* כפתורי המודאל */
+.btn-primary {
+  flex: 1.5;
+  padding: 14px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 14px;
+  background: #ffffff;
+  color: #2e7d32;
+  border: 2px solid #e0eadd;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.btn-primary:hover { background: #1b5e20; transform: translateY(-2px); }
+.btn-secondary:hover { background: #f1f8f1; border-color: #2e7d32; }
+
+/* רספונסיביות למובייל */
+@media (max-width: 600px) {
+  .add-park-form {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  
+  .conflict-actions {
+    flex-direction: column;
+  }
+
+  .add-park-form::before {
+    font-size: 24px;
+  }
+}

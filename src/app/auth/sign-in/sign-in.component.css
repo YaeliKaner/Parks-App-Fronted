@@ -267,3 +267,158 @@ body {
     font-weight: 700;
     font-size: 1.2em; 
     cursor: pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+    .auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    linear-gradient(#f9fcf9, #eef6ee);
+  font-family: 'Assistant', sans-serif;
+}
+
+/* כרטיס ההתחברות - צר יותר מההרשמה למראה נקי */
+.auth-card {
+  background: #ffffff;
+  padding: 45px;
+  border-radius: 25px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid #2e7d32; /* הצבע הירוק של האפליקציה */
+  animation: fadeIn 0.6s ease-out;
+}
+
+.auth-title {
+  font-size: 2.2rem;
+  color: #2f4f2f;
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: right; 
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right; 
+}
+
+.form-group label {
+  font-weight: 700;
+  color: #4a5d45;
+  font-size: 15px;
+  margin-left: 5px;
+  text-align: right; 
+}
+
+/* שדות קלט */
+.auth-form input {
+  padding: 14px 18px;
+  border: 1px solid #e0eadd;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #fdfdfd;
+  font-family: 'Assistant', sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+  text-align: right; 
+}
+
+.auth-form input:focus {
+  border-color: #66bb6a;
+  box-shadow: 0 0 0 4px rgba(102, 187, 106, 0.1);
+  background-color: #ffffff;
+}
+
+/* כפתור כניסה */
+.submit-button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+  transition: all 0.3s ease;
+  font-family: 'Assistant', sans-serif;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(46, 125, 50, 0.3);
+  filter: brightness(1.1);
+}
+
+/* קישורים ותחתית */
+.additional-links {
+  margin-top: 25px;
+}
+
+.subtle-link {
+  background: none;
+  border: none;
+  color: #2e7d32;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  text-decoration: underline;
+  font-family: 'Assistant', sans-serif;
+}
+
+.subtle-link:hover {
+  color: #1b5e20;
+}
+
+/* הודעת שגיאה */
+.error-message {
+  margin-top: 20px;
+  color: #d32f2f;
+  font-weight: 600;
+  background: #ffebee;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* אנימציית כניסה */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* התאמה למובייל */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 35px 20px;
+  }
+  .auth-title {
+    font-size: 1.8rem;
+  }
+}

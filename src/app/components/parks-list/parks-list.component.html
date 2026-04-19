@@ -37,7 +37,7 @@
       @if (parksList && parksList.length > 0) {
         <section class="parks-grid">
           @for (park of parksList; track $index) {
-            <article class="park-card">
+            <article class="park-card" (click)="showDetails(park)">
               <!-- תמונה -->
               <div class="park-image-wrapper">
                 <img
@@ -70,42 +70,14 @@
                     [src]="'data:image/jpeg;base64,' + park.userDTO.imageBase64"
                   />
                   <div class="uploader-details">
-                    <span class="label">Uploaded by </span><br />
+                    <span class="label">שותף ע"י </span><br />
                     <span class="uploader-name">{{ park.userDTO?.name }}</span>
                   </div>
                 </div>
 
                 <button class="details-button" (click)="showDetails(park)">
-                  View All Reports
+                  כל הדיווחים על הפארק
                 </button>
-
-                <!-- <div class="favorites-wrapper">
-                  <button
-                    class="details-button secondary"
-                    
-                    (click)="addToFavorites(park)"
-                  >
-                    ❤️ הוספה למועדפים שלי
-                  </button>
-                </div> -->
-
-                <!-- --------------------------- -->
-
-                <!-- @if (isSelectedInList(park)) {
-                  
-                  <div>הפריט כבר קיים ברשימה!</div>
-                } @else {
-
-                  <div class="favorites-wrapper">
-                  <button
-                    class="details-button secondary"
-                    
-                    (click)="addToFavorites(park)"
-                  >
-                    ❤️ הוספה למועדפים שלי
-                  </button>
-                </div>
-                } -->
               </div>
             </article>
           }
@@ -119,7 +91,4 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>Park Share Vibe © 2024. All rights reserved.</p>
-  </footer>
 </div>

@@ -2,7 +2,7 @@
 
 
 
-<form (ngSubmit)="onSubmit()">
+<!-- <form (ngSubmit)="onSubmit()">
   <div>
     <label for="name">name:</label>
     <input 
@@ -95,9 +95,9 @@
       <option value="">select status:</option>
       <option [value]="p.single">single</option>
       <option [value]="p.married">married</option>
-      <!-- <option [value]="PersonalStatus.Divorced">גרוש/ה</option>
+      <option [value]="PersonalStatus.Divorced">גרוש/ה</option>
       <option [value]="PersonalStatus.Widowed">אלמן/ה</option> -->
-    </select>
+    <!-- </select>
   </div>
 
   <div>
@@ -113,4 +113,140 @@
   <div>
     <button type="submit">sign up</button>
   </div>
-</form>
+</form> -->
+
+
+<div class="auth-container">
+  <div class="auth-card">
+    <h2 class="auth-title">הרשמה</h2>
+
+    <form (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="form-grid">
+        <!-- name -->
+        <div class="form-group">
+          <label for="name">:שם</label>
+          <input 
+            type="text" 
+            id="name"
+            [(ngModel)]="newUser.name" 
+            name="name" 
+            required
+            placeholder="שם מלא"
+          />
+        </div>
+
+        <!-- email -->
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input 
+            type="email" 
+            id="email"
+            [(ngModel)]="newUser.email" 
+            name="email" 
+            required
+            placeholder="example@mail.com"
+          />
+        </div>
+
+        <!-- password -->
+        <div class="form-group">
+          <label for="password">:סיסמא</label>
+          <input 
+            type="password" 
+            id="password"
+            [(ngModel)]="newUser.password" 
+            name="password" 
+            required
+            placeholder="••••••••"
+          />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">:אימות סיסמא</label>
+          <input 
+            type="password" 
+            id="confirmPassword"
+            [(ngModel)]="newUser.confirmPassword" 
+            name="confirmPassword" 
+            required
+            placeholder="••••••••"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">:מספר טלפון</label>
+          <input 
+            type="tel" 
+            id="phone"
+            [(ngModel)]="newUser.phone" 
+            name="phone" 
+            required
+            placeholder="05X-XXXXXXX"
+          />
+        </div>
+
+        <!-- date of birth -->
+        <div class="form-group">
+          <label for="birthDate">:תאריך לידה</label>
+          <input 
+            type="date" 
+            id="birthDate"
+            [(ngModel)]="newUser.birthDate" 
+            name="birthDate" 
+            required
+          />
+        </div>
+
+        <!-- city -->
+        <div class="form-group">
+          <label for="city">:עיר</label>
+          <select 
+            id="city"
+            [(ngModel)]="newUser.city.id" 
+            name="cityId"
+            required
+          >
+            <option value="" disabled selected>...בחר עיר</option>
+            <option *ngFor="let city of citiesList" [value]="city.id">
+              {{ city.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- personal status -->
+        <div class="form-group">
+          <label for="personalStatus">:סטטוס אישי</label>
+          <select 
+            id="personalStatus"
+            [(ngModel)]="newUser.personalStatus" 
+            name="personalStatus"
+            required
+          >
+            <option value="" disabled selected>...בחר סטטוס</option>
+            <option [value]="p.single">רווק/ה</option>
+            <option [value]="p.married">נשוי/ה</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- profile picture - full width -->
+      <div class="form-group full-width">
+        <label for="picture">:תמונת פרופיל</label>
+        <input 
+          type="file" 
+          id="picture"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          class="file-input"
+        />
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="submit-button">הרשמה</button>
+      </div>
+    </form>
+
+    <div class="additional-links">
+        <a routerLink="/sign-in" class="subtle-link">כבר יש לך חשבון? התחבר</a>
+    </div>
+  </div>
+</div>

@@ -12,7 +12,7 @@
       @if (favorites && favorites.length > 0) {
         <section class="parks-grid">
           @for (park of favorites; track park.id) {
-            <article class="park-card">
+            <article class="park-card" (click)="showDetails(park)">
               <div class="park-image-wrapper">
                 <img
                   [src]="'data:image/jpeg;base64,' + park.imageBase64"
@@ -40,7 +40,7 @@
                     [src]="'data:image/jpeg;base64,' + park.userDTO.imageBase64"
                   />
                   <div class="uploader-details">
-                    <span class="label">פורסם על-ידי </span><br />
+                    <span class="label">שותף ע"י </span><br />
                     <span class="uploader-name">{{ park.userDTO?.name }}</span>
                   </div>
                 </div>
@@ -60,7 +60,9 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>Park Share Vibe © 2024. All rights reserved.</p>
-  </footer>
+  <!-- <footer class="site-footer">
+    <p>נהניתם בפארק? שתפו את כולם ב-See Park!
+כל הדיווחים, כל הפארקים, כל הארץ – בחינם ובשיתוף הציבור.
+נוסד בשנת 2025 לטובת המטיילים והמשפחות בישראל.</p>
+  </footer> -->
 </div>

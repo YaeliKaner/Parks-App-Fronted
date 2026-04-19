@@ -1,219 +1,237 @@
 
-body {
-    background: linear-gradient(180deg, #e9ffef, #d2ffd9);
-    /* font-family: 'Segoe UI', sans-serif; */
-    font-family: 'Assistant', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #054c2b;
-    direction: rtl;
-}
 
-/* CONTAINER */
+/* ------------------------------------ */
 .add-report-container {
-    padding: 3rem 1rem;
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(47, 79, 47, 0.4); /* גוון ירוק כהה שקוף */
+  backdrop-filter: blur(12px); /* טשטוש רקע יוקרתי */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  font-family: 'Assistant', sans-serif;
+  direction: rtl;
 }
 
-/* CARD – MATCH THE PARK DESIGN */
+/* כרטיס המודאל */
 .card {
-    background: white;
-    border-radius: 20px;
-    padding: 2.5rem;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    border: 1px solid #d7ffe5;
-    animation: fadeIn 0.5s ease;
+  background: #ffffff;
+  width: 100%;
+  max-width: 550px;
+  padding: 40px;
+  border-radius: 35px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  animation: modalAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* TITLE */
+/* כותרת המודאל */
 .card h2 {
-    text-align: center;
-    color: #066b38;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px #cfffdd;
+  font-size: 26px;
+  font-weight: 800;
+  color: #2f4f2f;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
 }
 
-/* LABELS */
-.label-required {
-    font-weight: bold;
-    font-size: 1.15rem;
-    color: #044b28;
-    margin-bottom: 0.5rem;
-    text-align: right;
-    direction: rtl;
-    align-self: flex-start;
-}
-
-.required { 
-  color: #e74c3c; 
-}
-
-/* RATING */
+/* סקשן הדירוג */
 .rating-section {
-    text-align: center;
-    margin: 2rem 0;
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #f9fdf9;
+  border-radius: 20px;
+  border: 1px solid #eef6ee;
 }
 
+.label-required {
+  display: block;
+  font-weight: 700;
+  color: #4a5d45;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.required {
+  color: #d32f2f;
+  margin-right: 4px;
+}
+
+/* כוכבים */
 .stars {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  direction: ltr; /* כוכבים משמאל לימין לנוחות לחיצה */
 }
 
 .star {
-    font-size: 48px;
-    color: #b7e8c7;
-    cursor: pointer;
-    transition: 0.25s ease;
-}
-
-.star.filled {
-    color: #34a853;
-    text-shadow: 0 0 12px #a3ffbb;
-    transform: scale(1.12);
+  font-size: 35px;
+  cursor: pointer;
+  color: #e0eadd;
+  transition: all 0.2s ease;
 }
 
 .star:hover {
-    transform: scale(1.25);
+  transform: scale(1.2);
+}
+
+.star.filled {
+  color: #ffc107; /* זהב קלאסי לכוכבים */
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
 }
 
 .rating-text {
-    font-size: 1.2rem;
-    color: #0f5a2a;
+  font-size: 15px;
+  color: #5a7a5a;
+  min-height: 22px;
 }
 
-/* TEXTAREA */
+.hint {
+  font-size: 14px;
+  color: #9db29d;
+  font-style: italic;
+}
+
+/* קבוצות טופס */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 700;
+  color: #4a5d45;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+/* שדה טקסט חופשי */
 .textarea {
-    width: 100%;
-    padding: 16px;
-    border: 2px solid #c6f1d5;
-    border-radius: 16px;
-    background: #f6fff8;
-    font-size: 1rem;
-    transition: 0.3s;
-    color: #054c2b;
-    direction: rtl;
-    font-family: 'Assistant', sans-serif;
+  width: 100%;
+  padding: 15px;
+  border-radius: 18px;
+  border: 1.5px solid #e0eadd;
+  background-color: #fdfdfd;
+  font-size: 16px;
+  font-family: 'Assistant', sans-serif;
+  transition: all 0.3s ease;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .textarea:focus {
-    outline: none;
-    border-color: #2e8b57;
-    box-shadow: 0 0 0 4px rgba(46,139,87,0.2);
+  border-color: #66bb6a;
+  box-shadow: 0 0 0 4px rgba(102, 187, 106, 0.1);
+  background-color: #fff;
 }
 
 .char-count {
-    text-align: left;
-    font-size: 0.9rem;
-    color: #0f5a2a99;
-    margin-top: 6px;
+  text-align: left;
+  font-size: 12px;
+  color: #9db29d;
+  margin-top: 5px;
 }
 
-/* IMAGE UPLOAD */
+/* העלאת קובץ */
 input[type="file"] {
-    padding: 14px;
-    background: #f6fff8;
-    border: 2px dashed #8bd8a4;
-    border-radius: 16px;
-    width: 100%;
-    cursor: pointer;
-    transition: 0.3s;
+  background: #f1f8f1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px dashed #bcd9bc;
+  cursor: pointer;
+  font-family: 'Assistant', sans-serif;
 }
 
-input[type="file"]:hover {
-    background: #ecfff1;
-    border-color: #2e8b57;
-}
-
-/* BUTTONS AREA */
+/* כפתורים */
 .actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
 }
 
-/* CANCEL BUTTON */
-.btn-cancel {
-    flex: 1;
-    padding: 15px;
-    background: #ecf0f1;
-    border-radius: 12px;
-    font-weight: bold;
-    color: #5a6a6f;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    font-family: 'Assistant', sans-serif;
-}
-
-.btn-cancel:hover {
-    background: #d5dbdb;
-}
-
-/* SUBMIT BUTTON */
 .btn-submit {
-    flex: 1;
-    padding: 15px;
-    background: #34a853;
-    color: white;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    font-family: 'Assistant', sans-serif;
+  flex: 2;
+  padding: 16px;
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
 }
 
 .btn-submit:hover:not(:disabled) {
-    background: #1f7a38;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(46,139,87,0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(46, 125, 50, 0.3);
+  filter: brightness(1.1);
 }
 
 .btn-submit:disabled {
-    background: #9ddfb8;
-    cursor: not-allowed;
-    
+  background: #c8d6c8;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
-/* IMAGE PREVIEW */
-.image-preview {
-    position: relative;
-    display: block;
-    margin-top: 1rem;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+.btn-cancel {
+  flex: 1;
+  padding: 16px;
+  background: #ffffff;
+  color: #666;
+  border: 1.5px solid #e0eadd;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.image-preview img {
+.btn-cancel:hover {
+  background: #f9f9f9;
+  border-color: #ccc;
+}
+
+/* אנימציה לכניסת המודאל */
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* התאמה למובייל */
+@media (max-width: 500px) {
+  .card {
+    padding: 25px 20px;
+  }
+  
+  .actions {
+    flex-direction: column-reverse;
+  }
+  
+  .btn-submit, .btn-cancel {
     width: 100%;
-    border-radius: 16px;
-}
+  }
 
-.remove-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #e74c3c;
-    border: none;
-    color: white;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  .star {
+    font-size: 28px;
+  }
 }

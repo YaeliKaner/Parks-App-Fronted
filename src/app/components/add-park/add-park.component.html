@@ -2,7 +2,7 @@
 <div class="add-park-form">
   @if (citiesList) {
     <form #AddForm="ngForm">
-      <label class="form-label">:שם הפארק</label>
+      <label class="form-label">שם הפארק:</label>
       <input
         class="form-input"
         type="text"
@@ -17,7 +17,7 @@
         }
       }
 
-      <label class="form-label">:תיאור קצר</label>
+      <label class="form-label">תיאור קצר:</label>
       <input
         class="form-input"
         type="text"
@@ -32,7 +32,7 @@
         }
       }
 
-      <label class="form-label">:כתובת</label>
+      <label class="form-label">כתובת:</label>
       <input
         class="form-input"
         type="text"
@@ -47,7 +47,7 @@
         }
       }
 
-      <label class="form-label">:עיר</label>
+      <label class="form-label">עיר:</label>
       <div class="city-wrapper">
         <input
           class="form-input"
@@ -73,7 +73,7 @@
         }
       </div>
 
-      <label class="form-label">:שיתוף תמונה</label>
+      <label class="form-label">שיתוף תמונה:</label>
       <input
         class="form-file"
         type="file"
@@ -81,13 +81,17 @@
         (change)="onFileSelected($event)"
         required
       />
-
+      @if (AddressId.invalid && AddForm.submitted) {
+        @if (AddressId.errors?.["required"]) {
+          <span class="error-msg">זהו שדה חובה</span>
+        }
+      }
       <button
         class="submit-button primary-action"
         (click)="addPark()"
-        [disabled]="AddForm.invalid"
+        [disabled]="AddForm.invalid || !selectedFile"
       >
-        Add Garden
+        שיתוף הפארק
       </button>
     </form>
   }
