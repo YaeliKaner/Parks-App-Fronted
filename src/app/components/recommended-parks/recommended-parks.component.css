@@ -1,6 +1,3 @@
-/* ===========================
-   GLOBAL RESET
-=========================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,9 +24,6 @@ font-family: 'Assistant', sans-serif;
     linear-gradient(#f9fcf9, #eef6ee);
 }
 
-/* ===========================
-   HEADER + LOGO + NAV
-=========================== */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -68,7 +62,6 @@ font-family: 'Assistant', sans-serif;
   padding: 6px 10px;
 }
 
-/* underline animation */
 .nav-button::after {
   content: "";
   position: absolute;
@@ -93,9 +86,7 @@ font-family: 'Assistant', sans-serif;
   object-fit: cover;
 }
 
-/* ===========================
-   TITLES / SEARCH
-=========================== */
+
 .top-section {
   padding: 30px 0 10px;
   text-align: center;
@@ -108,9 +99,7 @@ font-family: 'Assistant', sans-serif;
   margin-bottom: 14px;
 }
 
-/* ===========================
-   PAGE LAYOUT
-=========================== */
+
 .page-layout {
   display: flex;
   gap: 28px;
@@ -137,9 +126,7 @@ font-family: 'Assistant', sans-serif;
   min-width: 0;
 }
 
-/* ===========================
-   PARK CARDS
-=========================== */
+
 .parks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -272,9 +259,6 @@ font-family: 'Assistant', sans-serif;
   margin-top: 4px;
 }
 
-/* ===========================
-   FOOTER
-=========================== */
 .site-footer {
   text-align: center;
   padding: 18px;

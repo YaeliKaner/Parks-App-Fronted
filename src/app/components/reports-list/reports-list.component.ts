@@ -17,12 +17,10 @@ export class ReportsListComponent {
   constructor(
     private router: Router,
     private _reportsService: ReportsService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
-
-
     this._reportsService.getReportsByParkId(this.parkId).subscribe({
       next: (res) => {
         this.reportsList = res;
@@ -32,6 +30,4 @@ export class ReportsListComponent {
       },
     });
   }
-
-
 }

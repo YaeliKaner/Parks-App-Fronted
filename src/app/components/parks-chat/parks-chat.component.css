@@ -1,6 +1,3 @@
-/* ===========================
-   GLOBAL RESET
-=========================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,11 +5,19 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   direction: rtl;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.7),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(200, 220, 200, 0.35),
+      transparent 70%
+    ),
     linear-gradient(#f9fcf9, #eef6ee);
   color: #2f4f2f;
 }
@@ -24,11 +29,6 @@ body {
   padding-bottom: 40px;
 }
 
-
-
-/* ===========================
-   HEADER
-=========================== */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -76,7 +76,9 @@ body {
   width: 0;
   height: 2px;
   background: #66bb6a;
-  transition: width 0.25s ease, left 0.25s ease;
+  transition:
+    width 0.25s ease,
+    left 0.25s ease;
 }
 
 .nav-button:hover::after {
@@ -92,11 +94,6 @@ body {
   object-fit: cover;
 }
 
-
-
-/* ===========================
-   TITLE + SEARCH
-=========================== */
 .top-section {
   padding: 30px 0 10px;
   text-align: center;
@@ -126,53 +123,39 @@ body {
   outline: none;
   font-size: 15px;
   transition: 0.25s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .search-container input:focus {
   border-color: #4caf50;
-  box-shadow: 0 0 0 3px rgba(76,175,80,0.2);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
 }
 
-
-
-/* ===========================
-   PAGE LAYOUT — CHAT + GRID
-=========================== */
 .page-layout {
   display: flex;
   gap: 28px;
   padding: 10px 40px 40px;
 }
 
-/* === צ'אט שלא זז בגלילה === */
 .chat-sidebar {
   width: 320px;
-  position: static !important;   /* הכי חשוב */
+  position: static !important;
   top: 110px;
-  /* height: auto; */
   flex-shrink: 0;
 }
 
-/* === קופסת הצ'אט — נמוכה + לא זזה === */
 .chat-wrapper {
   display: flex;
   flex-direction: column;
-  height: 300px; /* ⬅ רוצה יותר? תשני ל־460px */
+  height: 300px;
   background: #ffffff;
   border-radius: 16px;
   border: 1px solid #dfe7df;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   font-family: "Inter", sans-serif;
   color: #2f4f2f;
 }
-
-
-
-/* ===========================
-   CHAT INTERNAL PARTS
-=========================== */
 
 .chat-header {
   padding: 12px 14px;
@@ -218,7 +201,6 @@ body {
   background: #f3f6f3;
   border: 1px solid #e0e6e0;
   direction: rtl;
-  
 }
 
 .input-area {
@@ -259,72 +241,6 @@ body {
   align-self: center;
 }
 
-
-
-/* ===========================
-   PARK GRID
-=========================== */
-/* .content-area {
-  flex: 1;
-}
-
-.parks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 26px;
-} */
-
-
-
-/* ===========================
-   PARK CARD
-=========================== */
-/* .park-card {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  overflow: hidden;
-  transition: 0.25s ease;
-}
-
-.park-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.18);
-}
-
-.park-image-wrapper {
-  height: 200px;
-  overflow: hidden;
-}
-
-.park-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.park-info {
-  padding: 16px 20px;
-}
-
-.park-title {
-  font-size: 26px;
-  font-weight: 800;
-  color: #2f4f2f;
-  margin-bottom: 6px;
-}
-
-.park-city {
-  color: #4f6b4f;
-  margin-bottom: 14px;
-  font-size: 15px;
-}
-
-
-
-/* ===========================
-   UPLOADER DETAILS
-=========================== */
 .uploader {
   display: flex;
   align-items: center;
@@ -345,13 +261,6 @@ body {
   color: #2f5d2f;
 }
 
-
-
-/* ===========================
-   CARD BUTTONS
-=========================== */
-
-/* כפתור ראשון — View Reports */
 .details-button {
   background: #2e7d32;
   color: white;
@@ -369,26 +278,19 @@ body {
   background: #256528;
   transform: translateY(-2px);
 }
-
-/* כפתור שני — קטן יותר */
 .details-button.secondary {
   background: white;
   color: #c64242;
   border: 2px solid #e8bcbc;
-  width: 60%;                /* ⬅⬅⬅ קטן יותר */
-  margin: 0 auto;            /* ⬅⬅⬅ ממורכז */
-  display: block;            /* חובה למרכז */
+  width: 60%;
+  margin: 0 auto;
+  display: block;
 }
 
 .details-button.secondary:hover {
   background: #ffe8e8;
-} */
+}
 
-
-
-/* ===========================
-   FOOTER
-=========================== */
 .site-footer {
   text-align: center;
   padding: 18px;
@@ -398,11 +300,6 @@ body {
   margin-top: auto;
 }
 
-
-
-/* ===========================
-   RESPONSIVE
-=========================== */
 @media (max-width: 1100px) {
   .page-layout {
     flex-direction: column-reverse;
@@ -413,35 +310,17 @@ body {
   }
 }
 
-
 .chat-sidebar {
   position: static !important;
   top: auto !important;
-  height: 420px; /* או הגובה שאת רוצה */
+  height: 420px;
 }
 
 .page-layout {
   align-items: flex-start !important;
 }
 
-
 .chat-sidebar {
-  position: fixed !important;
-  left: 20px;        /* מרחק צדדי */
-  top: 110px;        /* מתחת להדר */
-  width: 320px;      /* רוחב הצ'אט */
-  height: 420px;     /* גובה קבוע */
-  z-index: 9999;     /* שיהיה מעל הכל */
-}
-
-.page-layout {
-  padding-left: 360px !important; /* מקום ריק בשביל הצ'אט */
-}
-
-/* טו אדר */
-
-/* שמירה על המבנה שביקשת */
-/* .chat-sidebar {
   position: fixed !important;
   left: 20px;
   top: 110px;
@@ -450,65 +329,37 @@ body {
   z-index: 9999;
 }
 
-.chat-wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: #ffffff;
-  border-radius: 20px; 
-  border: 1px solid #e0e6e0;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-  overflow: hidden;
+.page-layout {
+  padding-left: 360px !important;
 }
-
-.chat-box {
-  flex: 1;
-  padding: 15px;
-  background-color: #f9fbf9;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  scroll-behavior: smooth;
-} */
-
 
 .chat-sidebar {
   position: sticky;
 
   bottom: 7vh;
-    top: 110px;
-  /* align-self: flex-start; */
+  top: 110px;
   width: 320px;
 
-  height: 300px;               /* או אפילו תורידי את השורה הזו */
-  min-height: 220px;         
-  max-height: 300px;           
-  
-  /* חשוב מאוד להוסיף: */
-  overflow-y: auto;           /* אם התוכן בפנים יגדל — יופיע סקרול */
-  margin-bottom: 50px;  
+  height: 300px;
+  min-height: 220px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 50px;
 }
 
-/* ותוודאי שה-chat-wrapper בפנים לא "בורח" */
 .chat-wrapper {
-  height: 100%;               /* יתפוס את כל הגובה שה-sidebar נתן לו */
-  max-height: 75vh;           /* כפול הגבלה */
+  height: 100%;
+  max-height: 75vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;           /* מונע "דליפה" של תוכן החוצה */
-  
+  overflow: hidden;
 }
 
 .chat-box {
-  flex: 1 1 auto;             /* יגדל ויתכווץ, אבל יישאר בתוך הגבולות */
+  flex: 1 1 auto;
   overflow-y: auto;
-  margin-bottom: 50px;        /* רווח קטן מתחת */
+  margin-bottom: 50px;
 }
-
-
-
-
 
 .chat-header {
   padding: 14px 16px;
@@ -526,7 +377,7 @@ body {
 .bot-avatar {
   width: 35px;
   height: 35px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -534,9 +385,6 @@ body {
   font-size: 20px;
 }
 
-
-
-/* עיצוב בועות "כמו באתר אמיתי" */
 .msg {
   max-width: 85%;
   padding: 10px 14px;
@@ -547,8 +395,14 @@ body {
 }
 
 @keyframes messageSlide {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .msg.user {
@@ -565,10 +419,9 @@ body {
   color: #2f4f2f;
   border: 1px solid #e2e8e2;
   border-radius: 18px 18px 18px 2px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
-/* אנימציית הנקודות (Thinking) */
 .loading-bubble {
   padding: 12px 16px !important;
 }
@@ -589,15 +442,25 @@ body {
   animation: blink 1.4s infinite cubic-bezier(0.2, 0.2, 0.5, 0.8);
 }
 
-.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes blink {
-  0%, 100% { transform: translateY(0); opacity: 0.4; }
-  50% { transform: translateY(-4px); opacity: 1; }
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
 }
 
-/* אזור קלט משודרג */
+@keyframes blink {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
 .input-area {
   padding: 12px;
   background: white;
@@ -645,7 +508,6 @@ body {
   padding-bottom: 5px;
 }
 
-/* עיצוב סקרולר עדין */
 .chat-box::-webkit-scrollbar {
   width: 5px;
 }

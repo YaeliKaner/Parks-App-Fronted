@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
   styleUrl: './cities.component.css'
 })
 export class CitiesComponent {
-
-
-  
-
-
-
 }

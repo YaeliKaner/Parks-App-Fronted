@@ -66,8 +66,6 @@ export class AddParkComponent {
         this.citiesList = res;
         this.filteredCitiesList = res;
         console.log(res);
-        // this.filteredCities = res;
-        // this.citiesList = res;
       },
       error: (err) => {
         console.log(err);

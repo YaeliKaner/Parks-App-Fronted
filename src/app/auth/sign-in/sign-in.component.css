@@ -1,77 +1,32 @@
 /* --- 1. Global Setup (Colors and Font) --- */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
 :root {
-    /* צבעים חיים: ירוק ליים וטורקיז */
-    --primary-color: #64dd17; 
-    --accent-color: #00bcd4; 
-    --background-light: #f4f6f8; 
-    --card-background: #ffffff; 
-    --text-dark: #263238;
-    --text-light: #607d8b;
-    --error-red: #d32f2f; 
-    --transition-smooth: 0.3s ease-out; 
+  --primary-color: #64dd17;
+  --accent-color: #00bcd4;
+  --background-light: #f4f6f8;
+  --card-background: #ffffff;
+  --text-dark: #263238;
+  --text-light: #607d8b;
+  --error-red: #d32f2f;
+  --transition-smooth: 0.3s ease-out;
 }
 
-/* הגדרת אנימציית הבהוב קלה להודעת השגיאה */
 @keyframes error-pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0px rgba(211, 47, 47, 0.4); }
-    70% { transform: scale(1.01); box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0px rgba(211, 47, 47, 0); }
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0px rgba(211, 47, 47, 0.4);
+  }
+  70% {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 10px rgba(211, 47, 47, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0px rgba(211, 47, 47, 0);
+  }
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif; 
-    background-color: var(--background-light);
-    color: var(--text-dark);
-    line-height: 1.6;
-    direction: ltr; 
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-
-/* --- 2. Container and Header --- */
-
-.auth-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.auth-header {
-    margin-bottom: 25px;
-}
-
-.logo {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: var(--primary-color);
-    letter-spacing: 1px;
-}
-
-.logo-accent {
-    color: var(--accent-color); 
-}
-
-/* --- 3. Sign In Card (הכרטיס המרכזי עם צל משמעותי מאוד) --- */
-
-
-/* ===========================
-   GLOBAL RESET
-=========================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -79,10 +34,59 @@ body {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  direction: ltr;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.auth-header {
+  margin-bottom: 25px;
+}
+
+.logo {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+.logo-accent {
+  color: var(--accent-color);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.7),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(200, 220, 200, 0.35),
+      transparent 70%
+    ),
     linear-gradient(#f9fcf9, #eef6ee);
   color: #2f4f2f;
 }
@@ -103,7 +107,6 @@ body {
   border-bottom: 1px solid #dcdcdc;
 }
 
-/* לוגו תמונה */
 .site-logo {
   height: 48px;
   object-fit: contain;
@@ -122,7 +125,6 @@ body {
   gap: 22px;
 }
 
-
 .nav-button {
   position: relative;
   background: none;
@@ -133,7 +135,6 @@ body {
   cursor: pointer;
   padding: 6px 10px;
 }
-
 
 .nav-button::after {
   content: "";
@@ -156,9 +157,6 @@ body {
   width: 100%;
 }
 
-
-
-
 .user-image {
   width: 40px;
   height: 40px;
@@ -168,131 +166,122 @@ body {
 }
 
 .sign-in-card {
-    background-color: var(--card-background);
-    padding: 40px;
-    border-radius: 15px; 
-    max-width: 420px; 
-    width: 100%;
-    text-align: center;
-    border-top: 6px solid var(--primary-color); 
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+  background-color: var(--card-background);
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  border-top: 6px solid var(--primary-color);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
-    box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.4), 
-        0 0 0 5px rgba(100, 221, 23, 0.1); 
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 5px rgba(100, 221, 23, 0.1);
 
-
-    transform: perspective(1000px) rotateX(1deg) translateY(-3px);
+  transform: perspective(1000px) rotateX(1deg) translateY(-3px);
 }
 
 .sign-in-card:hover {
-
-    transform: perspective(1000px) rotateX(0deg) translateY(-10px); 
-    box-shadow: 
-        0 30px 80px rgba(0, 0, 0, 0.6), 
-        0 0 0 8px rgba(100, 221, 23, 0.2); 
+  transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 8px rgba(100, 221, 23, 0.2);
 }
 
 .sign-in-card h2 {
-    font-size: 2.2em; 
-    color: var(--text-dark); 
-    margin-bottom: 30px;
-    font-weight: 700;
-    position: relative;
-    padding-bottom: 10px;
+  font-size: 2.2em;
+  color: var(--text-dark);
+  margin-bottom: 30px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
 }
 
 .sign-in-card h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px; 
-    background-color: var(--primary-color);
-    margin: 10px auto 0;
-    border-radius: 2px;
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
-
-
 .sign-in-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    text-align: right; 
-    direction: ltr;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: right;
+  direction: ltr;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    direction: ltr;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  direction: ltr;
 }
 
 .form-group label {
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 1em;
-    direction: ltr;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 1em;
+  direction: ltr;
 }
 
 .sign-in-form input {
-    padding: 14px 18px; 
-    border: 1px solid #e0e0e0;
-    border-radius: 10px; 
-    font-size: 1em;
-    transition: all var(--transition-smooth);
-    width: 100%;
-    color: var(--text-dark);
-    background-color: #fcfcfc;
-    text-align: right;
-    direction: ltr;
+  padding: 14px 18px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: all var(--transition-smooth);
+  width: 100%;
+  color: var(--text-dark);
+  background-color: #fcfcfc;
+  text-align: right;
+  direction: ltr;
 }
 
 .sign-in-form input:focus {
-    border-color: var(--accent-color); 
-    outline: none;
-    box-shadow: 0 0 10px rgba(0, 188, 212, 0.4); 
-    background-color: var(--card-background);
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
+  background-color: var(--card-background);
 }
 
-/* --- 5. Submit Button (דינמי) --- */
-
 .submit-button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 1.2em; 
-    cursor: pointer;}
+  background-color: var(--primary-color);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.2em;
+  cursor: pointer;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-    .auth-container {
+.auth-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.7),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(200, 220, 200, 0.35),
+      transparent 70%
+    ),
     linear-gradient(#f9fcf9, #eef6ee);
-  font-family: 'Assistant', sans-serif;
+  font-family: "Assistant", sans-serif;
 }
 
-/* כרטיס ההתחברות - צר יותר מההרשמה למראה נקי */
 .auth-card {
   background: #ffffff;
   padding: 45px;
@@ -301,7 +290,7 @@ body {
   width: 100%;
   text-align: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  border-top: 6px solid #2e7d32; /* הצבע הירוק של האפליקציה */
+  border-top: 6px solid #2e7d32;
   animation: fadeIn 0.6s ease-out;
 }
 
@@ -316,14 +305,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  text-align: right; 
+  text-align: right;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-align: right; 
+  text-align: right;
 }
 
 .form-group label {
@@ -331,20 +320,19 @@ body {
   color: #4a5d45;
   font-size: 15px;
   margin-left: 5px;
-  text-align: right; 
+  text-align: right;
 }
 
-/* שדות קלט */
 .auth-form input {
   padding: 14px 18px;
   border: 1px solid #e0eadd;
   border-radius: 12px;
   font-size: 16px;
   background-color: #fdfdfd;
-  font-family: 'Assistant', sans-serif;
+  font-family: "Assistant", sans-serif;
   transition: all 0.3s ease;
   outline: none;
-  text-align: right; 
+  text-align: right;
 }
 
 .auth-form input:focus {
@@ -353,7 +341,6 @@ body {
   background-color: #ffffff;
 }
 
-/* כפתור כניסה */
 .submit-button {
   width: 100%;
   padding: 16px;
@@ -367,7 +354,7 @@ body {
   margin-top: 10px;
   box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
   transition: all 0.3s ease;
-  font-family: 'Assistant', sans-serif;
+  font-family: "Assistant", sans-serif;
 }
 
 .submit-button:hover {
@@ -376,7 +363,6 @@ body {
   filter: brightness(1.1);
 }
 
-/* קישורים ותחתית */
 .additional-links {
   margin-top: 25px;
 }
@@ -389,14 +375,13 @@ body {
   cursor: pointer;
   font-size: 15px;
   text-decoration: underline;
-  font-family: 'Assistant', sans-serif;
+  font-family: "Assistant", sans-serif;
 }
 
 .subtle-link:hover {
   color: #1b5e20;
 }
 
-/* הודעת שגיאה */
 .error-message {
   margin-top: 20px;
   color: #d32f2f;
@@ -407,13 +392,17 @@ body {
   font-size: 14px;
 }
 
-/* אנימציית כניסה */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* התאמה למובייל */
 @media (max-width: 480px) {
   .auth-card {
     padding: 35px 20px;

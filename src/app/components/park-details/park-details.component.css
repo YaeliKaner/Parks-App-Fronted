@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
 
 body {
   font-family: 'Assistant', sans-serif;
 }
 
-/* קונטיינר - רקע מקורי */
 .park-viewer-container {
   min-height: 100vh;
   display: flex;
@@ -14,78 +13,6 @@ body {
     radial-gradient(circle at bottom right, rgba(200, 220, 200, 0.35), transparent 70%),
     linear-gradient(#f9fcf9, #eef6ee);
 }
-
-/* =========================================
-   HEADER - עיצוב חדש ומודרני (Sticky & Glass)
-   ========================================= */
-/* .site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 40px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-}
-
-.site-logo {
-  height: 42px;
-  object-fit: contain;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-.site-logo:hover { transform: scale(1.05); }
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* כפתורי הניווט - סטייל "כפתורי פיל" מודרני */
-/* .nav-button {
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 700;
-  border: none;
-  background: transparent;
-  color: #444;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.nav-button:hover {
-  background: rgba(46, 125, 50, 0.05);
-  color: #2e7d32;
-}
-
-/* הדגשת כפתורים ספציפיים */
-/* .primary-action {
-  color: #2e7d32;
-  background: rgba(46, 125, 50, 0.08);
-}
-.recommended-button {
-  background: #fff8e1;
-  color: #f57f17;
-}
-.subtle-action {
-  font-weight: 400;
-  color: #777;
-}
-
-.user-image {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 2px solid #2e7d32;
-  object-fit: cover;
-}   */
 
 .site-header {
   display: flex;
@@ -114,7 +41,6 @@ body {
   align-items: center;
   gap: 22px;
 }
-
 
 .nav-button {
   position: relative;
@@ -149,9 +75,6 @@ body {
   width: 100%;
 }
 
-
-
-
 .user-image {
   width: 40px;
   height: 40px;
@@ -160,16 +83,11 @@ body {
   object-fit: cover;
 }
 
-
 .top-section {
   padding: 30px 0 10px;
   text-align: center;
 }
 
-
-/* =========================================
-   BODY - העיצוב המקורי (3 עמודות, Flexbox)
-   ========================================= */
 .page-layout-three-columns {
   display: flex;
   gap: 32px;
@@ -183,7 +101,7 @@ body {
   width: 340px;
   flex-shrink: 0;
   position: sticky;
-  top: 100px; /* מתחת להדר */
+  top: 100px;
   height: calc(100vh - 140px);
   align-self: flex-start;
 }
@@ -215,7 +133,6 @@ body {
 }
 .park-main-image { width: 100%; height: auto; max-height: 620px; object-fit: cover; }
 
-/* כפתורי פעולה מקוריים */
 .navigate-btn {
   padding: 14px 34px;
   background: #2e7d32;
@@ -236,17 +153,15 @@ body {
 
 .googleMaps {
   margin-top: 5px;
-  width: 40px;      
+  width: 40px;
   height: 40px;
   object-fit: contain;
-  border-radius: 14px;   
+  border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
   cursor: pointer;
-  
 }
 
-/* כרטיסיות מקוריות (מזג אוויר ומאפיינים) */
 .weather-card {
   background: white;
   border-radius: 20px;
@@ -287,9 +202,6 @@ body {
   cursor: pointer;
 }
 
-/* =========================================
-   FOOTER - עיצוב חדש ונקי
-   ========================================= */
 .site-footer {
   padding: 30px;
   text-align: center;
@@ -299,13 +211,10 @@ body {
   background: white;
 }
 
-/* =========================================
-   מודאל קונפליקט (העץ) - מעוצב ומהודק
-   ========================================= */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(47, 79, 47, 0.4); 
+  background: rgba(47, 79, 47, 0.4);
   backdrop-filter: blur(10px);
   display: flex; justify-content: center; align-items: center;
   z-index: 9999;
@@ -342,51 +251,37 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
-
-
 .add-report-btn {
-  /* מידות וריווח */
   padding: 12px 28px;
   display: flex;
   align-items: center;
   gap: 10px;
   align-self: center;
-  
-  /* עיצוב רקע וצבע */
   background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
   color: #ffffff;
   border: none;
-  border-radius: 50px; /* צורת "פיל" מודרנית */
-  
-  /* טיפוגרפיה */
+  border-radius: 50px;
   font-family: 'Assistant', sans-serif;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.5px;
   cursor: pointer;
-  
-  /* צל ועומק */
   box-shadow: 0 4px 15px rgba(46, 125, 50, 0.25);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  
-  /* מונע בחירת טקסט */
   user-select: none;
 }
 
 .add-report-btn:hover {
-  /* הרמה של הכפתור במעבר עכבר */
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(46, 125, 50, 0.35);
   background: linear-gradient(135deg, #256628 0%, #2e7d32 100%);
 }
 
 .add-report-btn:active {
-  /* אפקט לחיצה */
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
 }
 
-/* בונוס: הוספת פלוס קטן לפני הטקסט דרך CSS */
 .add-report-btn::before {
   content: "+";
   font-size: 20px;
@@ -394,60 +289,36 @@ body {
   line-height: 1;
 }
 
-
-/* .reports-slider-container {
-  overflow: hidden;
-  width: 100%;
-  margin: 1rem 0;
-} */
-
-/* .slider-track {
-  display: flex;
-  animation: slide 10s linear infinite;
-  width: fit-content;
-  height: 100px;
-} */
-
-/* .slider-image {
-  height: 140px;
-  width: auto;
-  object-fit: cover;
-  margin-right: 12px;
-  border-radius: 8px;
-  flex-shrink: 0;
-} */
-
-
 .main-image-wrapper {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.18);
   margin: 0 auto 25px auto;
-  max-width: 900px;           /* מונע מתיחה מוגזמת במסכים רחבים */
-  aspect-ratio: 16 / 9;       /* שומר על פרופורציות נעימות */
-  background: #e8f0e8;        /* רקע זמני עד שהתמונה נטענת */
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  background: #e8f0e8;
 }
 
 .park-main-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;          /* חשוב! מונע מתיחה */
+  object-fit: cover;
   object-position: center;
   display: block;
   transition: transform 0.4s ease;
 }
 
 .main-image-wrapper:hover .park-main-image {
-  transform: scale(1.04);     /* אפקט זום קליל בהעברת עכבר – נראה יוקרתי */
+  transform: scale(1.04);
 }
 
 .slider-track img {
-  height: 200px;                 /* גובה נעים יותר – לא קטן מדי ולא גדול מדי */
+  height: 200px;
   width: 220px;
-  min-width: 220px;              /* מונע תמונות צרות מדי */
+  min-width: 220px;
   object-fit: cover;
   object-position: center;
-  margin-right: 16px;            /* רווח נעים בין תמונות */
+  margin-right: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -460,24 +331,19 @@ body {
   z-index: 2;
 }
 
-/* האטה/עצירה בהעברת עכבר – נוח יותר למשתמש */
 .running-images:hover .slider-track {
   animation-play-state: paused;
 }
 
-
-
 .running-images.no-animation .slider-track {
   animation: none !important;
-  justify-content: center;          /* ממקם את התמונה/ות במרכז */
-  /* flex-wrap: wrap;                  */
-  gap: 16px;                        /* רווח נחמד בין 1-2 תמונות */
+  justify-content: center;
+  gap: 16px;
 }
 
-/* אופציונלי: התאמות נוספות כשאין אנימציה */
 .running-images.no-animation .slider-image {
-  margin-right: 0;                  /* מבטל את המרווח הישן של הסליידר */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15); /* צל קצת יותר בולט */
+  margin-right: 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   transition: transform 0.25s ease;
 }
 
@@ -485,17 +351,15 @@ body {
   transform: scale(1.06);
 }
 
-/* אם יש רק תמונה אחת – נותן לה יותר נוכחות */
 .running-images.no-animation .slider-track:has(.slider-image:nth-child(1):last-child) {
   justify-content: center;
 }
 
 .running-images.no-animation .slider-track:has(.slider-image:nth-child(2):last-child) {
   justify-content: center;
-  max-width: 90%;                   /* מונע מתיחה מוגזמת */
+  max-width: 90%;
 }
 
-/* -------------------------------------- */
 .reports-slider-container {
   overflow: hidden;
   width: 100%;
@@ -512,20 +376,17 @@ body {
   display: flex;
   animation: slide 7s linear infinite;
   width: 600px;
-  gap: 16px;               /* רווח בין התמונות */
-  justify-content: flex-start;  /* ברירת מחדל */
+  gap: 16px;
+  justify-content: flex-start;
 }
 
-/* כשיש אנימציה (3+ תמונות) */
 .slider-track:not(:has(img:nth-child(3))) {
-  /* כלומר 1 או 2 תמונות */
   animation: none !important;
   justify-content: center !important;
-  flex-wrap: nowrap;       /* חשוב! מונע מעבר שורה */
-  gap: 24px;               /* רווח נעים יותר בין 2 תמונות */
+  flex-wrap: nowrap;
+  gap: 24px;
 }
 
-/* התמונות עצמן */
 .slider-image {
   height: 160px;
   width: auto;
@@ -541,9 +402,6 @@ body {
   transform: scale(1.06);
 }
 
-
-
-/* --------------------------------- */
 .features-sidebar {
   width: 380px;
   flex-shrink: 0;
@@ -551,7 +409,7 @@ body {
   top: 100px;
   height: fit-content;
   align-self: flex-start;
-  direction: rtl; /* עבודה מימין לשמאל */
+  direction: rtl;
 }
 
 .features-card {
@@ -563,7 +421,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* כותרת הסיידבר */
 .features-title {
   font-size: 22px;
   font-weight: 800;
@@ -586,18 +443,16 @@ body {
   border-radius: 10px;
 }
 
-/* רשימת המאפיינים */
 .features-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-height: 60vh; /* הוספת גלילה פנימית אם יש המון מאפיינים */
+  max-height: 60vh;
   overflow-y: auto;
-  padding-left: 8px; /* מרווח לגלילה */
+  padding-left: 8px;
   margin-bottom: 10px;
 }
 
-/* פריט מאפיין בודד */
 .feature-item {
   background: #f9fdf9;
   padding: 18px;
@@ -609,7 +464,7 @@ body {
 .feature-item:hover {
   background: #f1f8f1;
   border-color: #bcd9bc;
-  transform: translateX(-4px); /* אנימציה עדינה ימינה (בגלל ה-RTL) */
+  transform: translateX(-4px);
 }
 
 .feature-header {
@@ -623,14 +478,12 @@ body {
   display: block;
 }
 
-/* הטופס בתוך המאפיין */
 .feature-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* עיצוב ה-Select (הכמות) */
 .feature-select {
   width: 100%;
   padding: 10px 14px;
@@ -643,7 +496,7 @@ body {
   cursor: pointer;
   outline: none;
   transition: border-color 0.3s ease;
-  appearance: none; /* ביטול מראה הדיפולט */
+  appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232e7d32'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: left 12px center;
@@ -655,7 +508,6 @@ body {
   box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.1);
 }
 
-/* עיצוב שדה הערה (Remark) */
 .feature-input {
   width: 100%;
   padding: 10px 14px;
@@ -679,7 +531,6 @@ body {
   background-color: #ffffff;
 }
 
-/* כפתור שמירה מרכזי */
 .save-all-btn {
   width: 100%;
   padding: 16px;
@@ -709,7 +560,6 @@ body {
   box-shadow: none;
 }
 
-/* התאמה אישית לגלילה (Scrollbar) */
 .features-list::-webkit-scrollbar {
   width: 5px;
 }
@@ -728,7 +578,6 @@ body {
   background: #2e7d32;
 }
 
-/* רספונסיביות */
 @media (max-width: 1200px) {
   .features-sidebar {
     width: 100%;
@@ -737,20 +586,18 @@ body {
   }
 }
 
-/* מונע מעבר שורה גם במסכים קטנים יותר */
 @media (max-width: 768px) {
   .slider-track:not(:has(img:nth-child(3))) {
     flex-wrap: nowrap;
     gap: 16px;
     justify-content: center;
   }
-  
+
   .slider-image {
     height: 130px;
     min-width: 180px;
   }
 }
-
 
 @keyframes slide {
   from { transform: translateX(0); }
@@ -764,50 +611,33 @@ body {
     border-radius: 10px;
   }
 
-  /* .reports-slider-container {
-    margin: 15px 0 25px 0;
-    border-radius: 12px;
-  } */
-
   .main-image-wrapper {
-    aspect-ratio: 4 / 3;     /* יותר מלבני במובייל */
+    aspect-ratio: 4 / 3;
     max-width: 100%;
   }
 }
-
-/* ---------------------------- */
-
-
-
-
-
 
 .page-layout-three-columns {
   display: flex;
   gap: 25px;
   padding: 20px 30px;
-  max-width: 100%; /* מבטיח שלא יחרוג מהמסך */
+  max-width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  overflow: hidden; /* מונע מהכל לברוח הצידה */
+  overflow: hidden;
 }
 
-/* העמודה האמצעית - חייבת להיות מוגנת */
 .main-content {
   flex: 1;
-  min-width: 0; /* קריטי: מונע מתוכן פנימי (כמו סליידר) למתוח את העמודה */
-  max-width: 850px; /* שומר על רוחב קריא ונעים */
+  min-width: 0;
+  max-width: 850px;
   margin: 0 auto;
 }
-
-/* =========================================
-   תיקון הסליידר - שלא ידחוף את הסיידברים
-   ========================================= */
 
 .reports-slider-container {
   width: 100%;
   max-width: 100%;
-  overflow: hidden; /* חותך כל מה שיוצא מגבולות העמודה האמצעית */
+  overflow: hidden;
   position: relative;
   margin: 25px 0;
   padding: 10px 0;
@@ -820,43 +650,28 @@ body {
 
 .slider-track {
   display: flex;
-  width: max-content; /* מאפשר לתמונות לעמוד בשורה בלי קשר לרוחב העמודה */
+  width: max-content;
   gap: 16px;
-  animation: slide 15s linear infinite; /* מהירות נעימה יותר */
-}
-
-/* במקרה שיש רק 1-2 תמונות - מונע מהן "לרעוד" או להימתח */
-.running-images.no-animation .slider-track {
-  animation: none !important;
-  justify-content: center;
-  width: 100%;
+  animation: slide 15s linear infinite;
 }
 
 .slider-image {
-  height: 180px; /* גובה אחיד */
-  width: 240px;  /* רווח אחיד */
+  height: 180px;
+  width: 240px;
   object-fit: cover;
   border-radius: 15px;
-  flex-shrink: 0; /* מונע מהתמונות להתכווץ */
+  flex-shrink: 0;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* =========================================
-   תיקון הסיידברים - שיישארו מקובעים
-   ========================================= */
-
 .chat-sidebar, .features-sidebar {
-  flex-shrink: 0; /* מונע מהעמודות הצידיות להימחץ */
-  width: 320px;   /* רווח סטנדרטי לסיידבר */
+  flex-shrink: 0;
+  width: 320px;
   min-width: 300px;
   position: sticky;
   top: 100px;
   height: fit-content;
 }
-
-/* =========================================
-   תיקון התמונה הראשית (Hero Image)
-   ========================================= */
 
 .main-image-wrapper {
   width: 100%;
@@ -874,77 +689,59 @@ body {
   display: block;
 }
 
-/* =========================================
-   אנימציית הסליידר - תיקון כיוון (RTL)
-   ========================================= */
 @keyframes slide {
   0% { transform: translateX(0); }
-  100% { transform: translateX(50%); } /* בגלל שהאתר בעברית, האנימציה צריכה לזוז נכון */
+  100% { transform: translateX(50%); }
 }
 
-/* התאמה למסכים קטנים - שהכל לא יתחבר אחד לשני */
 @media (max-width: 1300px) {
   .page-layout-three-columns {
-    flex-wrap: wrap; /* במקום להימחץ, הסיידברים ירדו למטה */
+    flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .chat-sidebar, .features-sidebar {
     position: static;
     width: 100%;
     max-width: 500px;
   }
-  
+
   .main-content {
-    order: -1; /* התוכן הראשי תמיד ראשון */
+    order: -1;
     width: 100%;
   }
 }
-
-
-
-
-
-
-
-
 
 .page-layout-three-columns {
   display: flex;
   gap: 32px;
   padding: 20px 40px;
-  max-width: 100%; 
+  max-width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  overflow: hidden; /* זה הקו האדום - שום דבר לא עובר אותו */
+  overflow: hidden;
 }
 
-/* 2. העמודה האמצעית - התיקון הקריטי ביותר */
 .main-content {
   flex: 1;
-  min-width: 0; /* חובה! מונע מהסליידר למתוח את העמודה מעבר לרוחב שלה */
+  min-width: 0;
   max-width: 860px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
-/* 3. הגנה על הסיידברים - שלא יימחצו */
 .chat-sidebar, .features-sidebar {
   width: 340px;
-  flex-shrink: 0; /* מונע מהם להתכווץ כשהתוכן האמצעי גדל */
+  flex-shrink: 0;
   position: sticky;
   top: 100px;
   height: fit-content;
   align-self: flex-start;
 }
 
-/* ======================================================
-   סליידר התמונות - שמירה על האנימציה המקורית
-   ====================================================== */
-
 .reports-slider-container {
-  overflow: hidden; /* חותך את התמונות בדיוק בגבול העמודה האמצעית */
+  overflow: hidden;
   width: 100%;
   margin: 20px 0 35px 0;
   padding: 12px 0;
@@ -957,11 +754,10 @@ body {
   overflow: hidden;
 }
 
-/* האנימציה המקורית שלך - ללא שינוי */
 .slider-track {
   display: flex;
   animation: slide 13s linear infinite;
-  width: max-content; /* מאפשר לתמונות להסתדר בשורה ארוכה */
+  width: max-content;
   gap: 16px;
 }
 
@@ -975,28 +771,22 @@ body {
   flex-shrink: 0;
 }
 
-/* ה-Keyframes המקוריים שלך - ללא שינוי */
 @keyframes slide {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
-/* עצירה בריחוף - נוח למשתמש */
 .running-images:hover .slider-track {
   animation-play-state: paused;
 }
 
-/* טיפול במצב של 1-2 תמונות */
 .running-images.no-animation .slider-track {
   animation: none !important;
   justify-content: center;
   width: 100%;
-  transform: none; /* מבטל את ה-translateX כדי שלא יקפוץ הצידה */
+  transform: none;
 }
 
-/* ======================================================
-   תיקון התמונה הראשית (הילדים בתמונה שלך)
-   ====================================================== */
 .main-image-wrapper {
   width: 100%;
   border-radius: 20px;
@@ -1014,21 +804,20 @@ body {
   display: block;
 }
 
-/* רספונסיביות - כשהמסך קטן מדי לשלוש עמודות */
 @media (max-width: 1350px) {
   .page-layout-three-columns {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .chat-sidebar, .features-sidebar {
     width: 100%;
     max-width: 600px;
     position: static;
   }
-  
+
   .main-content {
     width: 100%;
-    order: -1; /* התוכן המרכזי יהיה ראשון במובייל */
+    order: -1;
   }
 }

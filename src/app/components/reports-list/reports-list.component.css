@@ -1,18 +1,24 @@
-.reports-container { margin: 40px 0; }
+.reports-container {
+  margin: 40px 0;
+}
 
-.reports-list { display: flex; flex-direction: column; gap: 24px; }
+.reports-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
 .report-card {
   background: white;
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
   border: 1px solid #e8f0e8;
   transition: all 0.3s ease;
 }
 .report-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 38px rgba(0,0,0,0.15);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.15);
   border-color: #c8e6c9;
 }
 
@@ -25,14 +31,19 @@
   gap: 16px;
 }
 
-.user-info { display: flex; align-items: center; gap: 14px; }
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
 .user-avatar {
-  width: 52px; height: 52px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #a5d6a7;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .user-avatar.placeholder {
   background: linear-gradient(135deg, #81c784, #66bb6a);
@@ -44,16 +55,43 @@
   justify-content: center;
 }
 
-.user-name { margin: 0; font-weight: 700; font-size: 17px; color: #2f4f2f; }
-.report-date { font-size: 14px; color: #777; }
+.user-name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 17px;
+  color: #2f4f2f;
+}
+.report-date {
+  font-size: 14px;
+  color: #777;
+}
 
-.rating-stars { display: flex; gap: 4px; }
-.star { font-size: 23px; color: #e0e0e0; }
-.star.filled { color: #ffb300; text-shadow: 0 0 8px rgba(255,187,0,0.4); }
+.rating-stars {
+  display: flex;
+  gap: 4px;
+}
+.star {
+  font-size: 23px;
+  color: #e0e0e0;
+}
+.star.filled {
+  color: #ffb300;
+  text-shadow: 0 0 8px rgba(255, 187, 0, 0.4);
+}
 
-.report-content { line-height: 1.7; margin-bottom: 16px; }
-.report-text { margin: 0; color: #444; font-size: 16px; }
-.report-text.no-text { color: #999; font-style: italic; }
+.report-content {
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.report-text {
+  margin: 0;
+  color: #444;
+  font-size: 16px;
+}
+.report-text.no-text {
+  color: #999;
+  font-style: italic;
+}
 
 .report-footer {
   display: flex;
@@ -80,39 +118,42 @@
   background: #c8e6c9;
   transform: translateY(-1px);
 }
-.helpful-btn .count { font-weight: bold; }
+.helpful-btn .count {
+  font-weight: bold;
+}
 
 .empty-state {
   text-align: center;
   padding: 60px 20px;
   color: #777;
 }
-.empty-state p { margin: 8px 0; font-size: 18px; }
-.empty-state .sub { font-size: 15px; color: #999; }
+.empty-state p {
+  margin: 8px 0;
+  font-size: 18px;
+}
+.empty-state .sub {
+  font-size: 15px;
+  color: #999;
+}
 
-
-
-/* כוכבי דירוג – מושלמים כמו באתרים גדולים */
 .rating-stars {
   display: flex;
   gap: 6px;
-  font-size: 28px;           /* גודל הכוכב */
+  font-size: 28px;
   line-height: 1;
 }
 
 .star {
-  color: #e0e0e0;            /* צבע כוכב ריק */
+  color: #e0e0e0;
   transition: all 0.25s ease;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* כוכב מלא – זהוב ויפה */
 .star.filled {
   color: #ffb400;
   text-shadow: 0 0 10px rgba(255, 179, 0, 0.5);
 }
 
-/* אופציונלי: חצי כוכב (אם את רוצה תמיכה ב-4.5, 3.5 וכו') */
 .star.half::before {
   content: "HalfStar";
   position: absolute;
@@ -121,40 +162,35 @@
   clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
 }
 
-/* אפקט הובר קטן (אם רוצים) */
 .rating-stars:hover .star {
   transform: scale(1.1);
 }
 
-
-/* כוכבי דירוג – יפהפיים וזהובים */
 .rating-stars {
   display: inline-flex;
   gap: 4px;
-  font-size: 26px;          /* גודל הכוכב */
+  font-size: 26px;
   line-height: 1;
 }
 
 .star {
-  color: #e0e0e0;           /* כוכב ריק */
+  color: #e0e0e0;
   transition: all 0.25s ease;
 }
 
 .star.filled {
-  color: #ffb400;           /* כוכב מלא – זהב יפהפה */
+  color: #ffb400;
   text-shadow: 0 0 8px rgba(255, 179, 0, 0.5);
 }
 
-/* אופציונלי – אפקט קטן כשעוברים עם העכבר */
 .rating-stars:hover .star.filled {
   transform: scale(1.15);
 }
 
-
 .rating-stars {
   display: inline-flex;
   gap: 6px;
-  font-size: 28px;           /* גודל הכוכב – תשני כרצונך */
+  font-size: 28px;
   line-height: 1;
 }
 
@@ -162,22 +198,30 @@
   width: 1em;
   height: 1em;
   background: transparent;
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
   transition: all 0.25s ease;
 }
 
-/* כוכב ריק */
 .star {
   background-color: #e0e0e0;
 }
 
-/* כוכב מלא – זהב יפהפה */
 .star.filled {
   background-color: #ffb400;
   box-shadow: 0 0 10px rgba(255, 179, 0, 0.6);
 }
 
-/* אפקט קטן כשעוברים עם העכבר (אופציונלי) */
 .star.filled:hover {
   transform: scale(1.2);
   box-shadow: 0 0 15px rgba(255, 179, 0, 0.8);

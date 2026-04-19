@@ -46,18 +46,14 @@ export class AddReportComponent implements OnInit {
     const file = event.target.files[0];
   if (file) {
     this.selectedFile = file;
-    this.form.picture = file;                 // ← חשוב מאוד!
+    this.form.picture = file;
 
-    // תצוגה מקדימה (אופציונלי אבל מומלץ)
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.form.picturePreview = e.target.result;
     };
     reader.readAsDataURL(file);
   }
-    // if (event.target.files.length > 0) {
-    //   this.selectedFile = event.target.files[0];
-    // }
   }
 
   // הסרת תמונה

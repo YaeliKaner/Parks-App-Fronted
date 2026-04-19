@@ -34,7 +34,6 @@
         @for (img of parkImages; track $index) {
           <img [src]="'data:image/jpeg;base64,' + img" alt="תמונה מדיווח" class="slider-image" />
         }
-        <!-- משכפול רק אם יותר מ-2 תמונות -->
         @if (parkImages.length > 2) {
           @for (img of parkImages; track $index) {
             <img [src]="'data:image/jpeg;base64,' + img" alt="תמונה מדיווח" class="slider-image" />
@@ -109,9 +108,6 @@
     <aside class="features-sidebar">
       <div class="features-card">
         <h3 class="features-title">עדכן את מאפייני הפארק</h3>
-        <!-- <p class="features-subtitle">
-          Help the community – update what's in the park
-        </p> -->
 
         <div class="features-list">
           @for (feature of features; track feature.id) {

@@ -11,76 +11,36 @@ import { HttpErrorResponse } from '@angular/common/http';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent {
-
   email: string = '';
-  // name: string = '';
   password: string = '';
   errorMsg: string = '';
-  
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
-  // onSubmit() {
-  //   const user: User = {
-  //     email: this.email,
-  //     name: this.name,
-  //     password: this.password
-  //   };
-//   const user: Partial<User> = {
-//   email: this.email,
-//   name: this.name,
-//   password: this.password
-// };
+  onSubmit() {
+    const user: Partial<User> = {
+      email: this.email,
+      password: this.password,
+    };
 
-
-//     this.authService.signIn(user).subscribe({
-//       next: () => {
-//         // לאן את רוצה אחרי התחברות מוצלחת
-//         this.router.navigate(['/parks-list']);
-//       },
-//       error: () => {
-//         this.errorMsg = 'שם / אימייל / סיסמה לא נכונים';
-//       }
-//     });
-  
-// }
-onSubmit() {
-  const user: Partial<User> = {
-    email: this.email,
-    // name: this.name,
-    password: this.password
-  };
-
-  this.authService.signIn(user).subscribe({
-    next: () => {
-      // 
-      this.router.navigate(['/parks-list']);
-       // רענון הדף כדי לעדכן את מצב ההתחברות
-    },
-    // error: () => {
-    //   // this.errorMsg = 'שם / אימייל / סיסמה לא נכונים';
-    //   console.error('Sign In Failed:', err);
-    // }
-    error: (err: HttpErrorResponse) =>  
-       this.router.navigate(['/sign-up'])
-      // console.error('Sign In Failed - Full Error Object:', err)
-  });
-}
-
-
- 
-
+    this.authService.signIn(user).subscribe({
+      next: () => {
+        //
+        this.router.navigate(['/parks-list']);
+      },
+      error: (err: HttpErrorResponse) => this.router.navigate(['/sign-up']),
+    });
+  }
 
   onSignUp(): void {
     this.router.navigate(['/sign-up']);
   }
-
 
   goToRecommended(): void {
     this.router.navigate(['/recommended']);
@@ -89,7 +49,4 @@ onSubmit() {
   goToAllParks(): void {
     this.router.navigate(['/parks-list']);
   }
-
-
-
 }

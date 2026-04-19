@@ -260,196 +260,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-
-/* .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(47, 79, 47, 0.4); /* גוון ירוק כהה שקוף */
-  /* backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; 
-  padding: 20px;
-} */
-
-/* כרטיסיית ההודעה */
-/* .conflict-card {
-  background: white;
-  padding: 40px;
-  border-radius: 28px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  width: 100%;
-  text-align: center;
-  animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.conflict-icon {
-  font-size: 50px;
-  margin-bottom: 20px;
-}
-
-.conflict-title {
-  font-size: 26px;
-  font-weight: 800;
-  color: #2f4f2f;
-  margin-bottom: 15px;
-}
-
-.conflict-text {
-  font-size: 17px;
-  color: #5a7a5a;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-
-.conflict-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.btn-primary {
-  background: #2e7d32;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 16px;
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background: #256628;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
-}
-
-.btn-secondary {
-  background: #f0f7f0;
-  color: #2e7d32;
-  border: 2px solid #2e7d32;
-  padding: 12px;
-  border-radius: 16px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: #e4eee4;
-}
-
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(47, 79, 47, 0.4);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; 
-  padding: 20px;
-}
-
-
-.conflict-card {
-  background: white;
-  padding: 40px;
-  border-radius: 28px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  width: 100%;
-  text-align: center;
-  animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.conflict-icon {
-  font-size: 50px;
-  margin-bottom: 20px;
-}
-
-.conflict-title {
-  font-size: 26px;
-  font-weight: 800;
-  color: #2f4f2f;
-  margin-bottom: 15px;
-}
-
-.conflict-text {
-  font-size: 17px;
-  color: #5a7a5a;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-
-.conflict-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.btn-primary {
-  background: #2e7d32;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 16px;
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background: #256628;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
-}
-
-.btn-secondary {
-  background: #f0f7f0;
-  color: #2e7d32;
-  border: 2px solid #2e7d32;
-  padding: 12px;
-  border-radius: 16px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: #e4eee4;
-}
-
-@keyframes modalAppear {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}  */
-
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -457,7 +267,7 @@
   width: 100%;
   height: 100%;
   background: rgba(47, 79, 47, 0.4); 
-  backdrop-filter: blur(10px); /* טשטוש חזק ויוקרתי */
+  backdrop-filter: blur(10px); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -465,10 +275,8 @@
   padding: 20px;
 }
 
-/* כרטיסיית ההודעה */
 .conflict-card {
   background: white;
-  /* צמצמנו את הפדינג העליון מ-20 ל-10 */
   padding: 10px 32px 32px 32px; 
   
   border-radius: 30px;
@@ -480,12 +288,9 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* עיצוב הלוגו של העץ */
 .conflict-logo-img {
-  width: 200px; /* הקטנתי מעט מ-200 כדי שישב טוב יותר במרווח המצומצם */
+  width: 200px; 
   height: auto;
-  
-  /* שימוש בערכים אפסיים או שליליים כדי "להדביק" למעלה ולטקסט */
   margin-top: 20px; 
   margin-bottom: 20px; 
   
@@ -497,15 +302,15 @@
   font-size: 24px;
   font-weight: 800;
   color: #2f4f2f;
-  margin-top: 0;      /* ביטול מרווח עליון של הכותרת */
-  margin-bottom: 10px; /* רווח קטן לכיוון הטקסט שמתחת */
+  margin-top: 0; 
+  margin-bottom: 10px;
 }
 
 .conflict-text {
   font-size: 16px;
   color: #5a7a5a;
   line-height: 1.5;
-  margin-bottom: 25px; /* צמצום המרווח לפני הכפתורים */
+  margin-bottom: 25px; 
 }
 
 .btn-primary {
@@ -544,7 +349,6 @@
   border-color: #2e7d32;
 }
 
-/* אנימציית כניסה */
 @keyframes modalAppear {
   from {
     opacity: 0;
@@ -557,7 +361,6 @@
 }
 
 
-/* ------------------------------------------ */
 .add-park-container {
   min-height: 100vh;
   display: flex;
@@ -572,7 +375,6 @@
   font-family: 'Assistant', sans-serif;
 }
 
-/* כרטיס הטופס */
 .add-park-form {
   background: #ffffff;
   width: 100%;
@@ -585,7 +387,6 @@
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-/* כותרת מדומה (אופציונלי, מוסיף המון) */
 .add-park-form::before {
   content: "הוספת פארק חדש";
   display: block;
@@ -596,7 +397,6 @@
   margin-bottom: 30px;
 }
 
-/* תוויות השדות */
 .form-label {
   display: block;
   font-size: 15px;
@@ -606,7 +406,7 @@
   margin-right: 5px;
 }
 
-/* שדות קלט (Inputs) */
+
 .form-input {
   width: 100%;
   padding: 14px 20px;
@@ -698,9 +498,6 @@
   transform: none;
 }
 
-/* ===========================
-   מודאל התנגשות (Conflict)
-   =========================== */
 
 .modal-overlay {
   position: fixed;
@@ -708,8 +505,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(20, 40, 20, 0.4); /* כהה ושקוף */
-  backdrop-filter: blur(8px); /* אפקט זכוכית מט */
+  background: rgba(20, 40, 20, 0.4); 
+  backdrop-filter: blur(8px); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -765,7 +562,6 @@
   margin-top: 35px;
 }
 
-/* כפתורי המודאל */
 .btn-primary {
   flex: 1.5;
   padding: 14px;
@@ -795,7 +591,6 @@
 .btn-primary:hover { background: #1b5e20; transform: translateY(-2px); }
 .btn-secondary:hover { background: #f1f8f1; border-color: #2e7d32; }
 
-/* רספונסיביות למובייל */
 @media (max-width: 600px) {
   .add-park-form {
     padding: 30px 20px;

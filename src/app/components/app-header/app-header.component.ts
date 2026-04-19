@@ -3,12 +3,6 @@ import UsersDTO from '../../models/dto/usersDTO.model';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
-// @Component({
-//   selector: 'app-app-header',
-//   imports: [],
-//   templateUrl: './app-header.component.html',
-//   styleUrl: './app-header.component.css'
-// })
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -28,7 +22,6 @@ export class AppHeaderComponent {
   ) {}
 
   ngOnInit(): void {
-    // Subscribe to BehaviorSubject for real-time auth state updates
     this._authService.getAuthState().subscribe((isAuth) => {
       this.isLoggedIn = isAuth;
     });
@@ -37,22 +30,6 @@ export class AppHeaderComponent {
       this.currentUser = user;
       this.isLoadingUser = false;
     });
-
-
-    // this._authService.isAuthenticated().subscribe((isAuth) => {
-    //   this.isLoggedIn = isAuth;
-    // });
-
-    // this._authService.getLoggedUser().subscribe({
-    //   next: (user) => {
-    //     this.currentUser = user;
-    //     this.isLoadingUser = false;
-    //   },
-    //   error: () => {
-    //     this.currentUser = null;
-    //     this.isLoadingUser = false;
-    //   },
-    // });
   }
 
   onSpecialButtonClick(): void {

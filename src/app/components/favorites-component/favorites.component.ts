@@ -28,7 +28,6 @@ export class FavoritesComponent implements OnInit {
   isChatOpen: boolean = false;
 
   parkToChangeFavorite: ParkDTO | null = null;
-  // injector: Injector | undefined;
 
   constructor(
     private injector: Injector,
@@ -51,7 +50,6 @@ runInInjectionContext(this.injector, () => {
 
       this._authService.getAuthState().subscribe((isAuth) => {
       this.isLoggedIn = isAuth;
-      // when we become logged in, load favorites; if logged out clear them
       if (isAuth) {
         this.loadFavorites();
       } else {
@@ -70,7 +68,6 @@ runInInjectionContext(this.injector, () => {
       },
     });
 
-  // בדוק מה מגיע מהשרת
 if(this.isLoggedIn) {
   this._favoritesService.getMyFavorites().subscribe(parks => {
       console.log('Favorites from server:', parks);
@@ -79,17 +76,6 @@ if(this.isLoggedIn) {
  }
 
     this.loadFavorites();
-
-    // this.route.params.subscribe((params) => {
-    //   const parkId = Number(params['id']);
-    //   console.log('🟢 parkId:', parkId);
-    //   this._parksService.getParkById(parkId).subscribe({
-    //     next: (parkRes) => {
-    //       this.parkToChangeFavorite = parkRes;
-    //       console.log('✅ Park loaded:', parkRes);
-    //     },
-    //   });
-    // });
   }
 
 
@@ -138,7 +124,6 @@ toggleFavorite(park: ParkDTO) {
     this._favoritesService.removeFromFavorites(park.id).subscribe({
       next: () => {
         alert('הפארק הוסר מהמועדפים ❌');
-        // מעדכנים את הרשימה המקומית
         this._favoritesService.toggleFavorite(park.id);
         this.favorites = this.favorites.filter((p) => p.id !== park.id);
       },
@@ -168,36 +153,11 @@ toggleFavorite(park: ParkDTO) {
     });
   }
 
-  // onSignOut(): void {
-  //   this._authService.signOut().subscribe({
-  //     next: () => this.router.navigate(['/sign-in']),
-  //     error: () => alert('שגיאה בהתנתקות'),
-  //   });
-  // }
-
-  // onSignIn(): void {
-  //   this.router.navigate(['/sign-in']);
-  // }
-
-  // onSignUp(): void {
-  //   this.router.navigate(['/sign-up']);
-  // }
-
   showDetails(park: ParkDTO): void {
     if (!park?.id) return;
     this.router.navigate(['/park-details', park.id]);
   }
 
-  // goToRecommended(): void {
-  //   this.router.navigate(['/recommended']);
-  // }
-
-  // // מעבר למסך מועדפים
-  // goToFavorites(): void {
-  //   this.router.navigate(['/favorites']);
-  // }
-
-  // הוספת פארק למועדפים
   addToFavorites(park: ParkDTO): void {
     if (!park?.id) return;
 
@@ -207,7 +167,6 @@ toggleFavorite(park: ParkDTO) {
       },
       error: (err) => {
         console.error('שגיאה בהוספה למועדפים', err);
-        // alert('שגיאה בהוספה למועדפים');
         this.router.navigate(['/sign-in']);
       },
     });

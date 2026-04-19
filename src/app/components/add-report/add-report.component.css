@@ -1,14 +1,11 @@
-
-
-/* ------------------------------------ */
 .add-report-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(47, 79, 47, 0.4); /* גוון ירוק כהה שקוף */
-  backdrop-filter: blur(12px); /* טשטוש רקע יוקרתי */
+  background: rgba(47, 79, 47, 0.4);
+  backdrop-filter: blur(12px); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +15,6 @@
   direction: rtl;
 }
 
-/* כרטיס המודאל */
 .card {
   background: #ffffff;
   width: 100%;
@@ -32,7 +28,6 @@
   overflow-y: auto;
 }
 
-/* כותרת המודאל */
 .card h2 {
   font-size: 26px;
   font-weight: 800;
@@ -42,7 +37,6 @@
   letter-spacing: -0.5px;
 }
 
-/* סקשן הדירוג */
 .rating-section {
   text-align: center;
   margin-bottom: 25px;
@@ -65,13 +59,12 @@
   margin-right: 4px;
 }
 
-/* כוכבים */
 .stars {
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-bottom: 10px;
-  direction: ltr; /* כוכבים משמאל לימין לנוחות לחיצה */
+  direction: ltr;
 }
 
 .star {
@@ -86,7 +79,7 @@
 }
 
 .star.filled {
-  color: #ffc107; /* זהב קלאסי לכוכבים */
+  color: #ffc107;
   text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
 }
 
@@ -102,7 +95,6 @@
   font-style: italic;
 }
 
-/* קבוצות טופס */
 .form-group {
   margin-bottom: 20px;
   display: flex;
@@ -116,7 +108,6 @@
   font-size: 15px;
 }
 
-/* שדה טקסט חופשי */
 .textarea {
   width: 100%;
   padding: 15px;
@@ -144,7 +135,6 @@
   margin-top: 5px;
 }
 
-/* העלאת קובץ */
 input[type="file"] {
   background: #f1f8f1;
   padding: 10px;
@@ -154,7 +144,6 @@ input[type="file"] {
   font-family: 'Assistant', sans-serif;
 }
 
-/* כפתורים */
 .actions {
   display: flex;
   gap: 15px;
@@ -205,7 +194,6 @@ input[type="file"] {
   border-color: #ccc;
 }
 
-/* אנימציה לכניסת המודאל */
 @keyframes modalAppear {
   from {
     opacity: 0;
@@ -217,7 +205,6 @@ input[type="file"] {
   }
 }
 
-/* התאמה למובייל */
 @media (max-width: 500px) {
   .card {
     padding: 25px 20px;

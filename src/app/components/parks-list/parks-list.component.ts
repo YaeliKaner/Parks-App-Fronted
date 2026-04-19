@@ -1,4 +1,3 @@
-
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
@@ -8,18 +7,22 @@ import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs';
 import UsersDTO from '../../models/dto/usersDTO.model';
 
-
 import { MATERIAL } from '../../material';
 import { FormsModule } from '@angular/forms';
 import { FavoritesService } from '../../services/favorites.service';
-import { ParksChatComponent } from "../parks-chat/parks-chat.component";
+import { ParksChatComponent } from '../parks-chat/parks-chat.component';
 import { FavoriteButtonComponent } from '../favorite-button/favorite-button.component';
-// import { AppHeaderComponent } from '../app-header/app-header.component';
 
 @Component({
   selector: 'app-parks-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ParksChatComponent, FavoriteButtonComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ParksChatComponent,
+    FavoriteButtonComponent,
+  ],
   templateUrl: './parks-list.component.html',
   styleUrl: './parks-list.component.css',
 })
@@ -33,31 +36,25 @@ export class ParksListComponent implements OnInit {
   favorites: ParkDTO[] = [];
   loading: boolean = false;
   isChatOpen: boolean = false;
-  selectedItem: ParkDTO | null = null
-  // isLoggedIn$!: Observable<boolean>;
+  selectedItem: ParkDTO | null = null;
 
   constructor(
     private router: Router,
     private parksService: ParksService,
     private _authService: AuthService,
-    private _favoritesService: FavoritesService
+    private _favoritesService: FavoritesService,
   ) {}
 
   ngOnInit(): void {
-
-// בדוק מה מגיע מהשרת
-if(this.isLoggedIn) {
-  this._favoritesService.getMyFavorites().subscribe(parks => {
-      console.log('Favorites from server:', parks);
-      this._favoritesService.populateFavorites(parks);
-    });
- }
-  // בדוק מה יש ב-signal
-  console.log('Favorites signal:', this._favoritesService.favorites());
-    // react to authentication state changes instead of one-shot HTTP call
+    if (this.isLoggedIn) {
+      this._favoritesService.getMyFavorites().subscribe((parks) => {
+        console.log('Favorites from server:', parks);
+        this._favoritesService.populateFavorites(parks);
+      });
+    }
+    console.log('Favorites signal:', this._favoritesService.favorites());
     this._authService.getAuthState().subscribe((isAuth) => {
       this.isLoggedIn = isAuth;
-      // when we become logged in, load favorites; if logged out clear them
       if (isAuth) {
         this.loadFavorites();
       } else {
@@ -87,7 +84,7 @@ if(this.isLoggedIn) {
       },
       error: (err) => {
         console.error('שגיאה בטעינת פארקים', err);
-      }
+      },
     });
   }
 
@@ -127,23 +124,21 @@ if(this.isLoggedIn) {
     this.router.navigate(['/park-details', park.id]);
   }
 
-onSortChange(value: string) {
-console.log("פונקציה נקראה! הערך הוא:", value);
-  if (value === "new" || value === "") {
-    this.ngOnInit();   // או כל דבר אחר שמרענן/טוען את הרשימה החדשה
-  } 
-  else if (value === "recommended") {
-    this.parksService.getParksOrderByRecommended().subscribe({
-      next: (res) => {
-        this.parksList = res ?? [];
-      },
-      error: (err) => {
-        console.error('שגיאה בטעינת פארקים מומלצים', err);
-      }
-    });
+  onSortChange(value: string) {
+    console.log('פונקציה נקראה! הערך הוא:', value);
+    if (value === 'new' || value === '') {
+      this.ngOnInit();
+    } else if (value === 'recommended') {
+      this.parksService.getParksOrderByRecommended().subscribe({
+        next: (res) => {
+          this.parksList = res ?? [];
+        },
+        error: (err) => {
+          console.error('שגיאה בטעינת פארקים מומלצים', err);
+        },
+      });
+    }
   }
-  // אפשר להוסיף else אם יש ברירת מחדל
-}
 
   // הוספת פארק למועדפים
   addToFavorites(park: ParkDTO): void {
@@ -155,20 +150,18 @@ console.log("פונקציה נקראה! הערך הוא:", value);
       },
       error: (err) => {
         console.error('שגיאה בהוספה למועדפים', err);
-        // alert('שגיאה בהוספה למועדפים');
         this.router.navigate(['/sign-in']);
-      }
+      },
     });
   }
 
-    loadFavorites(): void {
+  loadFavorites(): void {
     this.loading = true;
 
     this._favoritesService.getMyFavorites().subscribe({
       next: (res) => {
         console.log('Favorites loaded:', res);
         this.favorites = res ?? [];
-        // sync service signal as well
         this._favoritesService.populateFavorites(this.favorites);
         this.loading = false;
       },
@@ -176,13 +169,12 @@ console.log("פונקציה נקראה! הערך הוא:", value);
         console.error('Error loading favorites', err);
         this.loading = false;
         alert('שגיאה בטעינת המועדפים');
-      }
+      },
     });
   }
 
   isSelectedInList(item: ParkDTO | null): boolean {
     if (!item || !this.favorites?.length) return false;
-    return this.favorites.some(existing => existing.id === item.id);
-    // או אם reference זהה:   return this.favorites.includes(item);
+    return this.favorites.some((existing) => existing.id === item.id);
   }
 }

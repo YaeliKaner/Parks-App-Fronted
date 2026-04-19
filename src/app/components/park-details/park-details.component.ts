@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ParksService } from '../../services/parks.service';
@@ -90,7 +90,7 @@ export class ParkDetailsComponent implements OnInit {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
         };
-        console.log('📍 User location:', this.userLocation);
+        console.log(' User location:', this.userLocation);
       },
       (err) => {
         console.warn('⚠️ לא ניתן לקבל מיקום משתמש', err);
@@ -99,7 +99,7 @@ export class ParkDetailsComponent implements OnInit {
     );
     this.route.params.subscribe((params) => {
       const parkId = Number(params['id']);
-      console.log('🟢 parkId:', parkId);
+      console.log(' parkId:', parkId);
       this._featuresService.getFeatures().subscribe({
         next: (features) => {
           this.features = features;
@@ -168,7 +168,7 @@ export class ParkDetailsComponent implements OnInit {
   private loadParkReportsImages() {
     if (!this.parkToShow?.id) {
     console.warn('loadParkReportsImages נקרא אבל אין parkToShow.id עדיין');
-    return;   // ← יוצא מוקדם, מונע את השגיאה
+    return;  
   }
     this._reportsService.getReportsByParkId(this.parkToShow.id).subscribe({
       next: (reports) => {
@@ -205,7 +205,6 @@ export class ParkDetailsComponent implements OnInit {
       next: () => {},
       error: (err) => {
         console.error(err);
-        // alert('שגיאה בהוספה למועדפים');
         this.router.navigate(['/sign-in']);
       },
     });
@@ -291,3 +290,4 @@ export class ParkDetailsComponent implements OnInit {
     });
   }
 }
+

@@ -82,7 +82,7 @@
 }
 
 .homepage-welcome-card h1 {
-  color: #2f7a32; /* ירוק עדין כמו הלוגו */
+  color: #2f7a32;
   font-size: 2.2rem;
   margin-bottom: 15px;
 }
@@ -93,7 +93,6 @@
   line-height: 1.6;
 }
 
-/* Footer */
 .site-footer {
   text-align: center;
   padding: 20px;
