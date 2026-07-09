@@ -243,7 +243,6 @@ export class ParkDetailsComponent implements OnInit {
       `, ${this.parkToShow.city.name}`,
     );
     if (!destination.trim()) {
-      alert('אין כתובת לפארק 😕');
       return;
     }
 
